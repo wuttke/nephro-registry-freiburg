@@ -10,6 +10,8 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import eu.wuttke.nrf.domain.subject.Subject;
+
 public class RegistryVaadinUI extends UI {
 
 	@Override
@@ -25,6 +27,7 @@ public class RegistryVaadinUI extends UI {
 			private static final long serialVersionUID = 1L;
 			public void buttonClick(ClickEvent event) {
 				layout.addComponent(new Label("Thank you for clicking"));
+				Subject.findAllSubjects();
 				logger.info("button clicked");
 			}
 		});

@@ -1,27 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+
     <display-name>Nephro Registry Freiburg</display-name>
+
     <context-param>
-        <description>Vaadin production mode</description>
         <param-name>productionMode</param-name>
         <param-value>false</param-value>
     </context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:META-INF/spring/applicationContext*.xml</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>springOpenEntityManagerInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springOpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
     <servlet>
         <servlet-name>Application Servlet</servlet-name>
         <servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
         <init-param>
-            <description>Vaadin UI to display</description>
             <param-name>UI</param-name>
             <param-value>eu.wuttke.nrf.ui.RegistryVaadinUI</param-value>
         </init-param>
         <init-param>
-            <description>Application widgetset</description>
             <param-name>widgetset</param-name>
             <param-value>eu.wuttke.nrf.ui.RegistryWidgetSet</param-value>
         </init-param>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>Application Servlet</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+    
 </web-app>
