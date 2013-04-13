@@ -47,7 +47,7 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<security:http>
+	<security:http realm="Nephro Registry Freiburg">
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
 		<security:http-basic />
 	</security:http>
