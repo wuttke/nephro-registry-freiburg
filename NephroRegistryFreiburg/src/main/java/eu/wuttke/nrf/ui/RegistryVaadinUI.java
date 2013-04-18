@@ -10,7 +10,10 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import eu.wuttke.nrf.domain.diagnosis.Diagnosis;
 import eu.wuttke.nrf.domain.subject.Subject;
+import eu.wuttke.nrf.ui.component.OkCancelWindow;
+import eu.wuttke.nrf.ui.editor.DiagnosisEditor;
 
 public class RegistryVaadinUI extends UI {
 
@@ -29,9 +32,20 @@ public class RegistryVaadinUI extends UI {
 				layout.addComponent(new Label("Thank you for clicking"));
 				Subject.findAllSubjects();
 				logger.info("button clicked");
+				buttonClicked();
 			}
 		});
 		layout.addComponent(button);
+	}
+	
+	private void buttonClicked() {
+		Diagnosis d = new Diagnosis();
+		d.setCode("I12");
+		d.setLabel("Hypertonie");
+		d.setDescription("Test 123\n3455");
+		DiagnosisEditor de = new DiagnosisEditor(d);
+		OkCancelWindow w = new OkCancelWindow(de);
+		w.show(this, "Diagnosis Editor");		
 	}
 
 	private static Logger logger = LoggerFactory.getLogger(RegistryVaadinUI.class);
