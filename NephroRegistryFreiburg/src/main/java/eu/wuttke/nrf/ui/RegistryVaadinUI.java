@@ -45,7 +45,7 @@ public class RegistryVaadinUI extends UI {
 		d.setDescription("Test 123\n3455");
 		DiagnosisEditor de = new DiagnosisEditor(d);
 		OkCancelWindow w = new OkCancelWindow(de);
-		w.show(this, "Diagnosis Editor");		
+		w.show(this, "Diagnosis Editor", "50%", "50%");		
 	}
 
 	private static Logger logger = LoggerFactory.getLogger(RegistryVaadinUI.class);
