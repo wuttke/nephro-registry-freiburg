@@ -102,6 +102,7 @@ public class DiagnosisEditor extends CustomComponent {
 		taDescription.setWidth("100.0%");
 		taDescription.setHeight("-1px");
 		formLayout.addComponent(taDescription);
+		formLayout.setExpandRatio(taDescription, 1.0f);
 		
 		// tfValidFrom
 		tfValidFrom = new TextField();
