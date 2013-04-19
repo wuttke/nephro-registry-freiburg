@@ -4,9 +4,8 @@
 package eu.wuttke.nrf.domain.medication;
 
 import eu.wuttke.nrf.domain.medication.Medication;
-import eu.wuttke.nrf.domain.misc.DatePrecision;
+import eu.wuttke.nrf.domain.misc.PrecisionDate;
 import eu.wuttke.nrf.domain.subject.Subject;
-import java.util.Date;
 
 privileged aspect Medication_Roo_JavaBean {
     
@@ -50,36 +49,20 @@ privileged aspect Medication_Roo_JavaBean {
         this.description = description;
     }
     
-    public Date Medication.getValidFrom() {
+    public PrecisionDate Medication.getValidFrom() {
         return this.validFrom;
     }
     
-    public void Medication.setValidFrom(Date validFrom) {
+    public void Medication.setValidFrom(PrecisionDate validFrom) {
         this.validFrom = validFrom;
     }
     
-    public Date Medication.getValidUntil() {
+    public PrecisionDate Medication.getValidUntil() {
         return this.validUntil;
     }
     
-    public void Medication.setValidUntil(Date validUntil) {
+    public void Medication.setValidUntil(PrecisionDate validUntil) {
         this.validUntil = validUntil;
-    }
-    
-    public DatePrecision Medication.getValidFromPrecision() {
-        return this.validFromPrecision;
-    }
-    
-    public void Medication.setValidFromPrecision(DatePrecision validFromPrecision) {
-        this.validFromPrecision = validFromPrecision;
-    }
-    
-    public DatePrecision Medication.getValidUntilPrecision() {
-        return this.validUntilPrecision;
-    }
-    
-    public void Medication.setValidUntilPrecision(DatePrecision validUntilPrecision) {
-        this.validUntilPrecision = validUntilPrecision;
     }
     
 }

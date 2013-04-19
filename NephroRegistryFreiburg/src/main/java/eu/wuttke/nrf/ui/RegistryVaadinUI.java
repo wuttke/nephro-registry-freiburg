@@ -11,6 +11,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 import eu.wuttke.nrf.domain.diagnosis.Diagnosis;
+import eu.wuttke.nrf.domain.misc.PrecisionDateUtil;
 import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.ui.component.OkCancelWindow;
 import eu.wuttke.nrf.ui.editor.DiagnosisEditor;
@@ -43,6 +44,7 @@ public class RegistryVaadinUI extends UI {
 		d.setCode("I12");
 		d.setLabel("Hypertonie");
 		d.setDescription("Test 123\n3455");
+		d.setValidFrom(PrecisionDateUtil.parsePrecisionDate("10/2008"));
 		DiagnosisEditor de = new DiagnosisEditor(d);
 		OkCancelWindow w = new OkCancelWindow(de);
 		w.show(this, "Diagnosis Editor", "50%", "50%");		

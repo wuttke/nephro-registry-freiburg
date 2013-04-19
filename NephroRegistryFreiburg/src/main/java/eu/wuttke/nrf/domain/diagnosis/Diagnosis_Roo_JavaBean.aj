@@ -4,9 +4,8 @@
 package eu.wuttke.nrf.domain.diagnosis;
 
 import eu.wuttke.nrf.domain.diagnosis.Diagnosis;
-import eu.wuttke.nrf.domain.misc.DatePrecision;
+import eu.wuttke.nrf.domain.misc.PrecisionDate;
 import eu.wuttke.nrf.domain.subject.Subject;
-import java.util.Date;
 
 privileged aspect Diagnosis_Roo_JavaBean {
     
@@ -42,36 +41,20 @@ privileged aspect Diagnosis_Roo_JavaBean {
         this.description = description;
     }
     
-    public Date Diagnosis.getValidFrom() {
+    public PrecisionDate Diagnosis.getValidFrom() {
         return this.validFrom;
     }
     
-    public void Diagnosis.setValidFrom(Date validFrom) {
+    public void Diagnosis.setValidFrom(PrecisionDate validFrom) {
         this.validFrom = validFrom;
     }
     
-    public Date Diagnosis.getValidUntil() {
+    public PrecisionDate Diagnosis.getValidUntil() {
         return this.validUntil;
     }
     
-    public void Diagnosis.setValidUntil(Date validUntil) {
+    public void Diagnosis.setValidUntil(PrecisionDate validUntil) {
         this.validUntil = validUntil;
-    }
-    
-    public DatePrecision Diagnosis.getValidFromPrecision() {
-        return this.validFromPrecision;
-    }
-    
-    public void Diagnosis.setValidFromPrecision(DatePrecision validFromPrecision) {
-        this.validFromPrecision = validFromPrecision;
-    }
-    
-    public DatePrecision Diagnosis.getValidUntilPrecision() {
-        return this.validUntilPrecision;
-    }
-    
-    public void Diagnosis.setValidUntilPrecision(DatePrecision validUntilPrecision) {
-        this.validUntilPrecision = validUntilPrecision;
     }
     
 }

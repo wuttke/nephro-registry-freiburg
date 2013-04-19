@@ -1,6 +1,6 @@
 package eu.wuttke.nrf.domain.misc;
 
-public enum DatePrecision {
+public enum PrecisionDateType {
 
 	// only year part relevant
 	YEAR,
