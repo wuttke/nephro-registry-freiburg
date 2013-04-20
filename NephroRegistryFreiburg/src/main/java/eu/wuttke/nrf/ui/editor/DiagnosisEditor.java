@@ -115,7 +115,7 @@ public class DiagnosisEditor extends CustomComponent {
 		// tfValidFrom
 		tfValidFrom = new TextField();
 		tfValidFrom.setCaption("Valid From");
-		tfValidFrom.setImmediate(false);
+		tfValidFrom.setImmediate(true);
 		tfValidFrom.setWidth("100.0%");
 		tfValidFrom.setHeight("-1px");
 		formLayout.addComponent(tfValidFrom);
@@ -123,7 +123,7 @@ public class DiagnosisEditor extends CustomComponent {
 		// tfValidUntil
 		tfValidUntil = new TextField();
 		tfValidUntil.setCaption("Valid Until");
-		tfValidUntil.setImmediate(false);
+		tfValidUntil.setImmediate(true);
 		tfValidUntil.setWidth("100.0%");
 		tfValidUntil.setHeight("-1px");
 		formLayout.addComponent(tfValidUntil);
