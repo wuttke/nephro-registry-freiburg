@@ -7,11 +7,11 @@ import eu.wuttke.nrf.domain.audit.RevisionInfo;
 
 privileged aspect RevisionInfo_Roo_JavaBean {
     
-    public int RevisionInfo.getId() {
+    public Integer RevisionInfo.getId() {
         return this.id;
     }
     
-    public void RevisionInfo.setId(int id) {
+    public void RevisionInfo.setId(Integer id) {
         this.id = id;
     }
     

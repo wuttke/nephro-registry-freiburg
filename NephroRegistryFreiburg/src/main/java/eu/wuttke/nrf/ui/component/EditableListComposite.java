@@ -52,6 +52,9 @@ implements ListView<E> {
 		btnEdit.setEnabled(false);
 		btnDelete.setEnabled(false);
 		
+		table.setSelectable(true);
+		table.setImmediate(true);
+		
 		table.addValueChangeListener(new Property.ValueChangeListener() {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -71,19 +74,17 @@ implements ListView<E> {
 		
 		btnEdit.addClickListener(new Button.ClickListener() {
 			private static final long serialVersionUID = 1L;
-			@SuppressWarnings("unchecked")
 			@Override
 			public void buttonClick(ClickEvent event) {
-				changeEntity((E)table.getValue());
+				editEntity(container.getItem(table.getValue()).getBean());
 			}
 		});
 		
 		btnDelete.addClickListener(new Button.ClickListener() {
 			private static final long serialVersionUID = 1L;
-			@SuppressWarnings("unchecked")
 			@Override
 			public void buttonClick(ClickEvent event) {
-				deleteEntity((E)table.getValue());
+				deleteEntity(container.getItem(table.getValue()).getBean());
 			}
 		});
 	}
@@ -122,12 +123,12 @@ implements ListView<E> {
 		presenter.newEntity();
 	}
 	
-	protected void changeEntity(E item) {
-		
+	protected void editEntity(E item) {
+		presenter.editEntity(item);
 	}
 
 	protected void deleteEntity(E item) {
-		
+		presenter.deleteEntity(item);
 	}
 	
 	private static final long serialVersionUID = 1L;

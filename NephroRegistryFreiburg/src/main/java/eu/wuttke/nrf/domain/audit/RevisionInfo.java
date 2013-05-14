@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -21,9 +22,9 @@ import org.springframework.roo.addon.tostring.RooToString;
 public class RevisionInfo {
 
 	@Id
-    @NotNull
 	@RevisionNumber
-	private int id;
+	@GeneratedValue
+	private Integer id;
 
 	@RevisionTimestamp
 	private long timestamp;
@@ -39,7 +40,7 @@ public class RevisionInfo {
 
 	public int hashCode() {
 		int result;
-		result = id;
+		result = id != null ? id.intValue() : 0;
 		result = 31 * result + (int) (timestamp ^ (timestamp >>> 32));
 		return result;
 	}
@@ -53,6 +54,10 @@ public class RevisionInfo {
 		RevisionInfo that = (RevisionInfo) o;
 	
 		if (id != that.id)
+			return false;
+		if ((id == null || that.id == null) && (id != null || that.id != null))
+			return false;
+		if (id != null && that.id != null && id.intValue() != that.id.intValue())
 			return false;
 		if (timestamp != that.timestamp)
 			return false;

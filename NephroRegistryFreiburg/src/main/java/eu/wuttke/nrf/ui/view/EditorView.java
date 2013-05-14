@@ -12,5 +12,6 @@ extends Component {
 	
 	public void displayEntity(E e);
 	public E retrieveEntity();
+	public boolean isValid();
 	
 }

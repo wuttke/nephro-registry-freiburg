@@ -8,6 +8,8 @@ import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
@@ -73,7 +75,8 @@ extends CustomComponent {
 		if (isContentValid()) {
 			onSave();
 			window.close();
-		}
+		} else
+			Notification.show("Content not valid", Type.ERROR_MESSAGE);
 	}
 	
 	protected void onSave() {

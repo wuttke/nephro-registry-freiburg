@@ -78,6 +78,11 @@ implements EditorView<Subject> {
 		}
 	}
 	
+	@Override
+	public boolean isValid() {
+		return group.isValid();
+	}
+	
 	private static final long serialVersionUID = 1L;
 	
 	public SubjectEditorView() {

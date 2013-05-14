@@ -24,7 +24,7 @@ extends EditorPresenter<Subject, SubjectEditorView> {
 	
 	@Override
 	public void saveEntity(Subject entity) {
-		entity.persist();
+		entity.merge();
 	}
 
 	

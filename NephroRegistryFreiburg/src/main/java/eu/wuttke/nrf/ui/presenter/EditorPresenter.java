@@ -44,7 +44,10 @@ public abstract class EditorPresenter<E, V extends EditorView<E>> {
 			private static final long serialVersionUID = 1L;
 			@Override
 			protected boolean isContentValid() {
-				return super.isContentValid();
+				if (getEditorView().isValid())
+					return super.isContentValid();
+				else
+					return false;
 			}
 			@Override
 			protected void onSave() {
