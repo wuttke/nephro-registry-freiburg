@@ -1,10 +1,13 @@
-package eu.wuttke.nrf.domain.misc;
+package eu.wuttke.nrf.ui.misc;
 
 import java.util.Locale;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.vaadin.data.util.converter.Converter;
+
+import eu.wuttke.nrf.domain.misc.PrecisionDate;
+import eu.wuttke.nrf.domain.misc.PrecisionDateUtil;
 
 public class StringToPrecisionDateConverter
 implements Converter<String, PrecisionDate> {

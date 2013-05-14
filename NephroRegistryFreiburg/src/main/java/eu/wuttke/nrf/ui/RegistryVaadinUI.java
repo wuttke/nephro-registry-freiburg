@@ -4,17 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import eu.wuttke.nrf.domain.diagnosis.Diagnosis;
-import eu.wuttke.nrf.domain.misc.PrecisionDateUtil;
-import eu.wuttke.nrf.domain.subject.Subject;
-import eu.wuttke.nrf.ui.component.OkCancelWindow;
-import eu.wuttke.nrf.ui.editor.DiagnosisEditor;
+import eu.wuttke.nrf.controller.subject.SubjectListController;
 
 public class RegistryVaadinUI extends UI {
 
@@ -24,21 +17,15 @@ public class RegistryVaadinUI extends UI {
 		
 		final VerticalLayout layout = new VerticalLayout();
 		layout.setMargin(true);
+		layout.setSizeFull();
 		setContent(layout);
 
-		Button button = new Button("Click Me");
-		button.addClickListener(new Button.ClickListener() {
-			private static final long serialVersionUID = 1L;
-			public void buttonClick(ClickEvent event) {
-				layout.addComponent(new Label("Thank you for clicking"));
-				Subject.findAllSubjects();
-				logger.info("button clicked");
-				buttonClicked();
-			}
-		});
-		layout.addComponent(button);
+		SubjectListController mainController = new SubjectListController();
+		layout.addComponent(mainController.getView());
+		mainController.refreshContent();
 	}
 	
+	/*
 	private void buttonClicked() {
 		Diagnosis d = new Diagnosis();
 		d.setCode("I12");
@@ -49,6 +36,7 @@ public class RegistryVaadinUI extends UI {
 		OkCancelWindow w = new OkCancelWindow(de);
 		w.show(this, "Diagnosis Editor", "50%", "50%");		
 	}
+	*/
 
 	private static Logger logger = LoggerFactory.getLogger(RegistryVaadinUI.class);
 	private static final long serialVersionUID = 1L;

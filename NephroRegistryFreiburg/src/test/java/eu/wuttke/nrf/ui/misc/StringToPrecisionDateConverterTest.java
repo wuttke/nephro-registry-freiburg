@@ -1,4 +1,4 @@
-package eu.wuttke.nrf.domain.misc;
+package eu.wuttke.nrf.ui.misc;
 
 import java.util.Date;
 import java.util.Locale;
@@ -6,6 +6,11 @@ import java.util.Locale;
 import junit.framework.Assert;
 
 import org.junit.Test;
+
+import eu.wuttke.nrf.domain.misc.PrecisionDate;
+import eu.wuttke.nrf.domain.misc.PrecisionDateType;
+import eu.wuttke.nrf.domain.misc.PrecisionDateUtil;
+import eu.wuttke.nrf.ui.misc.StringToPrecisionDateConverter;
 
 public class StringToPrecisionDateConverterTest {
 
