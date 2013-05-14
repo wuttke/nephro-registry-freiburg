@@ -5,11 +5,11 @@ import eu.wuttke.nrf.ui.component.EditableListComposite;
 
 public class SubjectListView 
 extends EditableListComposite<Subject> {
-	
+		
 	public SubjectListView() {
 		super(Subject.class);
 	}
-	
+
 	@Override
 	protected void initTable() {
 		getTable().setVisibleColumns(new String[] {"id", "lastName", "firstName", "birthdate", "gender"});

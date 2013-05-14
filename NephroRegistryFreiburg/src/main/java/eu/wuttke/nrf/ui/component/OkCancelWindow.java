@@ -71,8 +71,12 @@ extends CustomComponent {
 	
 	protected void okClicked() {
 		if (isContentValid()) {
+			onSave();
 			window.close();
 		}
+	}
+	
+	protected void onSave() {
 	}
 
 	protected boolean isContentValid() {

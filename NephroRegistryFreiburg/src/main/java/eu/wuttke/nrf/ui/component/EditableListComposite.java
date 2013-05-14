@@ -13,8 +13,12 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
+import eu.wuttke.nrf.ui.presenter.ListPresenter;
+import eu.wuttke.nrf.ui.view.ListView;
+
 public class EditableListComposite<E>
-extends CustomComponent {
+extends CustomComponent 
+implements ListView<E> {
 
 	/*- VaadinEditorProperties={"grid":"RegularGrid,20","showGrid":true,"snapToGrid":true,"snapToObject":true,"movingGuides":false,"snappingDistance":10} */
 
@@ -101,8 +105,21 @@ extends CustomComponent {
 		//table.setColumnHeaders(columnHeaders);
 	}
 
+	private ListPresenter<E, ?> presenter;
+
+	@Override
+	public ListPresenter<E, ?> getListPresenter() {
+		return presenter;
+	}
+	
+	@Override
+	public void setListPresenter(ListPresenter<E, ?> presenter) {
+		this.presenter = presenter;
+	}
+	
+
 	protected void newEntity() {
-		
+		presenter.newEntity();
 	}
 	
 	protected void changeEntity(E item) {

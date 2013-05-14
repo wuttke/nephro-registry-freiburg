@@ -7,7 +7,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import eu.wuttke.nrf.controller.subject.SubjectListController;
+import eu.wuttke.nrf.ui.subject.SubjectListPresenter;
 
 public class RegistryVaadinUI extends UI {
 
@@ -20,8 +20,8 @@ public class RegistryVaadinUI extends UI {
 		layout.setSizeFull();
 		setContent(layout);
 
-		SubjectListController mainController = new SubjectListController();
-		layout.addComponent(mainController.getView());
+		SubjectListPresenter mainController = new SubjectListPresenter();
+		layout.addComponent(mainController.getListView());
 		mainController.refreshContent();
 	}
 	
