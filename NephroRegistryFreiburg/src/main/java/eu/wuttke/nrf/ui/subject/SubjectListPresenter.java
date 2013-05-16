@@ -16,6 +16,11 @@ extends ListPresenter<Subject, SubjectListView> {
 	
 	public SubjectListPresenter() {
 		super(new SubjectListView());
+	}
+	
+	@Override
+	protected void addDoubleClickHandler() {
+		// suppress double click -> edit entity
 		((SubjectListView)getListView()).addOpenAction(new ClickListener() {
 			private static final long serialVersionUID = 1L;
 			@Override

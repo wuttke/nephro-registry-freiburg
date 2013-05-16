@@ -22,6 +22,12 @@ public class PrecisionDateUtil {
 	 * Formats a date respecting its precision, using the given locale.
 	 */
 	public static String formatPrecisionDate(PrecisionDate d, Locale locale) {
+		if (locale == null)
+			locale = Locale.getDefault();
+		
+		if (d == null || d.getDate() == null)
+			return "";
+		
 		switch (d.getPrecision()) {
 		case DAY:
 			return formatDate(d.getDate(), locale);
@@ -44,6 +50,8 @@ public class PrecisionDateUtil {
 	 * Formats a date in short format using the current locale.
 	 */
 	public static String formatDate(Date date, Locale locale) {
+		if (locale == null)
+			locale = Locale.getDefault();
 		return DateFormat.getDateInstance(DateFormat.MEDIUM, locale).format(date);
 	}
 	

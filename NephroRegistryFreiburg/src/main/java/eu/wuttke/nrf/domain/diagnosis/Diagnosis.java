@@ -35,4 +35,5 @@ public class Diagnosis {
 
     @Embedded
     private PrecisionDate validUntil;
+    
 }

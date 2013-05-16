@@ -2,9 +2,11 @@ package eu.wuttke.nrf.ui.presenter;
 
 import java.util.Collection;
 
+import com.vaadin.event.ItemClickEvent;
+import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Component;
 
 import eu.wuttke.nrf.ui.view.ListView;
 
@@ -40,8 +42,20 @@ implements RefreshablePresenter {
 			}
 		});
 
+		addDoubleClickHandler();
 	}
 	
+	protected void addDoubleClickHandler() {
+		listView.addTableItemClickListener(new ItemClickListener() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void itemClick(ItemClickEvent event) {
+				if (event.isDoubleClick())
+					editEntity(getListView().getSelectedEntity());
+			}
+		});
+	}
+
 	public V getListView() {
 		return listView;
 	}
