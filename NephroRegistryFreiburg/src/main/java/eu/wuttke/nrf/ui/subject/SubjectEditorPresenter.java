@@ -19,7 +19,9 @@ extends EditorPresenter<Subject, SubjectEditorView> {
 
 	@Override
 	public Subject createEntity() {
-		return new Subject();
+		Subject s = new Subject();
+		s.generatePseudonym();
+		return s;
 	}
 	
 	@Override

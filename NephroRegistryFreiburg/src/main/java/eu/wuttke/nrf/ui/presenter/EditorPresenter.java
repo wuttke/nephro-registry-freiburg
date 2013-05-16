@@ -11,7 +11,6 @@ public abstract class EditorPresenter<E, V extends EditorView<E>> {
 	public EditorPresenter(V editorView, RefreshablePresenter parent) {
 		this.editorView = editorView;
 		this.parent = parent;
-		editorView.setEditorPresenter(this);
 	}
 	
 	public V getEditorView() {

@@ -14,7 +14,6 @@ import com.vaadin.ui.VerticalLayout;
 
 import eu.wuttke.nrf.domain.subject.Gender;
 import eu.wuttke.nrf.domain.subject.Subject;
-import eu.wuttke.nrf.ui.presenter.EditorPresenter;
 import eu.wuttke.nrf.ui.view.EditorView;
 
 public class SubjectEditorView
@@ -46,19 +45,8 @@ implements EditorView<Subject> {
 	@PropertyId("patientId")
 	private TextField tfSubjectId;
 	
-	private EditorPresenter<Subject, ?> presenter;
 	private BeanItem<Subject> beanItem;
 	private FieldGroup group;
-	
-	@Override
-	public EditorPresenter<Subject, ?> getEditorPresenter() {
-		return presenter;
-	}
-	
-	@Override
-	public void setEditorPresenter(EditorPresenter<Subject, ?> presenter) {
-		this.presenter = presenter;
-	}
 	
 	@Override
 	public void displayEntity(Subject s) {
@@ -131,7 +119,7 @@ implements EditorView<Subject> {
 		tfSubjectId.setWidth("100.0%");
 		tfSubjectId.setHeight("-1px");
 		tfSubjectId.setRequired(true);
-		tfSubjectId.setNullSettingAllowed(true);
+		tfSubjectId.setNullRepresentation("");
 		formLayout.addComponent(tfSubjectId);
 		
 		// tfLastName
@@ -141,7 +129,7 @@ implements EditorView<Subject> {
 		tfLastName.setWidth("100.0%");
 		tfLastName.setHeight("-1px");
 		tfLastName.setRequired(true);
-		tfLastName.setNullSettingAllowed(true);
+		tfLastName.setNullRepresentation("");
 		formLayout.addComponent(tfLastName);
 		
 		// tfFirstName
@@ -151,7 +139,7 @@ implements EditorView<Subject> {
 		tfFirstName.setWidth("100.0%");
 		tfFirstName.setHeight("-1px");
 		tfFirstName.setRequired(true);
-		tfFirstName.setNullSettingAllowed(true);
+		tfFirstName.setNullRepresentation("");
 		formLayout.addComponent(tfFirstName);
 		
 		// tfTitle
@@ -160,6 +148,7 @@ implements EditorView<Subject> {
 		tfTitle.setImmediate(false);
 		tfTitle.setWidth("100.0%");
 		tfTitle.setHeight("-1px");
+		tfTitle.setNullRepresentation("");
 		tfTitle.setNullSettingAllowed(true);
 		formLayout.addComponent(tfTitle);
 		

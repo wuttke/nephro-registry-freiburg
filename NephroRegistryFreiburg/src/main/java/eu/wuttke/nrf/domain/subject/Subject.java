@@ -9,6 +9,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.envers.Audited;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -46,5 +48,20 @@ public class Subject {
     @Enumerated(EnumType.STRING)
     @Column(length=16)
     private Gender gender;
+    
+    @NotNull
+    @Column(length=8)
+    private String pseudonym;
+
+	public void generatePseudonym() {
+		pseudonym = RandomStringUtils.randomAlphanumeric(6);
+	}
+
+	public String formatFullName() {
+		if (StringUtils.isNotEmpty(getTitle()))
+			return String.format("%s %s, %s", getTitle(), getLastName(), getFirstName());
+		else
+			return String.format("%s, %s", getLastName(), getFirstName());
+	}
     
 }

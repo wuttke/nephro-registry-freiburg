@@ -57,4 +57,12 @@ privileged aspect Subject_Roo_JavaBean {
         this.gender = gender;
     }
     
+    public String Subject.getPseudonym() {
+        return this.pseudonym;
+    }
+    
+    public void Subject.setPseudonym(String pseudonym) {
+        this.pseudonym = pseudonym;
+    }
+    
 }
