@@ -11,19 +11,13 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord(versionField="")
-public class Medicament {
+public class Substance {
 
 	@Id
 	@NotNull
-	private int mid;
+	private int substanceId;
 	
 	@Column(length=800)
-	private String tradename;
-	
-	@Column(length=12)
-	private String atcCode;
-	
-	@Column(length=200)
-	private String offerer;
+	private String name;
 	
 }

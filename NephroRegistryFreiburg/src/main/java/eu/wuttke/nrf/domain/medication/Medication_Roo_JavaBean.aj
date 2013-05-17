@@ -49,6 +49,14 @@ privileged aspect Medication_Roo_JavaBean {
         this.description = description;
     }
     
+    public String Medication.getPharmaceuticalForm() {
+        return this.pharmaceuticalForm;
+    }
+    
+    public void Medication.setPharmaceuticalForm(String pharmaceuticalForm) {
+        this.pharmaceuticalForm = pharmaceuticalForm;
+    }
+    
     public String Medication.getAtcCode() {
         return this.atcCode;
     }

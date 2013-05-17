@@ -3,11 +3,11 @@
 
 package eu.wuttke.nrf.domain.medication;
 
-import eu.wuttke.nrf.domain.medication.Medicament;
-import javax.persistence.Entity;
+import eu.wuttke.nrf.domain.medication.Substance;
+import org.springframework.beans.factory.annotation.Configurable;
 
-privileged aspect Medicament_Roo_Jpa_Entity {
+privileged aspect Substance_Roo_Configurable {
     
-    declare @type: Medicament: @Entity;
+    declare @type: Substance: @Configurable;
     
 }

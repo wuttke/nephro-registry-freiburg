@@ -54,7 +54,7 @@ public class Subject {
     private String pseudonym;
 
 	public void generatePseudonym() {
-		pseudonym = RandomStringUtils.randomAlphanumeric(6);
+		pseudonym = RandomStringUtils.randomAlphanumeric(6).toUpperCase();
 	}
 
 	public String formatFullName() {

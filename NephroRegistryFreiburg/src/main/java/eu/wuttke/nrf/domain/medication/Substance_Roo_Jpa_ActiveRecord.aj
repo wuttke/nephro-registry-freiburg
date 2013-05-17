@@ -3,72 +3,72 @@
 
 package eu.wuttke.nrf.domain.medication;
 
-import eu.wuttke.nrf.domain.medication.Medicament;
+import eu.wuttke.nrf.domain.medication.Substance;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
-privileged aspect Medicament_Roo_Jpa_ActiveRecord {
+privileged aspect Substance_Roo_Jpa_ActiveRecord {
     
     @PersistenceContext
-    transient EntityManager Medicament.entityManager;
+    transient EntityManager Substance.entityManager;
     
-    public static final EntityManager Medicament.entityManager() {
-        EntityManager em = new Medicament().entityManager;
+    public static final EntityManager Substance.entityManager() {
+        EntityManager em = new Substance().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
     
-    public static long Medicament.countMedicaments() {
-        return entityManager().createQuery("SELECT COUNT(o) FROM Medicament o", Long.class).getSingleResult();
+    public static long Substance.countSubstances() {
+        return entityManager().createQuery("SELECT COUNT(o) FROM Substance o", Long.class).getSingleResult();
     }
     
-    public static List<Medicament> Medicament.findAllMedicaments() {
-        return entityManager().createQuery("SELECT o FROM Medicament o", Medicament.class).getResultList();
+    public static List<Substance> Substance.findAllSubstances() {
+        return entityManager().createQuery("SELECT o FROM Substance o", Substance.class).getResultList();
     }
     
-    public static Medicament Medicament.findMedicament(int mid) {
-        return entityManager().find(Medicament.class, mid);
+    public static Substance Substance.findSubstance(int substanceId) {
+        return entityManager().find(Substance.class, substanceId);
     }
     
-    public static List<Medicament> Medicament.findMedicamentEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM Medicament o", Medicament.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    public static List<Substance> Substance.findSubstanceEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM Substance o", Substance.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional
-    public void Medicament.persist() {
+    public void Substance.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
     
     @Transactional
-    public void Medicament.remove() {
+    public void Substance.remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            Medicament attached = Medicament.findMedicament(this.mid);
+            Substance attached = Substance.findSubstance(this.substanceId);
             this.entityManager.remove(attached);
         }
     }
     
     @Transactional
-    public void Medicament.flush() {
+    public void Substance.flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
     
     @Transactional
-    public void Medicament.clear() {
+    public void Substance.clear() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.clear();
     }
     
     @Transactional
-    public Medicament Medicament.merge() {
+    public Substance Substance.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
-        Medicament merged = this.entityManager.merge(this);
+        Substance merged = this.entityManager.merge(this);
         this.entityManager.flush();
         return merged;
     }

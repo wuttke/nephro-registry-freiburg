@@ -3,11 +3,11 @@
 
 package eu.wuttke.nrf.domain.medication;
 
-import eu.wuttke.nrf.domain.medication.Medicament;
+import eu.wuttke.nrf.domain.medication.Substance;
 import javax.persistence.Entity;
 
-privileged aspect Medicament_Roo_Jpa_Entity {
+privileged aspect Substance_Roo_Jpa_Entity {
     
-    declare @type: Medicament: @Entity;
+    declare @type: Substance: @Entity;
     
 }

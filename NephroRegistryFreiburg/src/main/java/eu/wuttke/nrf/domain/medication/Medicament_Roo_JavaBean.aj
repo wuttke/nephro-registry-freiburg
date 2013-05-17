@@ -31,4 +31,12 @@ privileged aspect Medicament_Roo_JavaBean {
         this.atcCode = atcCode;
     }
     
+    public String Medicament.getOfferer() {
+        return this.offerer;
+    }
+    
+    public void Medicament.setOfferer(String offerer) {
+        this.offerer = offerer;
+    }
+    
 }

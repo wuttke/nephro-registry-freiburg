@@ -32,6 +32,9 @@ public class Medication {
     @Column(length = 2000)
     private String description;
 
+    @Column(length=3)
+    private String pharmaceuticalForm;
+    
     @Column(length = 12)
     private String atcCode;
 
@@ -42,4 +45,5 @@ public class Medication {
     @Column(length = 16)
     @Embedded
     private PrecisionDate validUntil;
+
 }

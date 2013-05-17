@@ -52,6 +52,7 @@ implements RefreshablePresenter {
 
 		addTabPresenter("Overview", subjectOverviewTabPresenter);
 		addTabPresenter("Lab Values", labTabPresenter);
+		// Results
 		addTabPresenter("Attributes", subjectAttributesTabPresenter);
 	}
 	
