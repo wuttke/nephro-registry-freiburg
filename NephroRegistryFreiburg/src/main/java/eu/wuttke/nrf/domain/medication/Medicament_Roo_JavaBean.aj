@@ -39,4 +39,12 @@ privileged aspect Medicament_Roo_JavaBean {
         this.offerer = offerer;
     }
     
+    public String Medicament.getPharmaceuticalForm() {
+        return this.pharmaceuticalForm;
+    }
+    
+    public void Medicament.setPharmaceuticalForm(String pharmaceuticalForm) {
+        this.pharmaceuticalForm = pharmaceuticalForm;
+    }
+    
 }

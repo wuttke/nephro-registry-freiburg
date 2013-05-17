@@ -31,12 +31,4 @@ privileged aspect Icd10Code_Roo_JavaBean {
         this.trimmedCode = trimmedCode;
     }
     
-    public String Icd10Code.getCategory() {
-        return this.category;
-    }
-    
-    public void Icd10Code.setCategory(String category) {
-        this.category = category;
-    }
-    
 }

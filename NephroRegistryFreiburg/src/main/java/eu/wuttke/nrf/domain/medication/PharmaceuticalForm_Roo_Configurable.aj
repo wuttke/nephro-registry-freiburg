@@ -3,11 +3,11 @@
 
 package eu.wuttke.nrf.domain.medication;
 
-import eu.wuttke.nrf.domain.medication.Substance;
+import eu.wuttke.nrf.domain.medication.PharmaceuticalForm;
 import org.springframework.beans.factory.annotation.Configurable;
 
-privileged aspect Substance_Roo_Configurable {
+privileged aspect PharmaceuticalForm_Roo_Configurable {
     
-    declare @type: Substance: @Configurable;
+    declare @type: PharmaceuticalForm: @Configurable;
     
 }

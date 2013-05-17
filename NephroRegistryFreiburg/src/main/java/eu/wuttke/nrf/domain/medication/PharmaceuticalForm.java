@@ -1,7 +1,7 @@
 package eu.wuttke.nrf.domain.medication;
 
 import javax.persistence.Column;
-import javax.persistence.ManyToOne;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -10,21 +10,16 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord
-public class Ingredient {
-
-	@ManyToOne
+@RooJpaActiveRecord(versionField="")
+public class PharmaceuticalForm {
+	
+	@Id
 	@NotNull
-	private Medicament medicament;
+	@Column(length=40)
+	private String shortcut;
 	
-	@Column(length=400)
+	@NotNull
+	@Column(length=200)
 	private String name;
-	
-	private Double amount;
-	
-	@Column(length=16)
-	private String unit;
-	
-	private Long substanceId;
 	
 }

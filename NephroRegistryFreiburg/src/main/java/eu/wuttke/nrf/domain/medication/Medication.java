@@ -32,7 +32,7 @@ public class Medication {
     @Column(length = 2000)
     private String description;
 
-    @Column(length=3)
+    @Column(length=20)
     private String pharmaceuticalForm;
     
     @Column(length = 12)

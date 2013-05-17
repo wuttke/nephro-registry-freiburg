@@ -25,7 +25,4 @@ public class Icd10Code {
 	@Column(length=12)
 	private String trimmedCode;
 
-	@Column(length=12)
-	private String category;
-
 }

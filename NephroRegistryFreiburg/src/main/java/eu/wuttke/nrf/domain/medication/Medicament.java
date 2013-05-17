@@ -26,4 +26,7 @@ public class Medicament {
 	@Column(length=200)
 	private String offerer;
 	
+	@Column(length=20)
+	private String pharmaceuticalForm;
+	
 }

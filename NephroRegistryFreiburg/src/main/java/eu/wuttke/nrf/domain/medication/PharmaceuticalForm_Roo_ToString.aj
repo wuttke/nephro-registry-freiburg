@@ -3,13 +3,13 @@
 
 package eu.wuttke.nrf.domain.medication;
 
-import eu.wuttke.nrf.domain.medication.Ingredient;
+import eu.wuttke.nrf.domain.medication.PharmaceuticalForm;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-privileged aspect Ingredient_Roo_ToString {
+privileged aspect PharmaceuticalForm_Roo_ToString {
     
-    public String Ingredient.toString() {
+    public String PharmaceuticalForm.toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
     
