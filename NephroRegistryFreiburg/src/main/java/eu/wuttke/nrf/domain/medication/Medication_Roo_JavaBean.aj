@@ -49,6 +49,14 @@ privileged aspect Medication_Roo_JavaBean {
         this.description = description;
     }
     
+    public String Medication.getAtcCode() {
+        return this.atcCode;
+    }
+    
+    public void Medication.setAtcCode(String atcCode) {
+        this.atcCode = atcCode;
+    }
+    
     public PrecisionDate Medication.getValidFrom() {
         return this.validFrom;
     }

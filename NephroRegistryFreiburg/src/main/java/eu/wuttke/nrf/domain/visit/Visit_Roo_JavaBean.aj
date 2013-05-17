@@ -3,10 +3,19 @@
 
 package eu.wuttke.nrf.domain.visit;
 
+import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.domain.visit.Visit;
 import java.util.Date;
 
 privileged aspect Visit_Roo_JavaBean {
+    
+    public Subject Visit.getSubject() {
+        return this.subject;
+    }
+    
+    public void Visit.setSubject(Subject subject) {
+        this.subject = subject;
+    }
     
     public Date Visit.getVisitDate() {
         return this.visitDate;

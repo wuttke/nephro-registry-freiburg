@@ -8,20 +8,28 @@ import eu.wuttke.nrf.domain.subject.Subject;
 
 privileged aspect Relation_Roo_JavaBean {
     
-    public Subject Relation.getPartner1() {
-        return this.partner1;
+    public Subject Relation.getSubject() {
+        return this.subject;
     }
     
-    public void Relation.setPartner1(Subject partner1) {
-        this.partner1 = partner1;
+    public void Relation.setSubject(Subject subject) {
+        this.subject = subject;
     }
     
-    public Subject Relation.getPartner2() {
-        return this.partner2;
+    public Subject Relation.getMother() {
+        return this.mother;
     }
     
-    public void Relation.setPartner2(Subject partner2) {
-        this.partner2 = partner2;
+    public void Relation.setMother(Subject mother) {
+        this.mother = mother;
+    }
+    
+    public Subject Relation.getFather() {
+        return this.father;
+    }
+    
+    public void Relation.setFather(Subject father) {
+        this.father = father;
     }
     
 }
