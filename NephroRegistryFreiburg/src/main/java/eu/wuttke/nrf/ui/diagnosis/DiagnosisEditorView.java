@@ -78,6 +78,10 @@ implements EditorView<Diagnosis> {
 			return null;
 		}
 	}
+	
+	public void addChooseListener(ClickListener cl) {
+		btnChooseCode.addClickListener(cl);
+	}
 
 	@Override
 	public boolean isValid() {
@@ -125,7 +129,6 @@ implements EditorView<Diagnosis> {
 		tfLabel.setWidth("100.0%");
 		tfLabel.setHeight("-1px");
 		tfLabel.setRequired(true);
-		tfLabel.setNullRepresentation("");
 		formLayout.addComponent(tfLabel);
 		
 		// horizontalLayoutCode
@@ -140,7 +143,6 @@ implements EditorView<Diagnosis> {
 		taDescription.setImmediate(false);
 		taDescription.setWidth("100.0%");
 		taDescription.setHeight("100.0%");
-		taDescription.setNullRepresentation("");
 		formLayout.addComponent(taDescription);
 		formLayout.setExpandRatio(taDescription, 1.0f);
 		
@@ -179,7 +181,6 @@ implements EditorView<Diagnosis> {
 		tfCode.setImmediate(false);
 		tfCode.setWidth("100.0%");
 		tfCode.setHeight("-1px");
-		tfCode.setNullRepresentation("");
 		horizontalLayoutCode.addComponent(tfCode);
 		
 		// btnChooseCode

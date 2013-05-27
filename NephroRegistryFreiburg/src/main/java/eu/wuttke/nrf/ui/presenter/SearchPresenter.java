@@ -81,7 +81,7 @@ public abstract class SearchPresenter<E, V extends SearchView<E>> implements Ref
 
 	// may be overriden to adjust title/size
 	protected void showWindow(OkCancelWindow w, Component parent) {
-		w.show(parent.getUI(), "Search", "600", "400");	
+		w.show(parent.getUI(), "Search", "800", "600");	
 	}
 
 	@Override
