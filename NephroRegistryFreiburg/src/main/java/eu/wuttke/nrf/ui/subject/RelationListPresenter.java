@@ -39,7 +39,7 @@ extends ListPresenter<Relation, RelationListView> {
 	
 	@Override
 	public EditorPresenter<Relation, ?> createEditorPresenter() {
-		return null; //new RelationEditorPresenter(subject, this);
+		return new RelationEditorPresenter(subject, this);
 	}
 	
 }

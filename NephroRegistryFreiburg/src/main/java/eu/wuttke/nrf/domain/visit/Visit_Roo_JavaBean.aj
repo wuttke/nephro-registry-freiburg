@@ -25,4 +25,12 @@ privileged aspect Visit_Roo_JavaBean {
         this.visitDate = visitDate;
     }
     
+    public String Visit.getLabel() {
+        return this.label;
+    }
+    
+    public void Visit.setLabel(String label) {
+        this.label = label;
+    }
+    
 }

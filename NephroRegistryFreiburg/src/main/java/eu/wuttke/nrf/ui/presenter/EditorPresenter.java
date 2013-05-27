@@ -5,6 +5,7 @@ import eu.wuttke.nrf.ui.view.EditorView;
 
 public abstract class EditorPresenter<E, V extends EditorView<E>> {
 
+	private E entity;
 	private V editorView;
 	private RefreshablePresenter parent;
 	
@@ -50,17 +51,27 @@ public abstract class EditorPresenter<E, V extends EditorView<E>> {
 			}
 			@Override
 			protected void onSave() {
-				E entity2 = getEditorView().retrieveEntity();
+				E entity2 = getEditorView().retrieveValidatedEntity();
 				saveEntity(entity2);
 				refreshParent();
 			}
 		};
-		getEditorView().displayEntity(entity);
+		
+		this.entity = entity;
+		displayEntity();
 		showEditorWindow(w);
+	}
+
+	public E getEntity() {
+		return entity;
 	}
 
 	public abstract void showEditorWindow(OkCancelWindow w);
 	public abstract E createEntity();
 	public abstract void saveEntity(E entity);
+	
+	protected void displayEntity() {
+		getEditorView().displayEntity(entity);
+	}
 	
 }

@@ -56,7 +56,7 @@ implements EditorView<Subject> {
 	}
 
 	@Override
-	public Subject retrieveEntity() {
+	public Subject retrieveValidatedEntity() {
 		try {
 			group.commit();
 			return beanItem.getBean();

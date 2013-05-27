@@ -28,6 +28,12 @@ extends EditorPresenter<Diagnosis, DiagnosisEditorView> {
 		});
 	}
 	
+	@Override
+	public void newEntity() {
+		super.newEntity();
+		openIcd10CodeChooser();
+	}
+	
 	protected void openIcd10CodeChooser() {
 		Icd10CodeSearchPresenter p = new Icd10CodeSearchPresenter();
 		p.showSearchWindow(getEditorView());
@@ -42,8 +48,7 @@ extends EditorPresenter<Diagnosis, DiagnosisEditorView> {
 	}
 
 	protected void codeChosen(Icd10Code code) {
-		Diagnosis d = getEditorView().retrieveEntity();
-		if (d == null) d = new Diagnosis();
+		Diagnosis d = getEntity();
 		d.setCode(code.getCode());
 		d.setLabel(code.getName());
 		getEditorView().displayEntity(d);

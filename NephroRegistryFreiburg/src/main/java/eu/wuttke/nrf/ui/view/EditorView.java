@@ -6,7 +6,7 @@ public interface EditorView<E>
 extends Component {
 
 	public void displayEntity(E e);
-	public E retrieveEntity();
+	public E retrieveValidatedEntity();
 	public boolean isValid();
 	
 }

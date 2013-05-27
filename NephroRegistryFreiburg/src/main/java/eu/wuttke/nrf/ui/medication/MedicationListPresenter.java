@@ -28,7 +28,7 @@ extends ListPresenter<Medication, MedicationListView> {
 	
 	@Override
 	public EditorPresenter<Medication, ?> createEditorPresenter() {
-		return null; //new DiagnosisEditorPresenter(parentSubject, this);
+		return new MedicationEditorPresenter(parentSubject, this);
 	}
 	
 }

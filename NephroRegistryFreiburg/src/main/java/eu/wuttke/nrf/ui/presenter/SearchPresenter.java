@@ -5,6 +5,8 @@ import java.util.Collection;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.Action.Listener;
+import com.vaadin.event.FieldEvents.BlurEvent;
+import com.vaadin.event.FieldEvents.BlurListener;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.ui.Button;
@@ -19,6 +21,7 @@ public abstract class SearchPresenter<E, V extends SearchView<E>> implements Ref
 	private OkCancelWindow window;
 	private Listener entityChosenListener;
 	private V searchView;
+	private String lastSearch = null;
 	
 	public SearchPresenter(V v) {
 		this.searchView = v;
@@ -31,6 +34,14 @@ public abstract class SearchPresenter<E, V extends SearchView<E>> implements Ref
 			}
 		});
 		
+		searchView.addSearchFieldBlurListener(new BlurListener() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void blur(BlurEvent event) {
+				doSearch(searchView.getSearchQuery());
+			}
+		});
+
 		searchView.addTableValueChangedListener(new ValueChangeListener() {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -44,8 +55,10 @@ public abstract class SearchPresenter<E, V extends SearchView<E>> implements Ref
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void itemClick(ItemClickEvent event) {
-				if (event.isDoubleClick())
+				if (event.isDoubleClick()) {
 					chooseResult(searchView.getSelectedEntity());
+					window.close();
+				}
 			}
 		});
 	}
@@ -55,8 +68,11 @@ public abstract class SearchPresenter<E, V extends SearchView<E>> implements Ref
 	}
 	
 	protected void doSearch(String query) {
-		Collection<? extends E> result = performSearch(query);
-		searchView.displaySearchResult(result);
+		if (lastSearch == null || !lastSearch.equals(query)) {
+			lastSearch = query;
+			Collection<? extends E> result = performSearch(query);
+			searchView.displaySearchResult(result);
+		}
 	}
 	
 	protected abstract Collection<? extends E> performSearch(String query);

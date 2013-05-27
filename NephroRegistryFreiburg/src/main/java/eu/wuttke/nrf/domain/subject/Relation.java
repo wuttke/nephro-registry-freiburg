@@ -28,4 +28,5 @@ public class Relation {
     @NotNull
     @ManyToOne
     private Subject father;
+    
 }

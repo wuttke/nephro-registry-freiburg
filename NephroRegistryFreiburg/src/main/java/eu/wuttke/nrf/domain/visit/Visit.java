@@ -2,6 +2,7 @@ package eu.wuttke.nrf.domain.visit;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,4 +28,9 @@ public class Visit {
     @Temporal(TemporalType.DATE)
     @NotNull
     private Date visitDate;
+
+    // z.B. Name der Ambulanz
+    @Column(length=400)
+    private String label;
+    
 }
