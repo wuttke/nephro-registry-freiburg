@@ -1,4 +1,4 @@
-package eu.wuttke.nrf.ui.lab;
+package eu.wuttke.nrf.ui.tabs;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Panel;

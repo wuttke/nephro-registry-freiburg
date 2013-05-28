@@ -1,19 +1,19 @@
-package eu.wuttke.nrf.ui.subject;
+package eu.wuttke.nrf.ui.tabs;
 
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Panel;
 
 import eu.wuttke.nrf.domain.subject.Subject;
+import eu.wuttke.nrf.ui.attribute.AttributeOverviewView;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
 
-public class SubjectAttributesTabPresenter 
+public class AttributesTabPresenter 
 implements RefreshablePresenter {
 
 	private Component view;
 	private Subject parentSubject;
 	
-	public SubjectAttributesTabPresenter() {
-		view = new Panel("Attributes");
+	public AttributesTabPresenter() {
+		view = new AttributeOverviewView();
 	}
 	
 	public void setParentSubject(Subject parentSubject) {

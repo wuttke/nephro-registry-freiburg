@@ -17,6 +17,9 @@ import org.springframework.roo.addon.tostring.RooToString;
 public class AttributeType {
 
 	@NotNull
+	private int sequenceNumber;
+	
+	@NotNull
 	@Column(length=128)
 	private String shortcut;
 	
@@ -28,5 +31,25 @@ public class AttributeType {
 	@Enumerated(EnumType.STRING)
 	@Column(length=32)
 	private AttributeDataType dataType;
+	
+	private Integer minLength;
+	
+	private Integer maxLength;
+	
+	private Double minValue;
+	
+	private Double maxValue;
+	
+	@Column(length=100)
+	private String defaultValue;
+	
+	@Column(length=800)
+	private String enumItems;
+	
+	private boolean required;
+	
+	@Column(length=32)
+	@Enumerated(EnumType.STRING)
+	private AttributeTypeUsage usage;
 	
 }

@@ -14,9 +14,11 @@ import com.vaadin.ui.TabSheet.SelectedTabChangeListener;
 import com.vaadin.ui.TabSheet.Tab;
 
 import eu.wuttke.nrf.domain.subject.Subject;
-import eu.wuttke.nrf.ui.lab.LabTabPresenter;
 import eu.wuttke.nrf.ui.page.SubjectListPage;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
+import eu.wuttke.nrf.ui.tabs.LabTabPresenter;
+import eu.wuttke.nrf.ui.tabs.AttributesTabPresenter;
+import eu.wuttke.nrf.ui.tabs.OverviewTabPresenter;
 
 public class SubjectDetailPresenter 
 implements RefreshablePresenter {
@@ -26,9 +28,9 @@ implements RefreshablePresenter {
 	private Subject subject;
 	
 	private List<RefreshablePresenter> presenters = new ArrayList<RefreshablePresenter>();
-	private SubjectOverviewTabPresenter subjectOverviewTabPresenter = new SubjectOverviewTabPresenter();
+	private OverviewTabPresenter subjectOverviewTabPresenter = new OverviewTabPresenter();
 	private LabTabPresenter labTabPresenter = new LabTabPresenter();
-	private SubjectAttributesTabPresenter subjectAttributesTabPresenter = new SubjectAttributesTabPresenter();
+	private AttributesTabPresenter subjectAttributesTabPresenter = new AttributesTabPresenter();
 	
 	public SubjectDetailPresenter() {
 		view.addBackButtonClickListener(new ClickListener() {			

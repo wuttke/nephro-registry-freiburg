@@ -5,8 +5,17 @@ package eu.wuttke.nrf.domain.attribute;
 
 import eu.wuttke.nrf.domain.attribute.AttributeDataType;
 import eu.wuttke.nrf.domain.attribute.AttributeType;
+import eu.wuttke.nrf.domain.attribute.AttributeTypeUsage;
 
 privileged aspect AttributeType_Roo_JavaBean {
+    
+    public int AttributeType.getSequenceNumber() {
+        return this.sequenceNumber;
+    }
+    
+    public void AttributeType.setSequenceNumber(int sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
+    }
     
     public String AttributeType.getShortcut() {
         return this.shortcut;
@@ -30,6 +39,70 @@ privileged aspect AttributeType_Roo_JavaBean {
     
     public void AttributeType.setDataType(AttributeDataType dataType) {
         this.dataType = dataType;
+    }
+    
+    public Integer AttributeType.getMinLength() {
+        return this.minLength;
+    }
+    
+    public void AttributeType.setMinLength(Integer minLength) {
+        this.minLength = minLength;
+    }
+    
+    public Integer AttributeType.getMaxLength() {
+        return this.maxLength;
+    }
+    
+    public void AttributeType.setMaxLength(Integer maxLength) {
+        this.maxLength = maxLength;
+    }
+    
+    public Double AttributeType.getMinValue() {
+        return this.minValue;
+    }
+    
+    public void AttributeType.setMinValue(Double minValue) {
+        this.minValue = minValue;
+    }
+    
+    public Double AttributeType.getMaxValue() {
+        return this.maxValue;
+    }
+    
+    public void AttributeType.setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
+    }
+    
+    public String AttributeType.getDefaultValue() {
+        return this.defaultValue;
+    }
+    
+    public void AttributeType.setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+    
+    public String AttributeType.getEnumItems() {
+        return this.enumItems;
+    }
+    
+    public void AttributeType.setEnumItems(String enumItems) {
+        this.enumItems = enumItems;
+    }
+    
+    public boolean AttributeType.isRequired() {
+        return this.required;
+    }
+    
+    public void AttributeType.setRequired(boolean required) {
+        this.required = required;
+    }
+    
+    public AttributeTypeUsage AttributeType.getUsage() {
+        return this.usage;
+    }
+    
+    public void AttributeType.setUsage(AttributeTypeUsage usage) {
+        this.usage = usage;
     }
     
 }
