@@ -5,6 +5,7 @@ package eu.wuttke.nrf.domain.subject;
 
 import eu.wuttke.nrf.domain.subject.Relation;
 import eu.wuttke.nrf.domain.subject.Subject;
+import eu.wuttke.nrf.domain.subject.SubjectRelationRole;
 
 privileged aspect Relation_Roo_JavaBean {
     
@@ -30,6 +31,14 @@ privileged aspect Relation_Roo_JavaBean {
     
     public void Relation.setFather(Subject father) {
         this.father = father;
+    }
+    
+    public SubjectRelationRole Relation.getRole() {
+        return this.role;
+    }
+    
+    public void Relation.setRole(SubjectRelationRole role) {
+        this.role = role;
     }
     
 }

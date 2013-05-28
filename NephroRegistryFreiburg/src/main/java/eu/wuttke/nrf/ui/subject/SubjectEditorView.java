@@ -149,7 +149,7 @@ implements EditorView<Subject> {
 		tfTitle.setWidth("100.0%");
 		tfTitle.setHeight("-1px");
 		tfTitle.setNullRepresentation("");
-		tfTitle.setNullSettingAllowed(true);
+		tfTitle.setNullSettingAllowed(false);
 		formLayout.addComponent(tfTitle);
 		
 		// pdfBirthdate

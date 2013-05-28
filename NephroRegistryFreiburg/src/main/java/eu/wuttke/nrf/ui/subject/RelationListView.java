@@ -12,8 +12,8 @@ extends EditableListComposite<Relation> {
 	
 	@Override
 	protected void initTable() {
-		getTable().setVisibleColumns(new String[] {"subject", "father", "mother"});
-		getTable().setColumnHeaders(new String[] {"Person", "Father", "Mother"});
+		getTable().setVisibleColumns(new String[] {"role", "subject", "father", "mother"});
+		getTable().setColumnHeaders(new String[] {"Role", "Person", "Father", "Mother"});
 	}
 		
 	private static final long serialVersionUID = 1L;

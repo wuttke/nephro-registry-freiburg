@@ -38,15 +38,19 @@ public abstract class EditorPresenter<E, V extends EditorView<E>> {
 		if (parent != null)
 			parent.refreshContent();
 	}
+	
+	protected boolean validateEntity(E entity) {
+		return true;
+	}
 
 	public void showEntityWindow(E entity) {
 		OkCancelWindow w = new OkCancelWindow(getEditorView()) {
 			private static final long serialVersionUID = 1L;
 			@Override
 			protected boolean isContentValid() {
-				if (getEditorView().isValid())
-					return super.isContentValid();
-				else
+				if (getEditorView().isValid()) {
+					return validateEntity(getEditorView().retrieveValidatedEntity());
+				} else
 					return false;
 			}
 			@Override

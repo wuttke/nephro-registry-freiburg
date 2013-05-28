@@ -17,6 +17,8 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 
+import eu.wuttke.nrf.domain.misc.PrecisionDateUtil;
+
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord
@@ -63,5 +65,15 @@ public class Subject {
 		else
 			return String.format("%s, %s", getLastName(), getFirstName());
 	}
+	
+
+    @Override
+    public String toString() {
+    	String bd = PrecisionDateUtil.formatDate(getBirthdate(), null);
+		if (StringUtils.isNotEmpty(getTitle()))
+			return String.format("%s %s, %s (*%s)", getTitle(), getLastName(), getFirstName(), bd);
+		else
+			return String.format("%s, %s (*%s)", getLastName(), getFirstName(), bd);
+    }
     
 }

@@ -3,6 +3,7 @@ package eu.wuttke.nrf.ui.subject;
 import com.vaadin.event.Action.Listener;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification;
 
 import eu.wuttke.nrf.domain.subject.Gender;
 import eu.wuttke.nrf.domain.subject.Relation;
@@ -34,6 +35,16 @@ extends EditorPresenter<Relation, RelationEditorView> {
 			}
 		});
 	}
+	
+	@Override
+	protected boolean validateEntity(Relation entity) {
+		if (entity.getFather() == null && entity.getMother() == null) {
+			Notification.show("Data missing", "Please specify at least either the father or the mother.", Notification.Type.ERROR_MESSAGE);
+			return false;
+		}
+
+		return super.validateEntity(entity);
+	}
 		
 	protected void openSubjectChooser(final Gender gender) {
 		SubjectSearchPresenter p = new SubjectSearchPresenter();
@@ -48,13 +59,17 @@ extends EditorPresenter<Relation, RelationEditorView> {
 		});
 	}
 
-	protected void subjectChosen(Gender gender, Subject code) {
-		Relation d = getEntity();
-		if (gender == Gender.FEMALE)
-			d.setMother(code);
-		else if (gender == Gender.MALE)
-			d.setFather(code);
-		getEditorView().displayEntity(d);
+	protected void subjectChosen(Gender gender, Subject subject) {
+		if (subject.getGender() != gender) {
+			Notification.show("Gender mismatch", String.format("Expected: %s, chosen: %s", subject.getGender().toString(), gender.toString()), Notification.Type.ERROR_MESSAGE);
+		} else {
+			Relation d = getEntity();
+			if (gender == Gender.FEMALE)
+				d.setMother(subject);
+			else if (gender == Gender.MALE)
+				d.setFather(subject);
+			getEditorView().displayEntity(d);
+		}
 	}
 
 	@Override

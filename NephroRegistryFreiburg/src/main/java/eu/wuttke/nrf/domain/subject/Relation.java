@@ -2,6 +2,7 @@ package eu.wuttke.nrf.domain.subject;
 
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
@@ -21,12 +22,14 @@ public class Relation {
     @ManyToOne
     private Subject subject;
 
-    @NotNull
     @ManyToOne
     private Subject mother;
 
-    @NotNull
     @ManyToOne
     private Subject father;
+    
+    @Transient
+    private SubjectRelationRole role;
+    
     
 }
