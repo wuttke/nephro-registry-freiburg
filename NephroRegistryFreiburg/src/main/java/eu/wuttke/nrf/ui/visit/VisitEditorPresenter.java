@@ -19,7 +19,7 @@ extends EditorPresenter<Visit, VisitEditorView> {
 	
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(((DiagnosisListPresenter)getParent()).getListView().getUI(), "Edit Visit", "400", "300");	
+		w.show(((VisitListPresenter)getParent()).getListView().getUI(), "Edit Visit", "400", "300");	
 	}
 
 	@Override
