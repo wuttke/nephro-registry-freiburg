@@ -159,7 +159,7 @@ public class PrecisionDateUtil {
             return null;
         return year;
     }
-
+    
     private static Pattern PATTERN_MONTH_YEAR_LONG = Pattern.compile("^(\\d?\\d)[\\/\\.](\\d{4})$");
     private static Pattern PATTERN_MONTH_YEAR_SHORT = Pattern.compile("^(\\d?\\d)[\\/\\.](\\d{2})$");
 

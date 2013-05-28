@@ -17,7 +17,7 @@
 		<vaadin.version>7.0.3</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<spring.security.version>3.2.0.M1</spring.security.version>
-		<hibernate.version>4.1.8.Final</hibernate.version>		
+		<hibernate.version>4.1.8.Final</hibernate.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -304,6 +304,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.caucho</groupId>
+			<artifactId>hessian</artifactId>
+			<version>4.0.7</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -25,9 +25,9 @@ public class Visit {
     @ManyToOne
     private Subject subject;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @NotNull
-    private Date visitDate;
+    private Date visitDateTime;
 
     // z.B. Name der Ambulanz
     @Column(length=400)

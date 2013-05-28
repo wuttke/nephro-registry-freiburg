@@ -17,12 +17,12 @@ privileged aspect Visit_Roo_JavaBean {
         this.subject = subject;
     }
     
-    public Date Visit.getVisitDate() {
-        return this.visitDate;
+    public Date Visit.getVisitDateTime() {
+        return this.visitDateTime;
     }
     
-    public void Visit.setVisitDate(Date visitDate) {
-        this.visitDate = visitDate;
+    public void Visit.setVisitDateTime(Date visitDateTime) {
+        this.visitDateTime = visitDateTime;
     }
     
     public String Visit.getLabel() {

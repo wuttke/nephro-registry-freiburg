@@ -63,4 +63,13 @@
 			/> -->
 	</security:authentication-manager>
 
+	<bean id="meonaInfrastructureService" class="eu.wuttke.nrf.interf.kis.MeonaHessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://meonap:8080/medication/infrastructure"/>
+		<!-- <property name="serviceUrl" value="http://localhost:8081/medication/infrastructure"/>-->
+		<property name="username" value="devices"/>
+		<property name="password" value="devicepass"/>
+		<property name="meonaProfile" value="MED4"/>
+		<property name="serviceInterface" value="eu.wuttke.nrf.interf.kis.MeonaInfrastructure"/>
+	</bean>
+	
 </beans>
