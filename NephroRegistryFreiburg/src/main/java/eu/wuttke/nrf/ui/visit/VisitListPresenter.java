@@ -26,6 +26,15 @@ extends ListPresenter<Visit, VisitListView> {
 	
 	public VisitListPresenter() {
 		super(new VisitListView());
+	}
+	
+	@Override
+	protected void addViewActions() {
+		super.addViewActions();
+		addSyncAction();
+	}
+	
+	private void addSyncAction() {
 		getListView().addSyncAction(new ClickListener() {
 			private static final long serialVersionUID = 1L;
 			@Override

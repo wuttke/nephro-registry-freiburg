@@ -17,7 +17,10 @@ implements RefreshablePresenter {
 	
 	public ListPresenter(V listView) {
 		this.listView = listView;
-		
+		addViewActions();
+	}
+	
+	protected void addViewActions() {
 		listView.addNewButtonClickListener(new Button.ClickListener() {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -44,7 +47,7 @@ implements RefreshablePresenter {
 
 		addDoubleClickHandler();
 	}
-	
+
 	protected void addDoubleClickHandler() {
 		listView.addTableItemClickListener(new ItemClickListener() {
 			private static final long serialVersionUID = 1L;
@@ -58,6 +61,11 @@ implements RefreshablePresenter {
 
 	public V getListView() {
 		return listView;
+	}
+	
+	public void setListView(V listView) {
+		this.listView = listView;
+		addViewActions();
 	}
 	
 	@Override
