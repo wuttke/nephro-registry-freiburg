@@ -1,5 +1,5 @@
-- rename Visit -> Encounter
-- Patient Associates
+- DONE rename Visit -> Encounter
+- Patient Associates / KIS source?
 - Events
   - Event Type: Enum or Lookup?`
     Onset of Disease/Dialysis/Transplant/Death

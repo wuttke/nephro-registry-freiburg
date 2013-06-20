@@ -22,7 +22,7 @@ extends EditableListComposite<Encounter> {
 		getTable().setVisibleColumns(new String[] {"encounterDate", "type", "label"});
 		getTable().setColumnHeaders(new String[] {"Encounter Date", "Type", "Label"});
 		getTable().setConverter("encounterDate", new StringToShortDateConverter());
-		getTable().setSortContainerPropertyId("encounterDateTime");
+		getTable().setSortContainerPropertyId("encounterDate");
 	}
 		
 	private static final long serialVersionUID = 1L;
