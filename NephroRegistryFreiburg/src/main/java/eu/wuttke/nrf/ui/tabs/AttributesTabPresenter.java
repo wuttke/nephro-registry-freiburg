@@ -20,29 +20,29 @@ import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.attribute.AttributeDao;
 import eu.wuttke.nrf.domain.attribute.AttributeType;
 import eu.wuttke.nrf.domain.attribute.AttributeTypeUsage;
+import eu.wuttke.nrf.domain.encounter.Encounter;
+import eu.wuttke.nrf.domain.encounter.EncounterAttribute;
 import eu.wuttke.nrf.domain.misc.PrecisionDateUtil;
 import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.domain.subject.SubjectAttribute;
-import eu.wuttke.nrf.domain.visit.Visit;
-import eu.wuttke.nrf.domain.visit.VisitAttribute;
 import eu.wuttke.nrf.ui.attribute.AttributeOverviewView;
 import eu.wuttke.nrf.ui.attribute.DynamicAttributeEditor;
+import eu.wuttke.nrf.ui.encounter.EncounterListPresenter;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
-import eu.wuttke.nrf.ui.visit.VisitListPresenter;
 
 @Configurable
 public class AttributesTabPresenter 
 implements RefreshablePresenter {
 
-	private AttributeOverviewView view = new AttributeOverviewView();;
-	private VisitListPresenter visitListPresenter = new VisitListPresenter();
+	private AttributeOverviewView view = new AttributeOverviewView();
+	private EncounterListPresenter encounterListPresenter = new EncounterListPresenter();
 	private Subject parentSubject;
 	private List<AttributeCategory> categories;
 	
 	private boolean blockValueChange = false;
 	
 	public AttributesTabPresenter() {
-		visitListPresenter.setListView(view.getVisitListView());
+		encounterListPresenter.setListView(view.getEncounterListView());
 		view.addOptionGroupParentValueChangeListener(new ValueChangeListener() {
 			@Override
 			public void valueChange(ValueChangeEvent event) {
@@ -51,7 +51,7 @@ implements RefreshablePresenter {
 			}
 			private static final long serialVersionUID = 1L;
 		});
-		view.getVisitListView().addTableItemClickListener(new ItemClickListener() {
+		view.getEncounterListView().addTableItemClickListener(new ItemClickListener() {
 			@Override
 			@SuppressWarnings("unchecked")
 			public void itemClick(ItemClickEvent event) {
@@ -59,8 +59,8 @@ implements RefreshablePresenter {
 				view.setShowSubjectAttribute(false);
 				blockValueChange = false;
 				
-				BeanItem<Visit> item = (BeanItem<Visit>)event.getItem();
-				refreshVisitAttributesContent(item.getBean());
+				BeanItem<Encounter> item = (BeanItem<Encounter>)event.getItem();
+				refreshEncounterAttributesContent(item.getBean());
 			}
 			private static final long serialVersionUID = 1L;
 		});
@@ -80,8 +80,8 @@ implements RefreshablePresenter {
 	
 	@Override
 	public void refreshContent() {
-		visitListPresenter.setParentSubject(parentSubject);
-		visitListPresenter.refreshContent();
+		encounterListPresenter.setParentSubject(parentSubject);
+		encounterListPresenter.refreshContent();
 		refreshCategoriesContent();
 		refreshAttributesContent();
 	}
@@ -98,9 +98,9 @@ implements RefreshablePresenter {
 		if (showSubjectAttributes) {
 			refreshSubjectAttributesContent();
 		} else {
-			Visit visit = view.getVisitListView().getSelectedEntity();
-			if (visit != null)
-				refreshVisitAttributesContent(visit);
+			Encounter encounter = view.getEncounterListView().getSelectedEntity();
+			if (encounter != null)
+				refreshEncounterAttributesContent(encounter);
 		}
 	}
 	
@@ -111,11 +111,11 @@ implements RefreshablePresenter {
 		displayAttributes(attributes, AttributeTypeUsage.SUBJECT);
 	}
 
-	public void refreshVisitAttributesContent(Visit visit) {
-		logger.info("show visit attributes: {}", visit.getLabel());
-		view.setAttributesPanelTitle("Visit Attributes: " + PrecisionDateUtil.formatDate(visit.getVisitDateTime(), null));
-		List<VisitAttribute> attributes = attributeDao.getVisitAttributesByVisit(visit);
-		displayAttributes(attributes, AttributeTypeUsage.VISIT);
+	public void refreshEncounterAttributesContent(Encounter encounter) {
+		logger.info("show encounter attributes: {}", encounter.getLabel());
+		view.setAttributesPanelTitle("Encounter Attributes: " + PrecisionDateUtil.formatDate(encounter.getEncounterDateTime(), null));
+		List<EncounterAttribute> attributes = attributeDao.getEncounterAttributesByEncounter(encounter);
+		displayAttributes(attributes, AttributeTypeUsage.ENCOUNTER);
 	}
 	
 	protected void displayAttributes(List<? extends AttributeBase> attributes, AttributeTypeUsage usage) {

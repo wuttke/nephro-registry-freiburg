@@ -1,4 +1,4 @@
-package eu.wuttke.nrf.ui.visit;
+package eu.wuttke.nrf.ui.encounter;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,20 +12,20 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
+import eu.wuttke.nrf.domain.encounter.Encounter;
 import eu.wuttke.nrf.domain.subject.Subject;
-import eu.wuttke.nrf.domain.visit.Visit;
 import eu.wuttke.nrf.interf.kis.KisVisitImporter;
 import eu.wuttke.nrf.ui.presenter.EditorPresenter;
 import eu.wuttke.nrf.ui.presenter.ListPresenter;
 
 @Configurable
-public class VisitListPresenter 
-extends ListPresenter<Visit, VisitListView> {
+public class EncounterListPresenter 
+extends ListPresenter<Encounter, EncounterListView> {
 	
 	private Subject parentSubject;
 	
-	public VisitListPresenter() {
-		super(new VisitListView());
+	public EncounterListPresenter() {
+		super(new EncounterListView());
 	}
 	
 	@Override
@@ -45,7 +45,7 @@ extends ListPresenter<Visit, VisitListView> {
 	}
 	
 	protected void doSyncVisits() {
-		List<Visit> visits = kisVisitImporter.mergeKisVisits(parentSubject); 
+		List<Encounter> visits = kisVisitImporter.mergeKisVisits(parentSubject); 
 		logger.info("retrieved {} KIS visits", visits.size());
 		refreshContent();
 		Notification.show(String.format("Retrieved %d new visits", visits.size()), Notification.Type.TRAY_NOTIFICATION);
@@ -56,13 +56,13 @@ extends ListPresenter<Visit, VisitListView> {
 	}
 	
 	@Override
-	public Collection<? extends Visit> loadEntities() {
-		return Visit.findVisitsBySubject(parentSubject).getResultList();
+	public Collection<? extends Encounter> loadEntities() {
+		return Encounter.findEncountersBySubject(parentSubject).getResultList();
 	}
 	
 	@Override
-	public EditorPresenter<Visit, ?> createEditorPresenter() {
-		return new VisitEditorPresenter(parentSubject, this);
+	public EditorPresenter<Encounter, ?> createEditorPresenter() {
+		return new EncounterEditorPresenter(parentSubject, this);
 	}
 	
 	public void setKisVisitImporter(KisVisitImporter kisVisitImporter) {
@@ -72,6 +72,6 @@ extends ListPresenter<Visit, VisitListView> {
 	@Autowired
 	private KisVisitImporter kisVisitImporter;
 	
-	private static Logger logger = LoggerFactory.getLogger(VisitListPresenter.class);
+	private static Logger logger = LoggerFactory.getLogger(EncounterListPresenter.class);
 	
 }

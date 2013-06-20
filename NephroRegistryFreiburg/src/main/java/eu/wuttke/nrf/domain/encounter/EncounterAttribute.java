@@ -1,4 +1,4 @@
-package eu.wuttke.nrf.domain.visit;
+package eu.wuttke.nrf.domain.encounter;
 
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -14,11 +14,11 @@ import eu.wuttke.nrf.domain.attribute.AttributeBase;
 @RooToString
 @RooJpaActiveRecord
 @Audited
-public class VisitAttribute 
+public class EncounterAttribute 
 extends AttributeBase {
 	
 	@ManyToOne
 	@NotNull
-	private Visit visit;
+	private Encounter encounter;
 	
 }

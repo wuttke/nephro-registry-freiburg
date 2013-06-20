@@ -13,35 +13,37 @@ import org.springframework.stereotype.Component;
 import de.meona.infrastructure.patient.HistoryPatientIdentifier;
 import de.meona.infrastructure.patient.StayType;
 
+import eu.wuttke.nrf.domain.encounter.Encounter;
+import eu.wuttke.nrf.domain.encounter.EncounterType;
 import eu.wuttke.nrf.domain.subject.Subject;
-import eu.wuttke.nrf.domain.visit.Visit;
 
 @Component
 public class KisVisitImporter {
 
-	public List<Visit> retrieveKisVisits(long patientId) {
+	public List<Encounter> retrieveKisVisits(long patientId) {
 		HistoryPatientIdentifier[] hpis = meonaInfrastructureService.getKisPatientHistory(patientId, StayType.OUTPATIENT);
 		if (hpis == null)
-			return new LinkedList<Visit>();
+			return new LinkedList<Encounter>();
 		
-		List<Visit> results = new ArrayList<Visit>(hpis.length);
+		List<Encounter> results = new ArrayList<Encounter>(hpis.length);
 		for (HistoryPatientIdentifier hpi : hpis) {
-			Visit v = new Visit();
+			Encounter v = new Encounter();
 			v.setLabel(hpi.getWardName());
-			v.setVisitDateTime(hpi.getStayBegin());
+			v.setEncounterDateTime(hpi.getStayBegin());
+			v.setType(EncounterType.OUTPATIENT_VISIT);
 			results.add(v);
 		}
 		
 		return results;
 	}
 	
-	public List<Visit> mergeKisVisits(Subject s) {
-		List<Visit> kisVisits = retrieveKisVisits(Long.parseLong(s.getPatientId()));
-		List<Visit> myVisits = Visit.findVisitsBySubject(s).getResultList();
-		List<Visit> results = new ArrayList<Visit>(kisVisits.size());
+	public List<Encounter> mergeKisVisits(Subject s) {
+		List<Encounter> kisVisits = retrieveKisVisits(Long.parseLong(s.getPatientId()));
+		List<Encounter> myVisits = Encounter.findEncountersBySubject(s).getResultList();
+		List<Encounter> results = new ArrayList<Encounter>(kisVisits.size());
 		
-		for (Visit kisVisit : kisVisits) {
-			if (!haveVisitWithDate(myVisits, kisVisit.getVisitDateTime())) {
+		for (Encounter kisVisit : kisVisits) {
+			if (!haveVisitWithDate(myVisits, kisVisit.getEncounterDateTime())) {
 				kisVisit.setSubject(s);
 				kisVisit.merge();
 				results.add(kisVisit);
@@ -51,9 +53,9 @@ public class KisVisitImporter {
 		return results;
 	}
 	
-	private boolean haveVisitWithDate(List<Visit> myVisits, Date visitDateTime) {
-		for (Visit visit : myVisits)
-			if (DateUtils.truncatedEquals(visit.getVisitDateTime(), visitDateTime, Calendar.MINUTE))
+	private boolean haveVisitWithDate(List<Encounter> myVisits, Date visitDateTime) {
+		for (Encounter visit : myVisits)
+			if (DateUtils.truncatedEquals(visit.getEncounterDateTime(), visitDateTime, Calendar.MINUTE))
 				return true;
 		return false;
 	}

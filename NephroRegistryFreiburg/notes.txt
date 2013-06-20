@@ -4,3 +4,4 @@
   - Event Type: Enum or Lookup?`
     Onset of Disease/Dialysis/Transplant/Death
 - Encounter / Categories vs. Subject Categories
+- Relation Paths (at least grand-parents / grand-children)

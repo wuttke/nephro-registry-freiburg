@@ -1,8 +1,10 @@
-package eu.wuttke.nrf.domain.visit;
+package eu.wuttke.nrf.domain.encounter;
 
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,8 +20,8 @@ import eu.wuttke.nrf.domain.subject.Subject;
 @RooJavaBean
 @RooToString
 @Audited
-@RooJpaActiveRecord(finders = { "findVisitsBySubject" })
-public class Visit {
+@RooJpaActiveRecord(finders = { "findEncountersBySubject" })
+public class Encounter {
 
     @NotNull
     @ManyToOne
@@ -27,10 +29,17 @@ public class Visit {
 
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
-    private Date visitDateTime;
+    private Date encounterDateTime;
 
+    @Enumerated(EnumType.STRING)
+    @Column(length=40)
+    private EncounterType type;
+    
     // z.B. Name der Ambulanz
     @Column(length=400)
     private String label;
+    
+    @Column(length=2000)
+    private String notes;
     
 }

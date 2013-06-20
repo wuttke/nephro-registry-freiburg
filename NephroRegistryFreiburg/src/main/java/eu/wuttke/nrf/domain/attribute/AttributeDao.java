@@ -9,10 +9,10 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Component;
 
+import eu.wuttke.nrf.domain.encounter.Encounter;
+import eu.wuttke.nrf.domain.encounter.EncounterAttribute;
 import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.domain.subject.SubjectAttribute;
-import eu.wuttke.nrf.domain.visit.Visit;
-import eu.wuttke.nrf.domain.visit.VisitAttribute;
 
 @Component
 public class AttributeDao {
@@ -40,10 +40,10 @@ public class AttributeDao {
 		return query.getResultList();
 	}
 	
-	public List<VisitAttribute> getVisitAttributesByVisit(Visit v) {
+	public List<EncounterAttribute> getEncounterAttributesByEncounter(Encounter v) {
 		EntityManager em = Subject.entityManager();
-		TypedQuery<VisitAttribute> query = em.createQuery("FROM VisitAttribute WHERE visit = :visit", VisitAttribute.class);
-		query.setParameter("visit", v);
+		TypedQuery<EncounterAttribute> query = em.createQuery("FROM EncounterAttribute WHERE encounter = :encounter", EncounterAttribute.class);
+		query.setParameter("encounter", v);
 		return query.getResultList();
 	}
 	
