@@ -113,7 +113,7 @@ implements RefreshablePresenter {
 
 	public void refreshEncounterAttributesContent(Encounter encounter) {
 		logger.info("show encounter attributes: {}", encounter.getLabel());
-		view.setAttributesPanelTitle("Encounter Attributes: " + PrecisionDateUtil.formatDate(encounter.getEncounterDateTime(), null));
+		view.setAttributesPanelTitle("Encounter Attributes: " + PrecisionDateUtil.formatDate(encounter.getEncounterDate(), null));
 		List<EncounterAttribute> attributes = attributeDao.getEncounterAttributesByEncounter(encounter);
 		displayAttributes(attributes, AttributeTypeUsage.ENCOUNTER);
 	}

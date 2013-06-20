@@ -29,7 +29,7 @@ public class KisVisitImporter {
 		for (HistoryPatientIdentifier hpi : hpis) {
 			Encounter v = new Encounter();
 			v.setLabel(hpi.getWardName());
-			v.setEncounterDateTime(hpi.getStayBegin());
+			v.setEncounterDate(hpi.getStayBegin());
 			v.setType(EncounterType.OUTPATIENT_VISIT);
 			results.add(v);
 		}
@@ -43,7 +43,7 @@ public class KisVisitImporter {
 		List<Encounter> results = new ArrayList<Encounter>(kisVisits.size());
 		
 		for (Encounter kisVisit : kisVisits) {
-			if (!haveVisitWithDate(myVisits, kisVisit.getEncounterDateTime())) {
+			if (!haveVisitWithDate(myVisits, kisVisit.getEncounterDate())) {
 				kisVisit.setSubject(s);
 				kisVisit.merge();
 				results.add(kisVisit);
@@ -55,7 +55,7 @@ public class KisVisitImporter {
 	
 	private boolean haveVisitWithDate(List<Encounter> myVisits, Date visitDateTime) {
 		for (Encounter visit : myVisits)
-			if (DateUtils.truncatedEquals(visit.getEncounterDateTime(), visitDateTime, Calendar.MINUTE))
+			if (DateUtils.truncatedEquals(visit.getEncounterDate(), visitDateTime, Calendar.DATE))
 				return true;
 		return false;
 	}

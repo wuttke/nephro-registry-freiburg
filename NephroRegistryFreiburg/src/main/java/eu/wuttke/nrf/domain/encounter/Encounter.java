@@ -27,9 +27,9 @@ public class Encounter {
     @ManyToOne
     private Subject subject;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @NotNull
-    private Date encounterDateTime;
+    private Date encounterDate;
 
     @Enumerated(EnumType.STRING)
     @Column(length=40)

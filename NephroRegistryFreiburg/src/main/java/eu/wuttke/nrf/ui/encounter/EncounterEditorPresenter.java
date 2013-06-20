@@ -18,7 +18,7 @@ extends EditorPresenter<Encounter, EncounterEditorView> {
 	
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(((EncounterListPresenter)getParent()).getListView().getUI(), "Edit Encounter", "400", "300");	
+		w.show(((EncounterListPresenter)getParent()).getListView().getUI(), "Edit Encounter", "500", "400");	
 	}
 
 	@Override

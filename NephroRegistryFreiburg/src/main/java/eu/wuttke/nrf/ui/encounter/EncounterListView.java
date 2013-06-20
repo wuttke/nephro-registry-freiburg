@@ -4,7 +4,7 @@ import com.vaadin.ui.Button.ClickListener;
 
 import eu.wuttke.nrf.domain.encounter.Encounter;
 import eu.wuttke.nrf.ui.component.EditableListComposite;
-import eu.wuttke.nrf.ui.misc.StringToDateTimeConverter;
+import eu.wuttke.nrf.ui.misc.StringToShortDateConverter;
 
 public class EncounterListView 
 extends EditableListComposite<Encounter> {
@@ -19,9 +19,9 @@ extends EditableListComposite<Encounter> {
 	
 	@Override
 	protected void initTable() {
-		getTable().setVisibleColumns(new String[] {"encounterDateTime", "type", "label"});
-		getTable().setColumnHeaders(new String[] {"Encounter Date/Time", "Type", "Label"});
-		getTable().setConverter("encounterDateTime", new StringToDateTimeConverter());
+		getTable().setVisibleColumns(new String[] {"encounterDate", "type", "label"});
+		getTable().setColumnHeaders(new String[] {"Encounter Date", "Type", "Label"});
+		getTable().setConverter("encounterDate", new StringToShortDateConverter());
 		getTable().setSortContainerPropertyId("encounterDateTime");
 	}
 		

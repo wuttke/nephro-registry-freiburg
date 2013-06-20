@@ -18,12 +18,12 @@ privileged aspect Encounter_Roo_JavaBean {
         this.subject = subject;
     }
     
-    public Date Encounter.getEncounterDateTime() {
-        return this.encounterDateTime;
+    public Date Encounter.getEncounterDate() {
+        return this.encounterDate;
     }
     
-    public void Encounter.setEncounterDateTime(Date encounterDateTime) {
-        this.encounterDateTime = encounterDateTime;
+    public void Encounter.setEncounterDate(Date encounterDate) {
+        this.encounterDate = encounterDate;
     }
     
     public EncounterType Encounter.getType() {
