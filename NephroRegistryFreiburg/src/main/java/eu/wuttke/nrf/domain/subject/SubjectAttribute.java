@@ -12,7 +12,7 @@ import eu.wuttke.nrf.domain.attribute.AttributeBase;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord
+@RooJpaActiveRecord(finders={"findSubjectAttributesBySubject"})
 @Audited
 public class SubjectAttribute
 extends AttributeBase {

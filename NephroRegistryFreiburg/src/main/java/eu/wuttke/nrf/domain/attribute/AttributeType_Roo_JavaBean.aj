@@ -3,6 +3,7 @@
 
 package eu.wuttke.nrf.domain.attribute;
 
+import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.attribute.AttributeDataType;
 import eu.wuttke.nrf.domain.attribute.AttributeType;
 import eu.wuttke.nrf.domain.attribute.AttributeTypeUsage;
@@ -41,36 +42,36 @@ privileged aspect AttributeType_Roo_JavaBean {
         this.dataType = dataType;
     }
     
-    public Integer AttributeType.getMinLength() {
-        return this.minLength;
+    public Integer AttributeType.getMinimumLength() {
+        return this.minimumLength;
     }
     
-    public void AttributeType.setMinLength(Integer minLength) {
-        this.minLength = minLength;
+    public void AttributeType.setMinimumLength(Integer minimumLength) {
+        this.minimumLength = minimumLength;
     }
     
-    public Integer AttributeType.getMaxLength() {
-        return this.maxLength;
+    public Integer AttributeType.getMaximumLength() {
+        return this.maximumLength;
     }
     
-    public void AttributeType.setMaxLength(Integer maxLength) {
-        this.maxLength = maxLength;
+    public void AttributeType.setMaximumLength(Integer maximumLength) {
+        this.maximumLength = maximumLength;
     }
     
-    public Double AttributeType.getMinValue() {
-        return this.minValue;
+    public Double AttributeType.getMinimumValue() {
+        return this.minimumValue;
     }
     
-    public void AttributeType.setMinValue(Double minValue) {
-        this.minValue = minValue;
+    public void AttributeType.setMinimumValue(Double minimumValue) {
+        this.minimumValue = minimumValue;
     }
     
-    public Double AttributeType.getMaxValue() {
-        return this.maxValue;
+    public Double AttributeType.getMaximumValue() {
+        return this.maximumValue;
     }
     
-    public void AttributeType.setMaxValue(Double maxValue) {
-        this.maxValue = maxValue;
+    public void AttributeType.setMaximumValue(Double maximumValue) {
+        this.maximumValue = maximumValue;
     }
     
     public String AttributeType.getDefaultValue() {
@@ -97,12 +98,20 @@ privileged aspect AttributeType_Roo_JavaBean {
         this.required = required;
     }
     
-    public AttributeTypeUsage AttributeType.getUsage() {
-        return this.usage;
+    public AttributeTypeUsage AttributeType.getAttributeUsage() {
+        return this.attributeUsage;
     }
     
-    public void AttributeType.setUsage(AttributeTypeUsage usage) {
-        this.usage = usage;
+    public void AttributeType.setAttributeUsage(AttributeTypeUsage attributeUsage) {
+        this.attributeUsage = attributeUsage;
+    }
+    
+    public AttributeCategory AttributeType.getCategory() {
+        return this.category;
+    }
+    
+    public void AttributeType.setCategory(AttributeCategory category) {
+        this.category = category;
     }
     
 }

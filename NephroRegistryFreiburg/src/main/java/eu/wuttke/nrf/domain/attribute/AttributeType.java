@@ -3,6 +3,7 @@ package eu.wuttke.nrf.domain.attribute;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.envers.Audited;
@@ -32,13 +33,13 @@ public class AttributeType {
 	@Column(length=32)
 	private AttributeDataType dataType;
 	
-	private Integer minLength;
+	private Integer minimumLength;
 	
-	private Integer maxLength;
+	private Integer maximumLength;
 	
-	private Double minValue;
+	private Double minimumValue;
 	
-	private Double maxValue;
+	private Double maximumValue;
 	
 	@Column(length=100)
 	private String defaultValue;
@@ -50,6 +51,10 @@ public class AttributeType {
 	
 	@Column(length=32)
 	@Enumerated(EnumType.STRING)
-	private AttributeTypeUsage usage;
+	private AttributeTypeUsage attributeUsage;
+	
+	@ManyToOne
+	@NotNull
+	private AttributeCategory category;
 	
 }
