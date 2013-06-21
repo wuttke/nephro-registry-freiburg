@@ -23,4 +23,20 @@ privileged aspect AttributeCategory_Roo_JavaBean {
         this.label = label;
     }
     
+    public boolean AttributeCategory.isUseForSubjectAttributes() {
+        return this.useForSubjectAttributes;
+    }
+    
+    public void AttributeCategory.setUseForSubjectAttributes(boolean useForSubjectAttributes) {
+        this.useForSubjectAttributes = useForSubjectAttributes;
+    }
+    
+    public boolean AttributeCategory.isUseForEncounterAttributes() {
+        return this.useForEncounterAttributes;
+    }
+    
+    public void AttributeCategory.setUseForEncounterAttributes(boolean useForEncounterAttributes) {
+        this.useForEncounterAttributes = useForEncounterAttributes;
+    }
+    
 }

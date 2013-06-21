@@ -14,5 +14,8 @@ public class AttributeCategory {
 	private int sequenceNumber;
 	
 	private String label;
-		
+	
+	private boolean useForSubjectAttributes;
+	private boolean useForEncounterAttributes;
+	
 }
