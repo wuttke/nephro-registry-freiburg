@@ -4,16 +4,16 @@
 package eu.wuttke.nrf.domain.encounter;
 
 import eu.wuttke.nrf.domain.encounter.Encounter;
-import eu.wuttke.nrf.domain.encounter.EncounterCategory;
+import eu.wuttke.nrf.domain.encounter.EncounterAttribute;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-privileged aspect EncounterCategory_Roo_Finder {
+privileged aspect EncounterAttribute_Roo_Finder {
     
-    public static TypedQuery<EncounterCategory> EncounterCategory.findEncounterCategorysByEncounter(Encounter encounter) {
+    public static TypedQuery<EncounterAttribute> EncounterAttribute.findEncounterAttributesByEncounter(Encounter encounter) {
         if (encounter == null) throw new IllegalArgumentException("The encounter argument is required");
-        EntityManager em = EncounterCategory.entityManager();
-        TypedQuery<EncounterCategory> q = em.createQuery("SELECT o FROM EncounterCategory AS o WHERE o.encounter = :encounter", EncounterCategory.class);
+        EntityManager em = EncounterAttribute.entityManager();
+        TypedQuery<EncounterAttribute> q = em.createQuery("SELECT o FROM EncounterAttribute AS o WHERE o.encounter = :encounter", EncounterAttribute.class);
         q.setParameter("encounter", encounter);
         return q;
     }

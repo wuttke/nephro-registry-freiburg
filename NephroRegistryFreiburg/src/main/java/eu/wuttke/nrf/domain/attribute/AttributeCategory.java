@@ -1,5 +1,9 @@
 package eu.wuttke.nrf.domain.attribute;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import org.hibernate.envers.Audited;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
@@ -13,9 +17,11 @@ public class AttributeCategory {
 
 	private int sequenceNumber;
 	
+	@Column(length=200)
 	private String label;
 	
-	private boolean useForSubjectAttributes;
-	private boolean useForEncounterAttributes;
+	@Column(length=16)
+	@Enumerated(EnumType.STRING)
+	private AttributeParentType parentType;
 	
 }

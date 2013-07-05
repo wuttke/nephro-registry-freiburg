@@ -16,9 +16,10 @@ import com.vaadin.ui.TabSheet.Tab;
 import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.ui.page.SubjectListPage;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
+import eu.wuttke.nrf.ui.tabs.EncounterAttributesTabPresenter;
 import eu.wuttke.nrf.ui.tabs.LabTabPresenter;
-import eu.wuttke.nrf.ui.tabs.AttributesTabPresenter;
 import eu.wuttke.nrf.ui.tabs.OverviewTabPresenter;
+import eu.wuttke.nrf.ui.tabs.SubjectAttributesTabPresenter;
 
 public class SubjectDetailPresenter 
 implements RefreshablePresenter {
@@ -30,7 +31,8 @@ implements RefreshablePresenter {
 	private List<RefreshablePresenter> presenters = new ArrayList<RefreshablePresenter>();
 	private OverviewTabPresenter subjectOverviewTabPresenter = new OverviewTabPresenter();
 	private LabTabPresenter labTabPresenter = new LabTabPresenter();
-	private AttributesTabPresenter subjectAttributesTabPresenter = new AttributesTabPresenter();
+	private SubjectAttributesTabPresenter subjectAttributesTabPresenter = new SubjectAttributesTabPresenter();
+	private EncounterAttributesTabPresenter encounterAttributesTabPresenter = new EncounterAttributesTabPresenter();
 	
 	public SubjectDetailPresenter() {
 		view.addBackButtonClickListener(new ClickListener() {			
@@ -55,7 +57,8 @@ implements RefreshablePresenter {
 		addTabPresenter("Overview", subjectOverviewTabPresenter);
 		addTabPresenter("Lab Values", labTabPresenter);
 		// Results
-		addTabPresenter("Attributes", subjectAttributesTabPresenter);
+		addTabPresenter("Subject Attributes", subjectAttributesTabPresenter);
+		addTabPresenter("Encounter Attributes", encounterAttributesTabPresenter);
 	}
 	
 	private void addTabPresenter(String title, RefreshablePresenter presenter) {
@@ -80,6 +83,7 @@ implements RefreshablePresenter {
 		subjectOverviewTabPresenter.setParentSubject(subject);
 		labTabPresenter.setParentSubject(subject);
 		subjectAttributesTabPresenter.setParentSubject(subject);
+		encounterAttributesTabPresenter.setParentSubject(subject);
 		refreshSelectedTab();
 	}
 

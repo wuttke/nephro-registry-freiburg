@@ -8,20 +8,16 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 
-import eu.wuttke.nrf.domain.attribute.AttributeCategory;
+import eu.wuttke.nrf.domain.attribute.CategoryBase;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord
+@RooJpaActiveRecord(finders={"findSubjectCategorysBySubject"})
 @Audited
-public class SubjectCategory {
+public class SubjectCategory extends CategoryBase {
 
 	@ManyToOne
 	@NotNull
 	private Subject subject;
-
-	@ManyToOne
-	@NotNull
-	private AttributeCategory category;
 	
 }

@@ -4,40 +4,10 @@
 package eu.wuttke.nrf.domain.subject;
 
 import eu.wuttke.nrf.domain.subject.SubjectAttribute;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Version;
 
 privileged aspect SubjectAttribute_Roo_Jpa_Entity {
     
     declare @type: SubjectAttribute: @Entity;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long SubjectAttribute.id;
-    
-    @Version
-    @Column(name = "version")
-    private Integer SubjectAttribute.version;
-    
-    public Long SubjectAttribute.getId() {
-        return this.id;
-    }
-    
-    public void SubjectAttribute.setId(Long id) {
-        this.id = id;
-    }
-    
-    public Integer SubjectAttribute.getVersion() {
-        return this.version;
-    }
-    
-    public void SubjectAttribute.setVersion(Integer version) {
-        this.version = version;
-    }
     
 }

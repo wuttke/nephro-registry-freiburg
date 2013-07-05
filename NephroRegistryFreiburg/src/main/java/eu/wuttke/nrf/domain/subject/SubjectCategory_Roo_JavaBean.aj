@@ -3,7 +3,6 @@
 
 package eu.wuttke.nrf.domain.subject;
 
-import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.domain.subject.SubjectCategory;
 
@@ -15,14 +14,6 @@ privileged aspect SubjectCategory_Roo_JavaBean {
     
     public void SubjectCategory.setSubject(Subject subject) {
         this.subject = subject;
-    }
-    
-    public AttributeCategory SubjectCategory.getCategory() {
-        return this.category;
-    }
-    
-    public void SubjectCategory.setCategory(AttributeCategory category) {
-        this.category = category;
     }
     
 }

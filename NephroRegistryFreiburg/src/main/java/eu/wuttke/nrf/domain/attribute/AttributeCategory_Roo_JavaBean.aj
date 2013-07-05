@@ -4,6 +4,7 @@
 package eu.wuttke.nrf.domain.attribute;
 
 import eu.wuttke.nrf.domain.attribute.AttributeCategory;
+import eu.wuttke.nrf.domain.attribute.AttributeParentType;
 
 privileged aspect AttributeCategory_Roo_JavaBean {
     
@@ -23,20 +24,12 @@ privileged aspect AttributeCategory_Roo_JavaBean {
         this.label = label;
     }
     
-    public boolean AttributeCategory.isUseForSubjectAttributes() {
-        return this.useForSubjectAttributes;
+    public AttributeParentType AttributeCategory.getParentType() {
+        return this.parentType;
     }
     
-    public void AttributeCategory.setUseForSubjectAttributes(boolean useForSubjectAttributes) {
-        this.useForSubjectAttributes = useForSubjectAttributes;
-    }
-    
-    public boolean AttributeCategory.isUseForEncounterAttributes() {
-        return this.useForEncounterAttributes;
-    }
-    
-    public void AttributeCategory.setUseForEncounterAttributes(boolean useForEncounterAttributes) {
-        this.useForEncounterAttributes = useForEncounterAttributes;
+    public void AttributeCategory.setParentType(AttributeParentType parentType) {
+        this.parentType = parentType;
     }
     
 }

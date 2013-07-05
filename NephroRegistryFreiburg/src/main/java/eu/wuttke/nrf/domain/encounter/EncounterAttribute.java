@@ -12,7 +12,7 @@ import eu.wuttke.nrf.domain.attribute.AttributeBase;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord
+@RooJpaActiveRecord(finders={"findEncounterAttributesByEncounter"})
 @Audited
 public class EncounterAttribute 
 extends AttributeBase {

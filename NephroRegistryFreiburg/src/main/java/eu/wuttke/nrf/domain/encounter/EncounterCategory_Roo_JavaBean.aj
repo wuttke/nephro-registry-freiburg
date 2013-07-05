@@ -3,7 +3,6 @@
 
 package eu.wuttke.nrf.domain.encounter;
 
-import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.encounter.Encounter;
 import eu.wuttke.nrf.domain.encounter.EncounterCategory;
 
@@ -15,14 +14,6 @@ privileged aspect EncounterCategory_Roo_JavaBean {
     
     public void EncounterCategory.setEncounter(Encounter encounter) {
         this.encounter = encounter;
-    }
-    
-    public AttributeCategory EncounterCategory.getCategory() {
-        return this.category;
-    }
-    
-    public void EncounterCategory.setCategory(AttributeCategory category) {
-        this.category = category;
     }
     
 }

@@ -4,40 +4,10 @@
 package eu.wuttke.nrf.domain.encounter;
 
 import eu.wuttke.nrf.domain.encounter.EncounterCategory;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Version;
 
 privileged aspect EncounterCategory_Roo_Jpa_Entity {
     
     declare @type: EncounterCategory: @Entity;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long EncounterCategory.id;
-    
-    @Version
-    @Column(name = "version")
-    private Integer EncounterCategory.version;
-    
-    public Long EncounterCategory.getId() {
-        return this.id;
-    }
-    
-    public void EncounterCategory.setId(Long id) {
-        this.id = id;
-    }
-    
-    public Integer EncounterCategory.getVersion() {
-        return this.version;
-    }
-    
-    public void EncounterCategory.setVersion(Integer version) {
-        this.version = version;
-    }
     
 }

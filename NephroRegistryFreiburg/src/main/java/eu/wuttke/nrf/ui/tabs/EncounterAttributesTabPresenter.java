@@ -18,6 +18,7 @@ import com.vaadin.ui.Component;
 import eu.wuttke.nrf.domain.attribute.AttributeBase;
 import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.attribute.AttributeDao;
+import eu.wuttke.nrf.domain.attribute.AttributeParentType;
 import eu.wuttke.nrf.domain.attribute.AttributeType;
 import eu.wuttke.nrf.domain.attribute.AttributeTypeUsage;
 import eu.wuttke.nrf.domain.encounter.Encounter;
@@ -31,32 +32,32 @@ import eu.wuttke.nrf.ui.encounter.EncounterListPresenter;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
 
 @Configurable
-public class AttributesTabPresenter 
+public class EncounterAttributesTabPresenter 
 implements RefreshablePresenter {
 
-	private AttributeOverviewView view = new AttributeOverviewView();
+	private AttributeOverviewView view = new AttributeOverviewView(AttributeParentType.ENCOUNTER);
 	private EncounterListPresenter encounterListPresenter = new EncounterListPresenter();
 	private Subject parentSubject;
 	private List<AttributeCategory> categories;
 	
 	private boolean blockValueChange = false;
 	
-	public AttributesTabPresenter() {
+	public EncounterAttributesTabPresenter() {
 		encounterListPresenter.setListView(view.getEncounterListView());
-		view.addOptionGroupParentValueChangeListener(new ValueChangeListener() {
+		/*view.addOptionGroupParentValueChangeListener(new ValueChangeListener() {
 			@Override
 			public void valueChange(ValueChangeEvent event) {
 				if (!blockValueChange)
 					refreshAttributesContent();
 			}
 			private static final long serialVersionUID = 1L;
-		});
+		});*/
 		view.getEncounterListView().addTableItemClickListener(new ItemClickListener() {
 			@Override
 			@SuppressWarnings("unchecked")
 			public void itemClick(ItemClickEvent event) {
 				blockValueChange = true;
-				view.setShowSubjectAttribute(false);
+				//view.setShowSubjectAttribute(false);
 				blockValueChange = false;
 				
 				BeanItem<Encounter> item = (BeanItem<Encounter>)event.getItem();
@@ -88,13 +89,13 @@ implements RefreshablePresenter {
 	
 	private void refreshCategoriesContent() {
 		blockValueChange = true;
-		categories = attributeDao.getAttributeCategories();
+		categories = attributeDao.getAttributeCategories(AttributeParentType.ENCOUNTER);
 		view.displayCategories(categories);
 		blockValueChange = false;
 	}
 
 	public void refreshAttributesContent() {
-		boolean showSubjectAttributes = view.isShowSubjectAttributes();
+		boolean showSubjectAttributes = false;//AttributeParentType parentTypeview.isShowSubjectAttributes();
 		if (showSubjectAttributes) {
 			refreshSubjectAttributesContent();
 		} else {
@@ -146,6 +147,6 @@ implements RefreshablePresenter {
 	@Autowired
 	private AttributeDao attributeDao;
 	
-	private static Logger logger = LoggerFactory.getLogger(AttributesTabPresenter.class);
+	private static Logger logger = LoggerFactory.getLogger(EncounterAttributesTabPresenter.class);
 
 }
