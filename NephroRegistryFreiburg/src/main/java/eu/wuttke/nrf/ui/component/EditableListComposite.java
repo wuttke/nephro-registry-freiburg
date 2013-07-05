@@ -46,10 +46,10 @@ implements ListView<E> {
 	private Table table;
 
 	private BeanContainer<Long, E> container;
-	private Class<? super E> entityClass;
+	private Class<E> entityClass;
 	private List<Button> valueButtons = new LinkedList<Button>();
 
-	public EditableListComposite(Class<? super E> entityClass) {
+	public EditableListComposite(Class<E> entityClass) {
 		this.entityClass = entityClass;
 		
 		buildMainLayout();
@@ -73,7 +73,7 @@ implements ListView<E> {
 		});
 	}
 	
-	public void displayEntities(Collection<? extends E> entities) {
+	public void displayEntities(Collection<E> entities) {
 		container = new BeanContainer<Long, E>(entityClass);
 		container.setBeanIdProperty("id");
 		container.addAll(entities);

@@ -9,7 +9,7 @@ import com.vaadin.ui.Component;
 public interface ListView<E>
 extends Component {
 
-	public void displayEntities(Collection<? extends E> entities);
+	public void displayEntities(Collection<E> entities);
 	public E getSelectedEntity();
 	
 	public void addNewButtonClickListener(ClickListener listener);

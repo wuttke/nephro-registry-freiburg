@@ -81,7 +81,7 @@ public class AttributeOverviewView extends CustomComponent {
 	
 		if (parentType == AttributeParentType.SUBJECT) {
 			verticalLayoutListWrapper.removeComponent(panelAttributeParent);
-			setAttributesPanelTitle("Subject Categories");
+			panelAttributeCategories.setCaption("Subject Categories");
 		}
 		
 		horizontalSplitPanel.setSplitPosition(20f, Unit.PERCENTAGE);

@@ -22,7 +22,7 @@ extends ListPresenter<Diagnosis, DiagnosisListView> {
 	}
 	
 	@Override
-	public Collection<? extends Diagnosis> loadEntities() {
+	public Collection<Diagnosis> loadEntities() {
 		return Diagnosis.findDiagnosesBySubject(parentSubject).getResultList();
 	}
 	

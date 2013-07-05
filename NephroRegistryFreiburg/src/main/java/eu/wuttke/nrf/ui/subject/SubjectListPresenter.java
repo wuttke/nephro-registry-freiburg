@@ -6,6 +6,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 import eu.wuttke.nrf.domain.subject.Subject;
+import eu.wuttke.nrf.ui.page.AdminPage;
 import eu.wuttke.nrf.ui.page.SubjectDetailPage;
 import eu.wuttke.nrf.ui.presenter.EditorPresenter;
 import eu.wuttke.nrf.ui.presenter.ListPresenter;
@@ -20,13 +21,23 @@ extends ListPresenter<Subject, SubjectListView> {
 	
 	@Override
 	protected void addDoubleClickHandler() {
+		SubjectListView lv = (SubjectListView)getListView();
+
 		// suppress double click -> edit entity
-		((SubjectListView)getListView()).addOpenAction(new ClickListener() {
-			private static final long serialVersionUID = 1L;
+		lv.addOpenAction(new ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				openButtonClicked();
 			}
+			private static final long serialVersionUID = 1L;
+		});
+		
+		lv.addGoAdminAction(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				goToAdminClicked();						
+			}
+			private static final long serialVersionUID = 1L;
 		});
 	}
 	
@@ -37,8 +48,12 @@ extends ListPresenter<Subject, SubjectListView> {
 		}
 	}
 	
+	protected void goToAdminClicked() {
+		getListView().getUI().getNavigator().navigateTo(AdminPage.PAGE_ID);
+	}
+	
 	@Override
-	public Collection<? extends Subject> loadEntities() {
+	public Collection<Subject> loadEntities() {
 		return Subject.findAllSubjects();
 	}
 	

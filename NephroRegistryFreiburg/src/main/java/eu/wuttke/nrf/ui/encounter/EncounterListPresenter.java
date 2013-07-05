@@ -56,7 +56,7 @@ extends ListPresenter<Encounter, EncounterListView> {
 	}
 	
 	@Override
-	public Collection<? extends Encounter> loadEntities() {
+	public Collection<Encounter> loadEntities() {
 		return Encounter.findEncountersBySubject(parentSubject).getResultList();
 	}
 	

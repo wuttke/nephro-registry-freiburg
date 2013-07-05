@@ -73,7 +73,7 @@ implements RefreshablePresenter {
 		return getListView();
 	}
 	
-	public abstract Collection<? extends E> loadEntities();
+	public abstract Collection<E> loadEntities();
 	public abstract EditorPresenter<E, ?> createEditorPresenter();
 	
 	public void refreshContent() {

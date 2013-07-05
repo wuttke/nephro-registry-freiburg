@@ -29,7 +29,7 @@ extends ListPresenter<Relation, RelationListView> {
 	}
 	
 	@Override
-	public Collection<? extends Relation> loadEntities() {
+	public Collection<Relation> loadEntities() {
 		List<Relation> siblings = new LinkedList<Relation>();
 		
 		List<Relation> family = Relation.findRelationsBySubject(subject).getResultList();
