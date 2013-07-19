@@ -5,8 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import eu.wuttke.nrf.domain.encounter.Encounter;
@@ -19,6 +22,8 @@ import eu.wuttke.nrf.domain.subject.SubjectCategory;
 @Component
 public class AttributeDao {
 
+	// TODO prevent delete categories that still have attributes
+	
 	public List<AttributeCategory> getAttributeCategories(AttributeParentType parentType) {
 		EntityManager em = AttributeCategory.entityManager();
 		TypedQuery<AttributeCategory> q = em.createQuery("FROM AttributeCategory WHERE parentType = :parentType ORDER BY sequenceNumber", 
@@ -63,6 +68,7 @@ public class AttributeDao {
 			Collection<AttributeCategory> editedSubjectCategories) {
 		List<AttributeCategory> newCategories = findNewCategories(existingSubjectCategories, editedSubjectCategories);
 		for (AttributeCategory newCategory : newCategories) {
+			logger.info("new category {} for subject {}", newCategory.getLabel(), subject.getPatientId());
 			SubjectCategory sc = new SubjectCategory();
 			sc.setCategory(newCategory);
 			sc.setSubject(subject);
@@ -82,6 +88,7 @@ public class AttributeDao {
 			Collection<AttributeCategory> editedEncounterCategories) {
 		List<AttributeCategory> newCategories = findNewCategories(existingEncounterCategories, editedEncounterCategories);
 		for (AttributeCategory newCategory : newCategories) {
+			logger.info("new category {} for encounter {}", newCategory.getLabel(), encounter.getLabel());
 			EncounterCategory ec = new EncounterCategory();
 			ec.setCategory(newCategory);
 			ec.setEncounter(encounter);
@@ -123,8 +130,34 @@ public class AttributeDao {
 			List<? extends CategoryBase> existingCategories,
 			Collection<AttributeCategory> editedCategories) {
 		List<? extends CategoryBase> deletedCategories = findDeletedCategories(existingCategories, editedCategories);
-		for (CategoryBase delete : deletedCategories)
-			SubjectCategory.entityManager().remove(delete);
+		for (CategoryBase delete : deletedCategories) {
+			logger.info("removed subject/encounter category for category {}", delete.getCategory().getLabel());
+			deleteBean(delete);
+		}
 	}
 	
+	private void deleteBean(CategoryBase delete) {
+		// problem with re-attaching detached objects
+		EntityManager em = delete.entityManager;
+		Query q = em.createQuery("FROM " + delete.getClass().getSimpleName() + " WHERE id = :id");
+		q.setParameter("id", delete.getId());
+		Object bean = q.getSingleResult();
+		em.remove(bean);
+	}
+
+	public boolean haveAttributeWithType(List<? extends AttributeBase> attributes,
+			AttributeType type) {
+		for (AttributeBase attribute : attributes)
+			if (attribute.getAttributeType() == type)
+				return true;
+		return false;
+	}
+
+	public void saveAttributes(List<? extends AttributeBase> attributes) {
+		for (AttributeBase attribute : attributes)
+			attribute.merge();
+	}
+	
+	private static Logger logger = LoggerFactory.getLogger(AttributeDao.class);
+
 }

@@ -27,6 +27,10 @@ public class AttributeType {
 	@NotNull
 	@Column(length=128)
 	private String label;
+	
+	@NotNull
+	@Column(length=80)
+	private String groupName;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)

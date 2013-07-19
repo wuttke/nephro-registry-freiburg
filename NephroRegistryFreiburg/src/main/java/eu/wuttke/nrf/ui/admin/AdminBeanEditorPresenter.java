@@ -1,27 +1,20 @@
 package eu.wuttke.nrf.ui.admin;
 
-import javax.persistence.EntityManager;
-
-import org.springframework.beans.factory.annotation.Autowire;
-import org.springframework.beans.factory.annotation.Configurable;
-
 import eu.wuttke.nrf.ui.component.OkCancelWindow;
 import eu.wuttke.nrf.ui.misc.BeanUtil;
 import eu.wuttke.nrf.ui.presenter.EditorPresenter;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
 
-@Configurable(autowire=Autowire.BY_NAME)
 public class AdminBeanEditorPresenter
 extends EditorPresenter<Object, AdminBeanEditorView> {
 
 	private Class<?> entityClass;
-	
-	@javax.persistence.PersistenceContext
-	private EntityManager entityManager;
+	private int fieldCount;
 	
 	public AdminBeanEditorPresenter(Class<?> entityClass, String title, 
 			AdminBeanField[] fields, RefreshablePresenter parent) {
 		super(new AdminBeanEditorView(title, fields), parent);
+		this.fieldCount = fields.length;
 		this.entityClass = entityClass;
 	}
 
@@ -48,14 +41,19 @@ extends EditorPresenter<Object, AdminBeanEditorView> {
 	
 	@Override
 	public void saveEntity(Object entity) {
-		entityManager.merge(entity);
+		try {
+			entityClass.getMethod("merge").invoke(entity);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
+		int height = 30 * fieldCount + 160;
 		w.show(((AdminOverviewPresenter)getParent()).getView().getUI(),
 				String.format("Edit %s", getEditorView().getTitle()),
-				"600", "400");
+				"600", Integer.toString(height));
 	}
 	
 }

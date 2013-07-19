@@ -7,6 +7,7 @@ import com.vaadin.data.Property.ValueChangeListener;
 
 import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.attribute.AttributeType;
+import eu.wuttke.nrf.domain.event.EventType;
 import eu.wuttke.nrf.ui.admin.AdminBeanField.AdminBeanFieldType;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
 
@@ -16,6 +17,7 @@ implements RefreshablePresenter {
 
 	private AdminOverviewView view = new AdminOverviewView();
 	private String[] labels;
+	private int currentListPresenter = -1;
 	
 	private AdminBeanField[] attributeCategoryFields = new AdminBeanField[] {
 			new AdminBeanField("sequenceNumber", "Sequence Number", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
@@ -28,15 +30,21 @@ implements RefreshablePresenter {
 			new AdminBeanField("shortcut", "Shortcut", AdminBeanFieldType.PLAIN_TEXT, true, "300px"),
 			new AdminBeanField("label", "Label", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
 			new AdminBeanField("dataType", "Data Type", null, true, "300px"),
-			new AdminBeanField("minimumLength", "Minimum Length", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
-			new AdminBeanField("maximumLength", "Maximum Length", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
-			new AdminBeanField("minimumValue", "Minimum Value", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
-			new AdminBeanField("maximumValue", "Maximum Value", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
-			new AdminBeanField("defaultValue", "Default Value", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
-			new AdminBeanField("enumItems", "Enumeration Items", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
+			new AdminBeanField("minimumLength", "Minimum Length", AdminBeanFieldType.PLAIN_TEXT, false, "200px"),
+			new AdminBeanField("maximumLength", "Maximum Length", AdminBeanFieldType.PLAIN_TEXT, false, "200px"),
+			new AdminBeanField("minimumValue", "Minimum Value", AdminBeanFieldType.PLAIN_TEXT, false, "200px"),
+			new AdminBeanField("maximumValue", "Maximum Value", AdminBeanFieldType.PLAIN_TEXT, false, "200px"),
+			new AdminBeanField("defaultValue", "Default Value", AdminBeanFieldType.PLAIN_TEXT, false, "400px"),
+			new AdminBeanField("enumItems", "Enumeration Items", AdminBeanFieldType.PLAIN_TEXT, false, "400px"),
 			new AdminBeanField("required", "Required", null, true, "200px"),
 			new AdminBeanField("attributeUsage", "Attribute Usage", null, true, "300px"),
 			new AdminBeanField("category", "Attribute Category", null, true, "400px")
+	};
+	
+	private AdminBeanField[] eventTypeFields = new AdminBeanField[] {
+			new AdminBeanField("code", "Code", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
+			new AdminBeanField("label", "Label", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
+			new AdminBeanField("description", "Description", AdminBeanFieldType.MULTILINE_TEXT, false, "400px"),
 	};
 	
 	private AdminBeanListPresenter[] presenters = new AdminBeanListPresenter[] {
@@ -50,7 +58,13 @@ implements RefreshablePresenter {
 					new String[]{"sequenceNumber", "shortcut", "label", "dataType"},
 					new String[]{"Sequence Number", "Shortcut", "Label", "Data Type"}, 
 					new float[]{1f,2f,3f,2f},
-					attributeTypeFields, this)
+					attributeTypeFields, this),
+
+			new AdminBeanListPresenter(EventType.class, "Event Types", 
+					new String[]{"code", "label", "description"},
+					new String[]{"Code", "Label", "Description"}, 
+					new float[]{1f,3f,2f},
+					eventTypeFields, this)
 	};
 	
 	public AdminOverviewPresenter() {
@@ -74,7 +88,9 @@ implements RefreshablePresenter {
 		else {
 			AdminBeanListPresenter presenter = presenters[idx];
 			view.displayListView(presenter.getView());
+			presenter.refreshContent();
 		}
+		currentListPresenter = idx;
 	}
 
 	public AdminOverviewView getView() {
@@ -84,6 +100,8 @@ implements RefreshablePresenter {
 	@Override
 	public void refreshContent() {
 		view.displayAdminAreas(labels);
+		if (currentListPresenter != -1)
+			presenters[currentListPresenter].refreshContent();
 	}
 	
 }

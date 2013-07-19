@@ -1,7 +1,7 @@
 package eu.wuttke.nrf.ui.tabs;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,9 +11,10 @@ import org.springframework.beans.factory.annotation.Configurable;
 
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
 
-import eu.wuttke.nrf.domain.attribute.AttributeBase;
 import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.attribute.AttributeDao;
 import eu.wuttke.nrf.domain.attribute.AttributeParentType;
@@ -31,6 +32,7 @@ public class SubjectAttributesTabPresenter
 implements RefreshablePresenter {
 
 	private AttributeOverviewView view = new AttributeOverviewView(AttributeParentType.SUBJECT);
+	private DynamicAttributeEditor attributeEditorView = null;
 	private Subject parentSubject;
 	
 	private List<AttributeCategory> availableCategories;
@@ -48,8 +50,35 @@ implements RefreshablePresenter {
 			}
 			private static final long serialVersionUID = 1L;
 		});
+		
+		view.addSaveListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				saveSubjectAttributes();
+			}
+			private static final long serialVersionUID = 1L;
+		});
 	}
 	
+	protected void saveSubjectAttributes() {
+		List<SubjectAttribute> attributes = attributeDao.getSubjectAttributesBySubject(parentSubject);
+
+		List<AttributeType> types = attributeDao.findAttributeTypesByUsageAndCategories(AttributeTypeUsage.SUBJECT, chosenCategories);
+		for (AttributeType type : types) {
+			if (!attributeDao.haveAttributeWithType(attributes, type)) {
+				SubjectAttribute attribute = new SubjectAttribute();
+				attribute.setAttributeType(type);
+				attribute.setSubject(parentSubject);
+				attributes.add(attribute);
+			}
+		}
+		
+		attributeEditorView.retrieveData(attributes);
+		
+		attributeDao.saveAttributes(attributes);
+		logger.info("saved {} attributes", attributes.size());
+	}
+
 	protected void saveChosenCategories() {
 		attributeDao.syncSubjectCategories(parentSubject, subjectCategories, view.getChosenCategories());
 		refreshContent();
@@ -91,25 +120,24 @@ implements RefreshablePresenter {
 	}
 
 	public void refreshAttributesContent() {
-		logger.info("show subject attributes: {}", parentSubject.getLastName());
+		logger.info("displaying subject attributes for subject {}", parentSubject.getLastName());
 		List<SubjectAttribute> attributes = attributeDao.getSubjectAttributesBySubject(parentSubject);
-		displayAttributes(attributes, AttributeTypeUsage.SUBJECT);
-	}
-
-	protected void displayAttributes(List<? extends AttributeBase> attributes, AttributeTypeUsage usage) {
-		List<AttributeType> types = getAttributeTypesToDisplay(usage);
 		
-		DynamicAttributeEditor dae = new DynamicAttributeEditor();
-		dae.configureEditor(types);
-		dae.displayData(attributes);
+		List<AttributeType> types = attributeDao.findAttributeTypesByUsageAndCategories(AttributeTypeUsage.SUBJECT, chosenCategories);
+		StringBuilder attributeTypesStr = new StringBuilder();
+		for (AttributeType type : types) {
+			if (attributeTypesStr.length() > 0)
+				attributeTypesStr.append(", ");
+			attributeTypesStr.append(type.getLabel());
+		}
 		
-		view.replaceAttributeEditor(dae);
-	}
-
-	protected List<AttributeType> getAttributeTypesToDisplay(AttributeTypeUsage usage) {
-		Collection<AttributeCategory> categories = view.getChosenCategories();
-		List<AttributeType> types = attributeDao.findAttributeTypesByUsageAndCategories(usage, categories);
-		return types;
+		view.setAttributesPanelTitle(MessageFormat.format("Subject Attributes: {0} ({1})", parentSubject.getLastName(), attributeTypesStr));
+		
+		attributeEditorView = new DynamicAttributeEditor();
+		attributeEditorView.configureEditor(types);
+		attributeEditorView.displayData(attributes);
+		
+		view.replaceAttributeEditor(attributeEditorView);
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.OptionGroup;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickListener;
 
 import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.attribute.AttributeParentType;
@@ -97,9 +98,17 @@ public class AttributeOverviewView extends CustomComponent {
 	public void setAttributesPanelTitle(String title) {
 		pnlAttributes.setCaption(title);
 	}
+	
+	public void setCategoriesPanelTitle(String title) {
+		panelAttributeCategories.setCaption(title);
+	}
 
 	public void addOptionGroupCategoriesValueChangeListener(ValueChangeListener listener) {
 		optionGroupCategories.addValueChangeListener(listener);
+	}
+	
+	public void addSaveListener(ClickListener listener) {
+		btnSave.addClickListener(listener);
 	}
 	
 	public void displayCategories(List<AttributeCategory> categories) {

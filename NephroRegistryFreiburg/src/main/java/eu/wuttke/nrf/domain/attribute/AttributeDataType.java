@@ -10,6 +10,9 @@ public enum AttributeDataType {
 	DOUBLE,
 	IMAGE,
 	BINARY,
-	CUSTOM;
+	CUSTOM,
+	DATE,
+	PRECISION_DATE,
+	TRISTATE_BOOLEAN
 	
 }

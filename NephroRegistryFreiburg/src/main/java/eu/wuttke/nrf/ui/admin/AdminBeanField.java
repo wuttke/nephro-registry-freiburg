@@ -20,6 +20,7 @@ import com.vaadin.data.Property;
 import com.vaadin.data.util.BeanItem;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.shared.ui.datefield.Resolution;
+import com.vaadin.ui.AbstractTextField;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.DateField;
@@ -108,6 +109,9 @@ public class AdminBeanField {
 			
 			if (required != null)
 				field.setRequired(required);
+			
+			if (field instanceof AbstractTextField)
+				((AbstractTextField)field).setNullRepresentation("");
 			
 			return field;
 		} catch (NoSuchFieldException e) {

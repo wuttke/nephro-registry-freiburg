@@ -25,7 +25,6 @@ import eu.wuttke.nrf.domain.encounter.Encounter;
 import eu.wuttke.nrf.domain.encounter.EncounterAttribute;
 import eu.wuttke.nrf.domain.misc.PrecisionDateUtil;
 import eu.wuttke.nrf.domain.subject.Subject;
-import eu.wuttke.nrf.domain.subject.SubjectAttribute;
 import eu.wuttke.nrf.ui.attribute.AttributeOverviewView;
 import eu.wuttke.nrf.ui.attribute.DynamicAttributeEditor;
 import eu.wuttke.nrf.ui.encounter.EncounterListPresenter;
@@ -95,26 +94,16 @@ implements RefreshablePresenter {
 	}
 
 	public void refreshAttributesContent() {
-		boolean showSubjectAttributes = false;//AttributeParentType parentTypeview.isShowSubjectAttributes();
-		if (showSubjectAttributes) {
-			refreshSubjectAttributesContent();
-		} else {
-			Encounter encounter = view.getEncounterListView().getSelectedEntity();
-			if (encounter != null)
-				refreshEncounterAttributesContent(encounter);
-		}
+		Encounter encounter = view.getEncounterListView().getSelectedEntity();
+		if (encounter != null)
+			refreshEncounterAttributesContent(encounter);
 	}
 	
-	public void refreshSubjectAttributesContent() {
-		logger.info("show subject attributes: {}", parentSubject.getLastName());
-		view.setAttributesPanelTitle("Subject Attributes");
-		List<SubjectAttribute> attributes = attributeDao.getSubjectAttributesBySubject(parentSubject);
-		displayAttributes(attributes, AttributeTypeUsage.SUBJECT);
-	}
-
 	public void refreshEncounterAttributesContent(Encounter encounter) {
 		logger.info("show encounter attributes: {}", encounter.getLabel());
 		view.setAttributesPanelTitle("Encounter Attributes: " + PrecisionDateUtil.formatDate(encounter.getEncounterDate(), null));
+		view.setCategoriesPanelTitle("Encounter Categories: " + PrecisionDateUtil.formatDate(encounter.getEncounterDate(), null));
+		
 		List<EncounterAttribute> attributes = attributeDao.getEncounterAttributesByEncounter(encounter);
 		displayAttributes(attributes, AttributeTypeUsage.ENCOUNTER);
 	}

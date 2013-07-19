@@ -31,6 +31,7 @@ public class AdminOverviewView extends CustomComponent {
 
 		horizontalSplitPanel.setSplitPosition(20f);
 		listSelectAdmins.setImmediate(true);
+		listSelectAdmins.setNullSelectionAllowed(false);
 	}
 	
 	public void displayAdminAreas(String[] areas) {

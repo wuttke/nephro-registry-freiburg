@@ -24,4 +24,20 @@ public class AttributeCategory {
 	@Enumerated(EnumType.STRING)
 	private AttributeParentType parentType;
 	
+	@Override
+	public String toString() {
+		return String.format("%s (%s)", label, parentType);
+	}
+    
+    @Override
+    public boolean equals(Object obj) {
+    	Long myId = getId();
+    	if (obj != null && obj instanceof AttributeCategory) {
+	    	Long otherId = ((AttributeCategory)obj).getId();
+	    	if (myId != null && otherId != null)
+	    		return myId.longValue() == otherId.longValue();
+    	}
+		return super.equals(obj);
+    }
+
 }
