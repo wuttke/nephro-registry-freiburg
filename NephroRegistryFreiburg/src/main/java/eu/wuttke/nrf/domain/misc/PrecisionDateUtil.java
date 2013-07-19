@@ -2,12 +2,15 @@ package eu.wuttke.nrf.domain.misc;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.lang3.time.DateUtils;
 
 public class PrecisionDateUtil {
 
@@ -159,8 +162,20 @@ public class PrecisionDateUtil {
             return null;
         return year;
     }
-    
+
+	public static Date parseIsoDate(String str) {
+		try {
+			return DateUtils.parseDateStrictly(str, ISO_DATE_FORMAT);
+		} catch (ParseException e) {
+			return null;
+		}
+	}
+
+	public static String formatIsoDate(Date dt) {
+		return new SimpleDateFormat(ISO_DATE_FORMAT).format(dt);
+	}
+
     private static Pattern PATTERN_MONTH_YEAR_LONG = Pattern.compile("^(\\d?\\d)[\\/\\.](\\d{4})$");
     private static Pattern PATTERN_MONTH_YEAR_SHORT = Pattern.compile("^(\\d?\\d)[\\/\\.](\\d{2})$");
-
+    private static String ISO_DATE_FORMAT = "dd.MM.yyyy";
 }

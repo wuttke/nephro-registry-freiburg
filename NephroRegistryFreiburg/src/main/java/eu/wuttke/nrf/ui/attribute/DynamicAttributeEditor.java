@@ -1,9 +1,11 @@
 package eu.wuttke.nrf.ui.attribute;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +22,9 @@ import com.vaadin.ui.TextField;
 import eu.wuttke.nrf.domain.attribute.AttributeBase;
 import eu.wuttke.nrf.domain.attribute.AttributeDataType;
 import eu.wuttke.nrf.domain.attribute.AttributeType;
+import eu.wuttke.nrf.domain.misc.PrecisionDateUtil;
+import eu.wuttke.nrf.ui.misc.StringToPrecisionDateConverter;
+import eu.wuttke.nrf.ui.misc.StringToShortDateConverter;
 
 public class DynamicAttributeEditor 
 extends FormLayout {
@@ -77,6 +82,8 @@ extends FormLayout {
 			
 		case SINGLE_LINE_TEXT:
 		case INTEGER:
+		case DATE:
+		case PRECISION_DATE:
 			TextField textField = new TextField(type.getLabel());
 			return textField;
 	
@@ -90,6 +97,14 @@ extends FormLayout {
 				comboBox.addItem(constant.trim());
 			return comboBox;
 			
+		case TRISTATE_BOOLEAN:
+			ComboBox tristateBool = new ComboBox(type.getLabel());
+			tristateBool.addItem("ja");
+			tristateBool.addItem("nein");
+			tristateBool.addItem("unbekannt");
+			tristateBool.addItem("nicht gesetzt");
+			return tristateBool;
+			
 		default:
 			logger.warn("unimplemented data type: {}; omit attribute", type.getDataType());
 			return null;
@@ -102,6 +117,11 @@ extends FormLayout {
 			textField.setNullRepresentation("");
 			if (type.getMaximumLength() != null)
 				textField.setMaxLength(type.getMaximumLength());
+			
+			if (type.getDataType() == AttributeDataType.PRECISION_DATE)
+				textField.setConverter(new StringToPrecisionDateConverter());
+			else if (type.getDataType() == AttributeDataType.DATE)
+				textField.setConverter(new StringToShortDateConverter());
 		}
 	}
 
@@ -139,7 +159,21 @@ extends FormLayout {
 		case MULTI_LINE_TEXT:
 		case ENUM:
 		case INTEGER:
+		case PRECISION_DATE:
 			return attributeValue;
+			
+		case DATE:
+			// stored as ISO
+			if (StringUtils.isBlank(attributeValue)) return "";
+			Date dt = PrecisionDateUtil.parseIsoDate(attributeValue);
+			return PrecisionDateUtil.formatDate(dt, null);
+			
+		case TRISTATE_BOOLEAN:
+			if (StringUtils.isBlank(attributeValue)) return "nicht gesetzt";
+			else if (attributeValue.equalsIgnoreCase("TRUE")) return "ja";
+			else if (attributeValue.equalsIgnoreCase("FALSE")) return "nein";
+			else if (attributeValue.equalsIgnoreCase("UNKNOWN")) return "unbekannt";
+			else return "nicht gesetzt";
 			
 		default:
 			logger.warn("unknown data type {} for value '{}'", dataType, attributeValue);
@@ -150,6 +184,27 @@ extends FormLayout {
 	private String convertFieldValueToAttributeValue(AttributeDataType dataType, Object fieldValue) {
 		if (fieldValue == null)
 			return null;
+		
+		if (fieldValue instanceof String && StringUtils.isBlank((String)fieldValue))
+			return (String)fieldValue;
+		
+		if (dataType == AttributeDataType.DATE) {
+			// store as ISO
+			Date dt = PrecisionDateUtil.parseDate((String)fieldValue);
+			if (dt == null)
+				return null;
+			return PrecisionDateUtil.formatIsoDate(dt);
+		} else if (dataType == AttributeDataType.TRISTATE_BOOLEAN) {
+			if (((String)fieldValue).equals("ja"))
+				return "TRUE";
+			else if (((String)fieldValue).equals("nein"))
+				return "FALSE";
+			else if (((String)fieldValue).equals("unbekannt"))
+				return "UNKNOWN";
+			else
+				return "";
+		}
+		
 		return fieldValue.toString();
 	}
 

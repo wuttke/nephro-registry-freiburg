@@ -1,0 +1,80 @@
+ID;Attribute Usage;Datatype;Default Value;Enum Value;Group Name;Label;Max Length;Max Value;Min Length;Min Value;Required;Sequence;Shortcut;Version;Category
+1;SUBJECT;SINGLE_LINE_TEXT;;;Adresse Patient;Strasse;;;;;;1;STRASSE;1;1
+2;SUBJECT;SINGLE_LINE_TEXT;;;Adresse Patient;PLZ;;;;;;2;PLZ;1;1
+3;SUBJECT;SINGLE_LINE_TEXT;;;Adresse Patient;Ort;;;;;;3;ORT;1;1
+4;SUBJECT;SINGLE_LINE_TEXT;;;Adresse Patient;Land;;;;;;4;LAND;1;1
+5;SUBJECT;SINGLE_LINE_TEXT;;;Adresse Patient;Telefon;;;;;;5;TELEFON;1;1
+6;SUBJECT;SINGLE_LINE_TEXT;;;Adresse Patient;E-Mail;;;;;;6;EMAIL;1;1
+7;SUBJECT;SINGLE_LINE_TEXT;;;Adresse Patient;Handy;;;;;;7;HANDY;1;1
+8;SUBJECT;SINGLE_LINE_TEXT;;;Ärzte;Nachname Hausarzt;;;;;;8;NACHNAME_HAUSARZT;1;1
+9;SUBJECT;SINGLE_LINE_TEXT;;;Ärzte;Ort Hausarzt;;;;;;9;ORT_HAUSARZT;1;1
+10;SUBJECT;SINGLE_LINE_TEXT;;;Ärzte;Nachname Nephrologe;;;;;;10;NACHNAME_NEPHROLOGE;1;1
+11;SUBJECT;SINGLE_LINE_TEXT;;;Ärzte;Ort Nephrologe;;;;;;11;ORT_NEPHROLOGE;1;1
+12;SUBJECT;BOOLEAN;;;Patient;Verstorben ja/nein;;;;;;12;VERSTORBEN_JANEIN;1;1
+13;SUBJECT;PRECISION_DATE;;;Patient;Geburtsdatum unscharf;;;;;;13;GEBURTSDATUM_UNSCHARF;1;1
+14;SUBJECT;PRECISION_DATE;;;Patient;Todesdatum;;;;;;14;TODESDATUM;1;1
+15;SUBJECT;BOOLEAN;;;Patient;Consent ja/nein;;;;;;15;CONSENT_JANEIN;1;1
+16;SUBJECT;BOOLEAN;;;Patient;Schriftlicher Consent vorliegend;;;;;;16;SCHRIFTLICHER_CONSENT_VORLIEGEND;1;1
+17;SUBJECT;DATE;;;Patient;Datum schriftlicher Consent;;;;;;17;DATUM_SCHRIFTLICHER_CONSENT;1;1
+18;SUBJECT;INTEGER;;;Organisatorisch;Bezug Neumann-Register;;;;;;18;BEZUG_NEUMANNREGISTER;1;1
+19;SUBJECT;BOOLEAN;;;Organisatorisch;Patient pseudonymisiert;;;;;;19;PATIENT_PSEUDONYMISIERT;1;1
+20;SUBJECT;BOOLEAN;;;Organisatorisch;Hausarzt soll informiert werden;;;;;;20;HAUSARZT_SOLL_INFORMIERT_WERDEN;1;1
+21;SUBJECT;BOOLEAN;;;Organisatorisch;Nephrologe soll informiert werden;;;;;;21;NEPHROLOGE_SOLL_INFORMIERT_WERDEN;1;1
+22;SUBJECT;BOOLEAN;;;Organisatorisch;Patientendaten überprüfen;;;;;;22;PATIENTENDATEN_UEBERPRUEFEN;1;1
+23;SUBJECT;BOOLEAN;;;Organisatorisch;Hausarzt prüfen;;;;;;23;HAUSARZT_PRUEFEN;1;1
+24;SUBJECT;BOOLEAN;;;Organisatorisch;Nephrologe prüfen;;;;;;24;NEPHROLOGE_PRUEFEN;1;1
+25;SUBJECT;BOOLEAN;;;Organisatorisch;Verwandtschaftsdaten überprüfen;;;;;;25;VERWANDTSCHAFTSDATEN_UEBERPRUEFEN;1;1
+26;SUBJECT;BOOLEAN;;;Organisatorisch;Labordaten überprüfen;;;;;;26;LABORDATEN_UEBERPRUEFEN;1;1
+27;SUBJECT;BOOLEAN;;;Organisatorisch;Klinische Daten überprüfen;;;;;;27;KLINISCHE_DATEN_UEBERPRUEFEN;1;1
+28;SUBJECT;BOOLEAN;;;Organisatorisch;Verlaufsdaten überprüfen;;;;;;28;VERLAUFSDATEN_UEBERPRUEFEN;1;1
+29;SUBJECT;BOOLEAN;;;Verwandschaft;Indexfall;;;;;;29;INDEXFALL;1;1
+30;SUBJECT;MULTI_LINE_TEXT;;;Verwandschaft;Verwandte (Bemerkung);;;;;;30;VERWANDTE_BEMERKUNG;1;1
+31;SUBJECT;SINGLE_LINE_TEXT;;;Verwandschaft;Familienname;;;;;;31;FAMILIENNAME;1;1
+32;SUBJECT;TRISTATE_BOOLEAN;;;Verwandschaft;Familiäre Zystennieren;;;;;;32;FAMILIAERE_ZYSTENNIEREN;1;1
+33;SUBJECT;SINGLE_LINE_TEXT;;;Verwandschaft;Betroffene Verwandte (Zahlen);;;;;;33;BETROFFENE_VERWANDTE_ZAHLEN;1;1
+34;SUBJECT;MULTI_LINE_TEXT;;;Verwandschaft;Betroffene Verwandte (Text);;;;;;34;BETROFFENE_VERWANDTE_TEXT;1;1
+35;SUBJECT;SINGLE_LINE_TEXT;;;Labor;Nummer erste Probe;;;;;;35;NUMMER_ERSTE_PROBE;1;1
+36;SUBJECT;PRECISION_DATE;;;Labor;Datum erste Probe;;;;;;36;DATUM_ERSTE_PROBE;1;1
+37;SUBJECT;SINGLE_LINE_TEXT;;;Labor;Nummer zweite Probe;;;;;;37;NUMMER_ZWEITE_PROBE;1;1
+38;SUBJECT;PRECISION_DATE;;;Labor;Datum zweite Probe;;;;;;38;DATUM_ZWEITE_PROBE;1;1
+39;SUBJECT;SINGLE_LINE_TEXT;;;Labor;Nummer dritte Probe;;;;;;39;NUMMER_DRITTE_PROBE;1;1
+40;SUBJECT;PRECISION_DATE;;;Labor;Datum dritte Probe;;;;;;40;DATUM_DRITTE_PROBE;1;1
+41;SUBJECT;TRISTATE_BOOLEAN;;;Mutation;PDK1-Mutation vorhanden;;;;;;41;PDK1MUTATION_VORHANDEN;1;1
+42;SUBJECT;TRISTATE_BOOLEAN;;;Mutation;PDK2-Mutation vorhanden;;;;;;42;PDK2MUTATION_VORHANDEN;1;1
+43;SUBJECT;TRISTATE_BOOLEAN;;;Mutation;Keine Mutation gefunden;;;;;;43;KEINE_MUTATION_GEFUNDEN;1;1
+44;SUBJECT;SINGLE_LINE_TEXT;;;Mutation;Bezeichnung Mutation;;;;;;44;BEZEICHNUNG_MUTATION;1;1
+45;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Zystenniere rechts;;;;;;45;ZYSTENNIERE_RECHTS;1;1
+46;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Zystenniere links;;;;;;46;ZYSTENNIERE_LINKS;1;1
+47;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Leberzysten;;;;;;47;LEBERZYSTEN;1;1
+48;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Symptomatische Leberzysten;;;;;;48;SYMPTOMATISCHE_LEBERZYSTEN;1;1
+49;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Zystische Lebererkrankung (PLD);;;;;;49;ZYSTISCHE_LEBERERKRANKUNG_PLD;1;1
+50;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Pankreaszysten;;;;;;50;PANKREASZYSTEN;1;1
+51;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Milzzysten;;;;;;51;MILZZYSTEN;1;1
+52;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Nierenkarzinom;;;;;;52;NIERENKARZINOM;1;1
+53;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Aneurysma;;;;;;53;ANEURYSMA;1;1
+54;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Arterielle Hypertonie;;;;;;54;ARTERIELLE_HYPERTONIE;1;1
+55;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Herzklappenfehler;;;;;;55;HERZKLAPPENFEHLER;1;1
+56;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Harnwegsinfekte;;;;;;56;HARNWEGSINFEKTE;1;1
+57;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Anämie;;;;;;57;ANAEMIE;1;1
+58;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Zerebrovaskulärer Insult;;;;;;58;ZEREBROVASKULAERER_INSULT;1;1
+59;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Sigmadivertikulose;;;;;;59;SIGMADIVERTIKULOSE;1;1
+60;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Nierentransplantation;;;;;;60;NIERENTRANSPLANTATION;1;1
+61;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Dialyse;;;;;;61;DIALYSE;1;1
+62;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Z.n. Nephrektomie links;;;;;;62;ZN_NEPHREKTOMIE_LINKS;1;1
+63;SUBJECT;TRISTATE_BOOLEAN;;;Diagnosen;Z.n. Nephrektomie rechts;;;;;;63;ZN_NEPHREKTOMIE_RECHTS;1;1
+64;SUBJECT;PRECISION_DATE;;;Verlauf;Erstmanifestation (Datum);;;;;;64;ERSTMANIFESTATION_DATUM;1;1
+65;SUBJECT;PRECISION_DATE;;;Verlauf;Arterielle Hypertonie seit (Datum);;;;;;65;ARTERIELLE_HYPERTONIE_SEIT_DATUM;1;1
+66;SUBJECT;PRECISION_DATE;;;Verlauf;Zerebrovaskulärer Insult (Datum);;;;;;66;ZEREBROVASKULAERER_INSULT_DATUM;1;1
+67;SUBJECT;PRECISION_DATE;;;Verlauf;Nephrektomie links (Datum);;;;;;67;NEPHREKTOMIE_LINKS_DATUM;1;1
+68;SUBJECT;PRECISION_DATE;;;Verlauf;Nephrektomie rechts (Datum);;;;;;68;NEPHREKTOMIE_RECHTS_DATUM;1;1
+69;SUBJECT;SINGLE_LINE_TEXT;;;Verlauf;Text Nephrektomie (Klinik/Bemerkung);;;;;;69;TEXT_NEPHREKTOMIE_KLINIKBEMERKUNG;1;1
+70;SUBJECT;PRECISION_DATE;;;Verlauf;Aneurysma-Operation (Datum);;;;;;70;ANEURYSMAOPERATION_DATUM;1;1
+71;SUBJECT;PRECISION_DATE;;;Verlauf;Herzklappen-Operation (Datum);;;;;;71;HERZKLAPPENOPERATION_DATUM;1;1
+72;SUBJECT;PRECISION_DATE;;;Verlauf;Nierentransplantation (Datum);;;;;;72;NIERENTRANSPLANTATION_DATUM;1;1
+73;SUBJECT;PRECISION_DATE;;;Verlauf;Dialysebeginn (Datum);;;;;;73;DIALYSEBEGINN_DATUM;1;1
+74;SUBJECT;DATE;;;Alte Daten;Eingabedatum;;;;;;74;EINGABEDATUM;1;1
+75;SUBJECT;DATE;;;Alte Daten;Fragebogen Ausgang;;;;;;75;FRAGEBOGEN_AUSGANG;1;1
+76;SUBJECT;DATE;;;Alte Daten;Fragebogen Eingang;;;;;;76;FRAGEBOGEN_EINGANG;1;1
+77;SUBJECT;INTEGER;;;Alte Daten;Alter bei Erfassung;;;;;;77;ALTER_BEI_ERFASSUNG;1;1
+78;SUBJECT;PRECISION_DATE;;;Alte Daten;Letzter Aufenthalt UKLFR;;;;;;78;LETZTER_AUFENTHALT_UKLFR;1;1
+79;SUBJECT;SINGLE_LINE_TEXT;;;Alte Daten;Diverse Bemerkungen;;;;;;79;DIVERSE_BEMERKUNGEN;1;1
