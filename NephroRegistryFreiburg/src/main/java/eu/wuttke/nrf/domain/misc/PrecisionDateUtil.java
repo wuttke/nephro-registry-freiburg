@@ -177,5 +177,5 @@ public class PrecisionDateUtil {
 
     private static Pattern PATTERN_MONTH_YEAR_LONG = Pattern.compile("^(\\d?\\d)[\\/\\.](\\d{4})$");
     private static Pattern PATTERN_MONTH_YEAR_SHORT = Pattern.compile("^(\\d?\\d)[\\/\\.](\\d{2})$");
-    private static String ISO_DATE_FORMAT = "dd.MM.yyyy";
+    private static String ISO_DATE_FORMAT = "yyyy-MM-dd";
 }

@@ -41,6 +41,14 @@ privileged aspect Subject_Roo_JavaBean {
         this.title = title;
     }
     
+    public String Subject.getBirthName() {
+        return this.birthName;
+    }
+    
+    public void Subject.setBirthName(String birthName) {
+        this.birthName = birthName;
+    }
+    
     public Date Subject.getBirthdate() {
         return this.birthdate;
     }

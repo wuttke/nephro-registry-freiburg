@@ -34,6 +34,14 @@ privileged aspect AttributeType_Roo_JavaBean {
         this.label = label;
     }
     
+    public String AttributeType.getGroupName() {
+        return this.groupName;
+    }
+    
+    public void AttributeType.setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+    
     public AttributeDataType AttributeType.getDataType() {
         return this.dataType;
     }

@@ -41,6 +41,10 @@ public class Subject {
     @Column(length=64)
     private String title;
 
+    //Nullable
+    @Column(length=64)
+    private String birthName;
+    
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")

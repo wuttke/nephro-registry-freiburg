@@ -157,7 +157,15 @@ public class AttributeDao {
 		for (AttributeBase attribute : attributes)
 			attribute.merge();
 	}
-	
-	private static Logger logger = LoggerFactory.getLogger(AttributeDao.class);
 
+	public boolean subjectHasAttributeWithType(Subject subject,
+			AttributeType type) {
+		Query q = SubjectAttribute.entityManager().createQuery("SELECT COUNT(*) FROM SubjectAttribute WHERE attributeType = :type AND subject = :subject");
+		q.setParameter("type", type);
+		q.setParameter("subject", subject);
+		return ((Number)q.getSingleResult()).intValue() > 0;
+	}
+
+	private static Logger logger = LoggerFactory.getLogger(AttributeDao.class);
+	
 }
