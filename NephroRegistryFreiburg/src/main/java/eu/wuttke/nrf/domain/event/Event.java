@@ -27,9 +27,11 @@ public class Event {
 	@ManyToOne
 	private EventType type;
 	
-	@NotNull
 	@Embedded
-	private PrecisionDate eventDate;
+	private PrecisionDate eventStartDate;
+	
+	@Embedded
+	private PrecisionDate eventEndDate;
 	
 	@Column(length=1000)
 	private String notes;

@@ -3,6 +3,7 @@ package eu.wuttke.nrf.domain.subject;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
@@ -17,6 +18,7 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 
+import eu.wuttke.nrf.domain.misc.PrecisionDate;
 import eu.wuttke.nrf.domain.misc.PrecisionDateUtil;
 
 @RooJavaBean
@@ -59,6 +61,13 @@ public class Subject {
     @Column(length=8)
     private String pseudonym;
 
+    @NotNull
+    private boolean death;
+    
+    //Nullable
+    @Embedded
+    private PrecisionDate dateOfDeath;
+    
 	public void generatePseudonym() {
 		pseudonym = RandomStringUtils.randomAlphanumeric(6).toUpperCase();
 	}

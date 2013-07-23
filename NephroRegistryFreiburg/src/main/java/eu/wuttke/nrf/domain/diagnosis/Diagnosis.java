@@ -2,6 +2,8 @@ package eu.wuttke.nrf.domain.diagnosis;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -32,6 +34,14 @@ public class Diagnosis {
 
     @Column(length = 2000)
     private String description;
+    
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(length=30)
+    private DiagnosisCodingSystem codingSystem;
+    
+    // Ausschluss von
+    private boolean exclusion;
 
     @Embedded
     private PrecisionDate validFrom;

@@ -1,5 +1,6 @@
 package eu.wuttke.nrf.ui.attribute;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,7 @@ import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Field;
 import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 
@@ -27,7 +29,7 @@ import eu.wuttke.nrf.ui.misc.StringToPrecisionDateConverter;
 import eu.wuttke.nrf.ui.misc.StringToShortDateConverter;
 
 public class DynamicAttributeEditor 
-extends FormLayout {
+extends TabSheet {
 	
 	// -> UI und Controller trennen
 	// -> Switches eliminieren
@@ -37,21 +39,36 @@ extends FormLayout {
 	public DynamicAttributeEditor() {
 		setWidth("100%");
 		setHeight("-1");
-		setMargin(true);
-		setSpacing(true);
 	}
 
 	public void configureEditor(List<AttributeType> types) {
 		singleAttributeEditorComponents.clear();
 		removeAllComponents();
+		
+		List<String> groupNames = new ArrayList<String>(); 
 		for (AttributeType type : types) {
-			Component component = createComponentForType(type);
-			if (component != null) {
-				if (component instanceof Field<?>)
-					configureField(type, (Field<?>)component);
-				
-				singleAttributeEditorComponents.put(type.getShortcut(), component);
-				addComponent(component);
+			if (!groupNames.contains(type.getGroupName()))
+				groupNames.add(type.getGroupName());
+		}
+		
+		for (String groupName : groupNames) {
+			FormLayout formLayout = new FormLayout();
+			formLayout.setCaption(groupName);
+			formLayout.setMargin(true);
+			formLayout.setSpacing(true);
+			addTab(formLayout);
+			
+			for (AttributeType type : types) {
+				if (type.getGroupName().equals(groupName)) {
+					Component component = createComponentForType(type);
+					if (component != null) {
+						if (component instanceof Field<?>)
+							configureField(type, (Field<?>)component);
+						
+						singleAttributeEditorComponents.put(type.getShortcut(), component);
+						formLayout.addComponent(component);
+					}
+				}
 			}
 		}
 	}
@@ -85,10 +102,13 @@ extends FormLayout {
 		case DATE:
 		case PRECISION_DATE:
 			TextField textField = new TextField(type.getLabel());
+			textField.setWidth("400px");
 			return textField;
 	
 		case MULTI_LINE_TEXT:
 			TextArea textArea = new TextArea(type.getLabel());
+			textArea.setWidth("600px");
+			textArea.setHeight("400px");
 			return textArea;
 	
 		case ENUM:

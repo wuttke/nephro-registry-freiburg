@@ -123,15 +123,8 @@ implements RefreshablePresenter {
 		logger.info("displaying subject attributes for subject {}", parentSubject.getLastName());
 		List<SubjectAttribute> attributes = attributeDao.getSubjectAttributesBySubject(parentSubject);
 		
-		List<AttributeType> types = attributeDao.findAttributeTypesByUsageAndCategories(AttributeTypeUsage.SUBJECT, chosenCategories);
-		StringBuilder attributeTypesStr = new StringBuilder();
-		for (AttributeType type : types) {
-			if (attributeTypesStr.length() > 0)
-				attributeTypesStr.append(", ");
-			attributeTypesStr.append(type.getLabel());
-		}
-		
-		view.setAttributesPanelTitle(MessageFormat.format("Subject Attributes: {0} ({1})", parentSubject.getLastName(), attributeTypesStr));
+		List<AttributeType> types = attributeDao.findAttributeTypesByUsageAndCategories(AttributeTypeUsage.SUBJECT, chosenCategories);		
+		view.setAttributesPanelTitle(MessageFormat.format("Subject Attributes: {0}", parentSubject.formatFullName()));
 		
 		attributeEditorView = new DynamicAttributeEditor();
 		attributeEditorView.configureEditor(types);

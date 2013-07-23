@@ -5,6 +5,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 import eu.wuttke.nrf.domain.diagnosis.Diagnosis;
+import eu.wuttke.nrf.domain.diagnosis.DiagnosisCodingSystem;
 import eu.wuttke.nrf.domain.diagnosis.Icd10Code;
 import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.ui.component.OkCancelWindow;
@@ -63,6 +64,7 @@ extends EditorPresenter<Diagnosis, DiagnosisEditorView> {
 	public Diagnosis createEntity() {
 		Diagnosis d = new Diagnosis();
 		d.setSubject(parentSubject);
+		d.setCodingSystem(DiagnosisCodingSystem.ICD10);
 		return d;
 	}
 	

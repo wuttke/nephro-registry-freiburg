@@ -26,12 +26,20 @@ privileged aspect Event_Roo_JavaBean {
         this.type = type;
     }
     
-    public PrecisionDate Event.getEventDate() {
-        return this.eventDate;
+    public PrecisionDate Event.getEventStartDate() {
+        return this.eventStartDate;
     }
     
-    public void Event.setEventDate(PrecisionDate eventDate) {
-        this.eventDate = eventDate;
+    public void Event.setEventStartDate(PrecisionDate eventStartDate) {
+        this.eventStartDate = eventStartDate;
+    }
+    
+    public PrecisionDate Event.getEventEndDate() {
+        return this.eventEndDate;
+    }
+    
+    public void Event.setEventEndDate(PrecisionDate eventEndDate) {
+        this.eventEndDate = eventEndDate;
     }
     
     public String Event.getNotes() {

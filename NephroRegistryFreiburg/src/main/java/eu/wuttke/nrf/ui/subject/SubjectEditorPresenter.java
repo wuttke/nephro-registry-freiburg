@@ -14,7 +14,7 @@ extends EditorPresenter<Subject, SubjectEditorView> {
 	
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(((SubjectListPresenter)getParent()).getListView().getUI(), "Edit Subject", "600", "400");	
+		w.show(((SubjectListPresenter)getParent()).getListView().getUI(), "Edit Subject", "600", "500");	
 	}
 
 	@Override

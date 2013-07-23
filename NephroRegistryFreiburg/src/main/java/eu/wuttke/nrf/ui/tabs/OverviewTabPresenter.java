@@ -6,7 +6,7 @@ import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.ui.component.FourPanelsComposite;
 import eu.wuttke.nrf.ui.diagnosis.DiagnosisListPresenter;
 import eu.wuttke.nrf.ui.encounter.EncounterListPresenter;
-import eu.wuttke.nrf.ui.medication.MedicationListPresenter;
+import eu.wuttke.nrf.ui.event.EventListPresenter;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
 import eu.wuttke.nrf.ui.subject.RelationListPresenter;
 
@@ -18,15 +18,15 @@ implements RefreshablePresenter {
 	private DiagnosisListPresenter diagnosisListPresenter = new DiagnosisListPresenter();
 	private EncounterListPresenter encounterListPresenter = new EncounterListPresenter();
 	private RelationListPresenter relationListPresenter = new RelationListPresenter();
-	private MedicationListPresenter medicationListPresenter = new MedicationListPresenter();
+	private EventListPresenter eventListPresenter = new EventListPresenter();
 	
 	private Component view;
 	
 	public OverviewTabPresenter() {
 		view = new FourPanelsComposite(
-				new String[] {"Encounters", "Family", "Diagnosis", "Medication"},
+				new String[] {"Encounters", "Family", "Diagnosis", "Events"},
 				new Component[] {encounterListPresenter.getView(), relationListPresenter.getView(), 
-						diagnosisListPresenter.getView(), medicationListPresenter.getView()}
+						diagnosisListPresenter.getView(), eventListPresenter.getView()}
 				);
 	}
 
@@ -39,12 +39,12 @@ implements RefreshablePresenter {
 		encounterListPresenter.setParentSubject(parentSubject);
 		relationListPresenter.setParentSubject(parentSubject);
 		diagnosisListPresenter.setParentSubject(parentSubject);
-		medicationListPresenter.setParentSubject(parentSubject);
+		eventListPresenter.setParentSubject(parentSubject);
 
 		encounterListPresenter.refreshContent();
 		relationListPresenter.refreshContent();
 		diagnosisListPresenter.refreshContent();
-		medicationListPresenter.refreshContent();
+		eventListPresenter.refreshContent();
 	}
 	
 	@Override

@@ -4,6 +4,7 @@
 package eu.wuttke.nrf.domain.diagnosis;
 
 import eu.wuttke.nrf.domain.diagnosis.Diagnosis;
+import eu.wuttke.nrf.domain.diagnosis.DiagnosisCodingSystem;
 import eu.wuttke.nrf.domain.misc.PrecisionDate;
 import eu.wuttke.nrf.domain.subject.Subject;
 
@@ -39,6 +40,22 @@ privileged aspect Diagnosis_Roo_JavaBean {
     
     public void Diagnosis.setDescription(String description) {
         this.description = description;
+    }
+    
+    public DiagnosisCodingSystem Diagnosis.getCodingSystem() {
+        return this.codingSystem;
+    }
+    
+    public void Diagnosis.setCodingSystem(DiagnosisCodingSystem codingSystem) {
+        this.codingSystem = codingSystem;
+    }
+    
+    public boolean Diagnosis.isExclusion() {
+        return this.exclusion;
+    }
+    
+    public void Diagnosis.setExclusion(boolean exclusion) {
+        this.exclusion = exclusion;
     }
     
     public PrecisionDate Diagnosis.getValidFrom() {

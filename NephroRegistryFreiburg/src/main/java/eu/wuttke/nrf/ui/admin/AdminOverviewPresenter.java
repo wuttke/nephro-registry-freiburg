@@ -7,6 +7,7 @@ import com.vaadin.data.Property.ValueChangeListener;
 
 import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.attribute.AttributeType;
+import eu.wuttke.nrf.domain.diagnosis.DiagnosisCode;
 import eu.wuttke.nrf.domain.event.EventType;
 import eu.wuttke.nrf.ui.admin.AdminBeanField.AdminBeanFieldType;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
@@ -46,6 +47,13 @@ implements RefreshablePresenter {
 			new AdminBeanField("label", "Label", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
 			new AdminBeanField("description", "Description", AdminBeanFieldType.MULTILINE_TEXT, false, "400px"),
 	};
+
+	private AdminBeanField[] diagnosisCodeFields = new AdminBeanField[] {
+			new AdminBeanField("code", "Code", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
+			new AdminBeanField("label", "Label", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
+			new AdminBeanField("codingSystem", "Coding System", null, true, "400px"),
+			new AdminBeanField("description", "Description", AdminBeanFieldType.MULTILINE_TEXT, false, "400px"),
+	};
 	
 	private AdminBeanListPresenter[] presenters = new AdminBeanListPresenter[] {
 			new AdminBeanListPresenter(AttributeCategory.class, "Attribute Categories",
@@ -64,7 +72,13 @@ implements RefreshablePresenter {
 					new String[]{"code", "label", "description"},
 					new String[]{"Code", "Label", "Description"}, 
 					new float[]{1f,3f,2f},
-					eventTypeFields, this)
+					eventTypeFields, this),
+
+			new AdminBeanListPresenter(DiagnosisCode.class, "Diagnosis Codes", 
+					new String[]{"code", "codingSystem", "label", "description"},
+					new String[]{"Code", "Coding System", "Label", "Description"}, 
+					new float[]{1f,2f,3f,2f},
+					diagnosisCodeFields, this)
 	};
 	
 	public AdminOverviewPresenter() {

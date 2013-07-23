@@ -11,6 +11,8 @@ import javax.persistence.TypedQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import eu.wuttke.nrf.domain.encounter.Encounter;
 import eu.wuttke.nrf.domain.encounter.EncounterAttribute;
@@ -56,6 +58,7 @@ public class AttributeDao {
 		return SubjectCategory.findSubjectCategorysBySubject(s).getResultList();
 	}
 
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void syncSubjectCategories(Subject subject,
 			List<SubjectCategory> existingSubjectCategories,
 			Collection<AttributeCategory> editedSubjectCategories) {

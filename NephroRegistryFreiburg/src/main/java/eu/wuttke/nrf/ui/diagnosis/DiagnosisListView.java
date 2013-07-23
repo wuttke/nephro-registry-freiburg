@@ -13,8 +13,8 @@ extends EditableListComposite<Diagnosis> {
 	
 	@Override
 	protected void initTable() {
-		getTable().setVisibleColumns(new String[] {"code", "label", "validFrom", "validUntil"});
-		getTable().setColumnHeaders(new String[] {"Code", "Label", "Valid From", "Valid Until"});
+		getTable().setVisibleColumns(new String[] {"code", "label", "validFrom", "validUntil", "exclusion"});
+		getTable().setColumnHeaders(new String[] {"Code", "Label", "Valid From", "Valid Until", "Negative"});
 		getTable().setConverter("validFrom", new StringToPrecisionDateConverter());
 		getTable().setConverter("validUntil", new StringToPrecisionDateConverter());
 	}

@@ -3,6 +3,7 @@
 
 package eu.wuttke.nrf.domain.subject;
 
+import eu.wuttke.nrf.domain.misc.PrecisionDate;
 import eu.wuttke.nrf.domain.subject.Gender;
 import eu.wuttke.nrf.domain.subject.Subject;
 import java.util.Date;
@@ -71,6 +72,22 @@ privileged aspect Subject_Roo_JavaBean {
     
     public void Subject.setPseudonym(String pseudonym) {
         this.pseudonym = pseudonym;
+    }
+    
+    public boolean Subject.isDeath() {
+        return this.death;
+    }
+    
+    public void Subject.setDeath(boolean death) {
+        this.death = death;
+    }
+    
+    public PrecisionDate Subject.getDateOfDeath() {
+        return this.dateOfDeath;
+    }
+    
+    public void Subject.setDateOfDeath(PrecisionDate dateOfDeath) {
+        this.dateOfDeath = dateOfDeath;
     }
     
 }
