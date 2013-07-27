@@ -127,7 +127,7 @@ public class PrecisionDateUtil {
                 return new PrecisionDate(date, precision);
 
             default:
-                throw new RuntimeException("unsupported precision: " + precision);
+                throw new RuntimeException("unsupported precision: " + precision); //$NON-NLS-1$
         }
     }
     

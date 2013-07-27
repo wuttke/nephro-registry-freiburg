@@ -397,7 +397,7 @@ public class ImportCystRegistryFile {
 	private void checkName(String lastName) {
 		String cv = findColumnValue("Name");
 		if (!cv.contains(lastName))
-			throw new RuntimeException(CystAttributeShortcut.BEZUG_NEUMANNREGISTER_ADPKD + " changed");
+			throw new RuntimeException(CystAttributeShortcut.BEZUG_NEUMANNREGISTER_ADPKD + " changed"); //$NON-NLS-1$
 	}
 
 	private void createSubjectAttributeIfNonExistent(CystAttributeShortcut attributeType, String attributeValue) {
