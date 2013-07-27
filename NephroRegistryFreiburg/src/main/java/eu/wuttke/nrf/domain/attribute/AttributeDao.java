@@ -142,7 +142,7 @@ public class AttributeDao {
 	private void deleteBean(CategoryBase delete) {
 		// problem with re-attaching detached objects
 		EntityManager em = delete.entityManager;
-		Query q = em.createQuery("FROM " + delete.getClass().getSimpleName() + " WHERE id = :id");
+		Query q = em.createQuery("FROM " + delete.getClass().getSimpleName() + " WHERE id = :id"); //$NON-NLS-1$ //$NON-NLS-2$
 		q.setParameter("id", delete.getId());
 		Object bean = q.getSingleResult();
 		em.remove(bean);
