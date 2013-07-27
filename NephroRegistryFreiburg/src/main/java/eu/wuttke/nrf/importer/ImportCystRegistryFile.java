@@ -3,6 +3,7 @@ package eu.wuttke.nrf.importer;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -276,7 +277,7 @@ public class ImportCystRegistryFile {
 		if (cv != null && cv.equals("1"))
 			createDiagnosis(code, label, null, false);
 		else if (cv != null && cv.equals("0"))
-			createDiagnosis(code, "Ausschluss " + label, null, true);
+			createDiagnosis(code, MessageFormat.format("Ausschluss {0}", label), null, true);
 		else if (cv != null && cv.length() == 4 && StringUtils.isNumeric(cv)) // Jahreszahl
 			createDiagnosis(code, label, cv, false);
 	}

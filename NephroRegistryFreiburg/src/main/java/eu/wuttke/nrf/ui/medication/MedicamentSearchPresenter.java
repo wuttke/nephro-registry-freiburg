@@ -13,7 +13,7 @@ public class MedicamentSearchPresenter extends SearchPresenter<Medicament, Medic
 	
 	@Override
 	protected Collection<Medicament> performSearch(String query) {
-		return Medicament.findMedicamentsByTradenameLike(query + "%").getResultList();
+		return Medicament.findMedicamentsByTradenameLike(query + "%").getResultList(); //$NON-NLS-1$
 	}
 
 }

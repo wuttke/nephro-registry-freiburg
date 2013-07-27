@@ -25,7 +25,7 @@ public class SubjectDetailPage extends VerticalLayout implements View {
 	public void enter(ViewChangeEvent event) {
 		String id = event.getParameters();
 		
-		logger.info("enter detail page for subject ID " + id);
+		logger.info("enter detail page for subject ID " + id); //$NON-NLS-1$
 		presenter.setSubjectId(Integer.parseInt(id));
 		presenter.refreshContent();
 	}

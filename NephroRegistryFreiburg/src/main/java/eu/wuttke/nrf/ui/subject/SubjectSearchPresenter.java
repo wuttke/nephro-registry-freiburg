@@ -17,7 +17,7 @@ public class SubjectSearchPresenter extends
 
 	@Override
 	protected Collection<Subject> performSearch(String query) {
-		query = "%" + query + "%";
+		query = "%" + query + "%"; //$NON-NLS-2$ //$NON-NLS-1$
 		EntityManager em = Subject.entityManager();
 		TypedQuery<Subject> q = em.createQuery(
 						"FROM Subject WHERE LOWER(lastName) LIKE LOWER(:query) OR patientId = :query OR LOWER(pseudonym) LIKE LOWER(:query)",

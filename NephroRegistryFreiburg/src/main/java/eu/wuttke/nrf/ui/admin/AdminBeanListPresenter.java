@@ -52,7 +52,7 @@ extends ListPresenter<Object, AdminBeanListView>{
 	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Object> loadEntities() {
-		TypedQuery<?> query = entityManager.createQuery("FROM " + entityClass.getSimpleName(), entityClass);
+		TypedQuery<?> query = entityManager.createQuery("FROM " + entityClass.getSimpleName(), entityClass); //$NON-NLS-1$
 		return (Collection<Object>)query.getResultList();
 	}
 	

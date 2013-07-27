@@ -44,7 +44,7 @@ extends ListPresenter<Subject, SubjectListView> {
 	public void openButtonClicked() {
 		Subject s = getListView().getSelectedEntity();
 		if (s != null) {
-			getListView().getUI().getNavigator().navigateTo(SubjectDetailPage.PAGE_ID + "/" + s.getId().toString());
+			getListView().getUI().getNavigator().navigateTo(SubjectDetailPage.PAGE_ID + "/" + s.getId().toString()); //$NON-NLS-1$
 		}
 	}
 	

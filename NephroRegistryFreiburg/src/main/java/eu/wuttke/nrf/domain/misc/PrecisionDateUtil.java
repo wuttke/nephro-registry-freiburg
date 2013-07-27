@@ -40,7 +40,7 @@ public class PrecisionDateUtil {
 			Calendar gc = GregorianCalendar.getInstance();
 			gc.setTime(d.getDate());
 			if (d.getPrecision() == PrecisionDateType.MONTH)
-				return (gc.get(Calendar.MONTH) + 1) + "/" + gc.get(Calendar.YEAR);
+				return (gc.get(Calendar.MONTH) + 1) + "/" + gc.get(Calendar.YEAR); //$NON-NLS-1$
 			else
 				return Integer.toString(gc.get(Calendar.YEAR));
 			

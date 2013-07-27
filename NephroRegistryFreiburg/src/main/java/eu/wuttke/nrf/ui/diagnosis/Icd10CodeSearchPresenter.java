@@ -13,7 +13,7 @@ public class Icd10CodeSearchPresenter extends SearchPresenter<Icd10Code, Icd10Co
 	
 	@Override
 	protected Collection<Icd10Code> performSearch(String query) {
-		return Icd10Code.findIcd10CodesByNameLike("%" + query + "%").getResultList();
+		return Icd10Code.findIcd10CodesByNameLike("%" + query + "%").getResultList(); //$NON-NLS-2$ //$NON-NLS-1$
 	}
 
 }

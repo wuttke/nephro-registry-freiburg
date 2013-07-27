@@ -12,7 +12,7 @@ public class BeanUtil {
 
 	public static Object getPropertyValue(Object bean, String propertyId) {
 		try {
-			Method getter = bean.getClass().getMethod("get" + propertyId.substring(0, 1).toUpperCase() + propertyId.substring(1), new Class<?>[0]);
+			Method getter = bean.getClass().getMethod("get" + propertyId.substring(0, 1).toUpperCase() + propertyId.substring(1), new Class<?>[0]); //$NON-NLS-1$
 			if (getter != null)
 				return getter.invoke(bean, (Object[])null);
 			else
@@ -24,7 +24,7 @@ public class BeanUtil {
 	
 	public static void setPropertyValue(Object bean, String propertyId, Object value) {
 		try {
-			Method setter = bean.getClass().getMethod("set" + propertyId.substring(0, 1).toUpperCase() + propertyId.substring(1), new Class<?>[]{value.getClass()});
+			Method setter = bean.getClass().getMethod("set" + propertyId.substring(0, 1).toUpperCase() + propertyId.substring(1), new Class<?>[]{value //$NON-NLS-1$.getClass()});
 			if (setter != null)
 				setter.invoke(bean, new Object[]{value});
 		} catch (Exception e) {

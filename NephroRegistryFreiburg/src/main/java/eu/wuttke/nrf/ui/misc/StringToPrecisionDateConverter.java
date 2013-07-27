@@ -21,7 +21,7 @@ implements Converter<String, PrecisionDate> {
 		
 		PrecisionDate d = PrecisionDateUtil.parsePrecisionDate(value);
 		if (d == null)
-			throw new ConversionException("unable to convert to date with precision: " + value);
+			throw new ConversionException("unable to convert to date with precision: " + value); //$NON-NLS-1$
 		
 		return d;
 	}

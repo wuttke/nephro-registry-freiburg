@@ -121,7 +121,7 @@ public class AdminBeanField {
 	
 	@SuppressWarnings("unchecked")
 	public List<Object> getEntityList(Class<?> c) {
-		Query q = entityManager.createQuery("FROM " + c.getSimpleName());
+		Query q = entityManager.createQuery("FROM " + c.getSimpleName()); //$NON-NLS-1$
 		return q.getResultList();
 	}
 	
