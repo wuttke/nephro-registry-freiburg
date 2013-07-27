@@ -24,7 +24,7 @@ public class BeanUtil {
 	
 	public static void setPropertyValue(Object bean, String propertyId, Object value) {
 		try {
-			Method setter = bean.getClass().getMethod("set" + propertyId.substring(0, 1).toUpperCase() + propertyId.substring(1), new Class<?>[]{value //$NON-NLS-1$.getClass()});
+			Method setter = bean.getClass().getMethod("set" + propertyId.substring(0, 1).toUpperCase() + propertyId.substring(1), new Class<?>[]{value.getClass()}); //$NON-NLS-1$
 			if (setter != null)
 				setter.invoke(bean, new Object[]{value});
 		} catch (Exception e) {
