@@ -3,6 +3,8 @@
 
 package eu.wuttke.nrf.export;
 
+import eu.wuttke.nrf.domain.subject.Gender;
+import eu.wuttke.nrf.export.PedFileLine;
 
 privileged aspect PedFileLine_Roo_JavaBean {
     

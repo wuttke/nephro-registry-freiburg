@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import eu.wuttke.nrf.domain.subject.PedFileLine;
 import eu.wuttke.nrf.domain.subject.Relation;
 import eu.wuttke.nrf.domain.subject.RelationRepository;
 import eu.wuttke.nrf.domain.subject.Subject;
