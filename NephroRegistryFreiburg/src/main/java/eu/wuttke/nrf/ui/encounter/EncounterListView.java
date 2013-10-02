@@ -1,7 +1,5 @@
 package eu.wuttke.nrf.ui.encounter;
 
-import com.vaadin.ui.Button.ClickListener;
-
 import eu.wuttke.nrf.domain.encounter.Encounter;
 import eu.wuttke.nrf.ui.component.EditableListComposite;
 import eu.wuttke.nrf.ui.misc.StringToShortDateConverter;
@@ -13,9 +11,11 @@ extends EditableListComposite<Encounter> {
 		super(Encounter.class);
 	}
 	
+	/*
 	public void addSyncAction(ClickListener listener) {
 		addButton("KIS Sync", listener, false);
 	}
+	*/
 	
 	@Override
 	protected void initTable() {

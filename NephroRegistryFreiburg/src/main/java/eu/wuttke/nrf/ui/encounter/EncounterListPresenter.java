@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import com.vaadin.ui.Notification;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
 
 import eu.wuttke.nrf.domain.encounter.Encounter;
 import eu.wuttke.nrf.domain.subject.Subject;
@@ -31,9 +29,10 @@ extends ListPresenter<Encounter, EncounterListView> {
 	@Override
 	protected void addViewActions() {
 		super.addViewActions();
-		addSyncAction();
+		//addSyncAction();
 	}
 	
+	/*
 	private void addSyncAction() {
 		getListView().addSyncAction(new ClickListener() {
 			private static final long serialVersionUID = 1L;
@@ -43,6 +42,7 @@ extends ListPresenter<Encounter, EncounterListView> {
 			}
 		});
 	}
+	*/
 	
 	protected void doSyncVisits() {
 		List<Encounter> visits = kisVisitImporter.mergeKisVisits(parentSubject); 

@@ -8,6 +8,7 @@ import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
@@ -15,7 +16,6 @@ import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.OptionGroup;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Button.ClickListener;
 
 import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.attribute.AttributeParentType;
@@ -119,7 +119,7 @@ public class AttributeOverviewView extends CustomComponent {
 	}
 
 	public void setSelectedCategories(List<AttributeCategory> chosenCategories) {
-		optionGroupCategories.setValue(chosenCategories); // Array?
+		optionGroupCategories.setValue(chosenCategories);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -342,6 +342,14 @@ public class AttributeOverviewView extends CustomComponent {
 		horizontalLayoutButtons.addComponent(btnCancel);
 		
 		return horizontalLayoutButtons;
+	}
+
+	public void setCategoriesPanelEnabled(boolean b) {
+		panelAttributeCategories.setEnabled(b);
+	}
+
+	public void setAttributesPanelEnabled(boolean b) {
+		pnlAttributes.setEnabled(b);
 	}
 
 }

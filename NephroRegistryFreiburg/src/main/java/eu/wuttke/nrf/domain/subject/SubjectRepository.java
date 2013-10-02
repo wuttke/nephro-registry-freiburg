@@ -11,12 +11,13 @@ import org.springframework.stereotype.Component;
 public class SubjectRepository {
 
 	public Collection<Subject> performSubjectSearch(String query) {
-		query = "%" + query + "%"; //$NON-NLS-2$ //$NON-NLS-1$
+		String queryContains = "%" + query + "%"; //$NON-NLS-2$ //$NON-NLS-1$
 		EntityManager em = Subject.entityManager();
 		TypedQuery<Subject> q = em.createQuery(
-						"FROM Subject WHERE LOWER(lastName) LIKE LOWER(:query) OR patientId = :query OR LOWER(pseudonym) LIKE LOWER(:query)",
+						"FROM Subject WHERE LOWER(lastName) LIKE LOWER(:query) OR patientId = :queryNum OR LOWER(pseudonym) LIKE LOWER(:query) OR LOWER(firstName) LIKE LOWER(:query)",
 						Subject.class);
-		q.setParameter("query", query);
+		q.setParameter("query", queryContains);
+		q.setParameter("queryNum", query);
 		return q.getResultList();
 	}
 

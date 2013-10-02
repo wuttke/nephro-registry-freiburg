@@ -43,14 +43,7 @@ implements RefreshablePresenter {
 	
 	public EncounterAttributesTabPresenter() {
 		encounterListPresenter.setListView(view.getEncounterListView());
-		/*view.addOptionGroupParentValueChangeListener(new ValueChangeListener() {
-			@Override
-			public void valueChange(ValueChangeEvent event) {
-				if (!blockValueChange)
-					refreshAttributesContent();
-			}
-			private static final long serialVersionUID = 1L;
-		});*/
+
 		view.getEncounterListView().addTableItemClickListener(new ItemClickListener() {
 			@Override
 			@SuppressWarnings("unchecked")
@@ -60,10 +53,11 @@ implements RefreshablePresenter {
 				blockValueChange = false;
 				
 				BeanItem<Encounter> item = (BeanItem<Encounter>)event.getItem();
-				refreshEncounterAttributesContent(item.getBean());
+				refreshAttributesContentWithEncounter(item.getBean());
 			}
 			private static final long serialVersionUID = 1L;
 		});
+
 		view.addOptionGroupCategoriesValueChangeListener(new ValueChangeListener() {
 			@Override
 			public void valueChange(ValueChangeEvent event) {
@@ -96,20 +90,33 @@ implements RefreshablePresenter {
 	public void refreshAttributesContent() {
 		Encounter encounter = view.getEncounterListView().getSelectedEntity();
 		if (encounter != null)
-			refreshEncounterAttributesContent(encounter);
+			refreshAttributesContentWithEncounter(encounter);
+		else
+			refreshAttributesContentNoEncounter();
 	}
 	
-	public void refreshEncounterAttributesContent(Encounter encounter) {
+	private void refreshAttributesContentNoEncounter() {
+		view.setAttributesPanelTitle("Encounter Attributes: no encounter");
+		view.setAttributesPanelEnabled(false);
+		
+		view.setCategoriesPanelTitle("Encounter Categories: no encounter");
+		view.setCategoriesPanelEnabled(false);
+	}
+
+	private void refreshAttributesContentWithEncounter(Encounter encounter) {
 		logger.info("show encounter attributes: {}", encounter.getLabel());
 		view.setAttributesPanelTitle("Encounter Attributes: " + PrecisionDateUtil.formatDate(encounter.getEncounterDate(), null));
+		view.setAttributesPanelEnabled(true);
+
 		view.setCategoriesPanelTitle("Encounter Categories: " + PrecisionDateUtil.formatDate(encounter.getEncounterDate(), null));
+		view.setCategoriesPanelEnabled(true);
 		
 		List<EncounterAttribute> attributes = attributeDao.getEncounterAttributesByEncounter(encounter);
 		displayAttributes(attributes, AttributeTypeUsage.ENCOUNTER);
 	}
 	
 	protected void displayAttributes(List<? extends AttributeBase> attributes, AttributeTypeUsage usage) {
-		List<AttributeType> types = getAttributeTypesToDisplay(usage);
+		List<AttributeType> types = getAttributeTypesToDisplay(usage); // TODO by usage and category
 		
 		DynamicAttributeEditor dae = new DynamicAttributeEditor();
 		dae.configureEditor(types);

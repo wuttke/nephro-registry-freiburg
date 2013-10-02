@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 
-import com.vaadin.event.FieldEvents.TextChangeEvent;
-import com.vaadin.event.FieldEvents.TextChangeListener;
+import com.vaadin.event.FieldEvents.BlurEvent;
+import com.vaadin.event.FieldEvents.BlurListener;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
@@ -27,10 +27,16 @@ extends ListPresenter<Subject, SubjectListView> {
 	public SubjectListPresenter() {
 		super(new SubjectListView());
 
-		getListView().provideSearchSupport(true, new TextChangeListener() {
+		getListView().provideSearchSupport(true, new ClickListener() {
 			private static final long serialVersionUID = 1L;
 			@Override
-			public void textChange(TextChangeEvent event) {
+			public void buttonClick(ClickEvent event) {
+				refreshContent();
+			}
+		}, new BlurListener() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void blur(BlurEvent event) {
 				refreshContent();
 			}
 		});

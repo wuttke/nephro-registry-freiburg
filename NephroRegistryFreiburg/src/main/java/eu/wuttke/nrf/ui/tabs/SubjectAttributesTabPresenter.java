@@ -100,14 +100,16 @@ implements RefreshablePresenter {
 		chosenCategories = new ArrayList<AttributeCategory>();
 		for (SubjectCategory category : subjectCategories) {
 			AttributeCategory cat = category.getCategory();
-			if (availableCategories.contains(cat))
-				chosenCategories.add(cat);
-			else
+			int idx = availableCategories.indexOf(cat); 
+			if (idx != -1) {
+				chosenCategories.add(availableCategories.get(idx)); // gleiche Instanz, nicht nur gleiche ID
+			} else
 				logger.warn("found chosen category {} that is not available (anymore) for subject {}", cat.getId(), parentSubject.getId());
 		}
 
 		blockValueChange = true;
 		view.setSelectedCategories(chosenCategories);
+		logger.info("displaying categories: {}", chosenCategories);
 		blockValueChange = false;
 	}
 
@@ -131,6 +133,8 @@ implements RefreshablePresenter {
 		attributeEditorView.displayData(attributes);
 		
 		view.replaceAttributeEditor(attributeEditorView);
+		
+		logger.info("replaced right pane; view categories now: {}", view.getChosenCategories());
 	}
 
 	@Override
