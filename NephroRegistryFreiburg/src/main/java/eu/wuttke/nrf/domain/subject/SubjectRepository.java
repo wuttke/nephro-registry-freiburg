@@ -20,5 +20,5 @@ public class SubjectRepository {
 		q.setParameter("queryNum", query);
 		return q.getResultList();
 	}
-
+	
 }

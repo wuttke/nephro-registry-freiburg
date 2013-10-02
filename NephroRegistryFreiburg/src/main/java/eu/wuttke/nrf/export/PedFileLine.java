@@ -1,4 +1,4 @@
-package eu.wuttke.nrf.domain.subject;
+package eu.wuttke.nrf.export;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.roo.addon.javabean.RooJavaBean;

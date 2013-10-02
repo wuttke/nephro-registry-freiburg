@@ -31,5 +31,11 @@ public class Relation {
     @Transient
     private SubjectRelationRole role;
     
+    @Override
+    public boolean equals(Object obj) {
+    	assert obj instanceof Relation;
+    	return ((Relation)obj).getSubject().getId().longValue() ==
+    			getSubject().getId().longValue();
+    }
     
 }
