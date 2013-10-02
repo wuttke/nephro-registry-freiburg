@@ -30,6 +30,10 @@ extends EditableListComposite<Subject> {
 	public void addGoAdminAction(final ClickListener listener) {
 		addButton("Admin", listener, false);
 	}
+	
+	public void searchFieldChanged() {
+		
+	}
 
 	@Override
 	protected void initTable() {
