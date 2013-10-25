@@ -30,6 +30,7 @@ implements RefreshablePresenter {
 			new AdminBeanField("sequenceNumber", "Sequence Number", AdminBeanFieldType.PLAIN_TEXT, true, "200px"), 
 			new AdminBeanField("shortcut", "Shortcut", AdminBeanFieldType.PLAIN_TEXT, true, "300px"),
 			new AdminBeanField("label", "Label", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
+			new AdminBeanField("groupName", "Group Name", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
 			new AdminBeanField("dataType", "Data Type", null, true, "300px"),
 			new AdminBeanField("minimumLength", "Minimum Length", AdminBeanFieldType.PLAIN_TEXT, false, "200px"),
 			new AdminBeanField("maximumLength", "Maximum Length", AdminBeanFieldType.PLAIN_TEXT, false, "200px"),

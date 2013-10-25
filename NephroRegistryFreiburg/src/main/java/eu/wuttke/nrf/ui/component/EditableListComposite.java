@@ -131,7 +131,7 @@ implements ListView<E> {
 		//table.setColumnHeaders(columnHeaders);
 	}
 	
-	public void addButton(String caption, ClickListener listener, boolean isValueButton) {
+	public Button addButton(String caption, ClickListener listener, boolean isValueButton) {
 		if (horizontalLayoutFooter.getComponentCount() == 3) {
 			// add separator
 			Label separator = new Label("|");
@@ -151,6 +151,8 @@ implements ListView<E> {
 			button.setEnabled(table.getValue() != null);
 			valueButtons.add(button);
 		}
+		
+		return button;
 	}
 
 	@Override
