@@ -129,9 +129,9 @@ implements RefreshablePresenter {
 		refreshSelectedTab();
 
 		if (StringUtils.isNotEmpty(subject.getBirthName()))
-			view.setTitle(MessageFormat.format("{0}, geb. {2} ({1})", subject.formatFullName(), subject.getBirthdate(), subject.getBirthName()));
+			view.setTitle(MessageFormat.format("{0}, geb. {2} ({1,date,short})", subject.formatFullName(), subject.getBirthdate(), subject.getBirthName()));
 		else
-			view.setTitle(MessageFormat.format("{0} ({1})", subject.formatFullName(), subject.getBirthdate()));	
+			view.setTitle(MessageFormat.format("{0} ({1,date,short})", subject.formatFullName(), subject.getBirthdate()));	
 	}
 
 	private void refreshSelectedTab() {
