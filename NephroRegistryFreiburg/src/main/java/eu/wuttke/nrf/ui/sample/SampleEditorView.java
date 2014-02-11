@@ -118,6 +118,8 @@ implements EditorView<Sample> {
 		tfSampleId.setWidth("100.0%");
 		tfSampleId.setHeight("-1px");
 		tfSampleId.setRequired(true);
+		tfSampleId.setNullSettingAllowed(true);
+		tfSampleId.setNullRepresentation("");
 		formLayout.addComponent(tfSampleId);
 		
 		// cbType
@@ -135,6 +137,8 @@ implements EditorView<Sample> {
 		tfSampleDate.setImmediate(false);
 		tfSampleDate.setWidth("-1px");
 		tfSampleDate.setHeight("-1px");
+		tfSampleDate.setNullRepresentation("");
+		tfSampleDate.setNullSettingAllowed(true);
 		formLayout.addComponent(tfSampleDate);
 		
 		// tfAmount
@@ -143,6 +147,8 @@ implements EditorView<Sample> {
 		tfAmount.setImmediate(false);
 		tfAmount.setWidth("100.0%");
 		tfAmount.setHeight("-1px");
+		tfAmount.setNullSettingAllowed(true);
+		tfAmount.setNullRepresentation("");
 		formLayout.addComponent(tfAmount);
 		
 		// taComment
@@ -151,6 +157,8 @@ implements EditorView<Sample> {
 		taComment.setImmediate(false);
 		taComment.setWidth("-1px");
 		taComment.setHeight("-1px");
+		taComment.setNullSettingAllowed(true);
+		taComment.setNullRepresentation("");
 		formLayout.addComponent(taComment);
 		
 		return formLayout;
