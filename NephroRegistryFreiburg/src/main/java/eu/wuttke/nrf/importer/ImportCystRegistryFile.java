@@ -48,6 +48,7 @@ public class ImportCystRegistryFile {
 	throws IOException {
 		ClassPathXmlApplicationContext app = new ClassPathXmlApplicationContext("META-INF/spring/applicationContext.xml");
 		app.getBean(ImportCystRegistryFile.class).doImport("C:\\Zysten.csv");
+		app.close();
 	}
 	
 	private List<String> header;

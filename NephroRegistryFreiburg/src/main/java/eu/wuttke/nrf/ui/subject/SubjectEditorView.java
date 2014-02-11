@@ -183,12 +183,11 @@ implements EditorView<Subject> {
 		tfBirthName.setImmediate(false);
 		tfBirthName.setWidth("100.0%");
 		tfBirthName.setHeight("-1px");
-		tfBirthName.setNullRepresentation("");
 		formLayout.addComponent(tfBirthName);
 		
 		// cbDeath
 		cbDeath = new CheckBox();
-		cbDeath.setCaption("Verstorben");
+		cbDeath.setCaption("Deceased");
 		cbDeath.setImmediate(false);
 		cbDeath.setWidth("-1px");
 		cbDeath.setHeight("-1px");
@@ -196,11 +195,10 @@ implements EditorView<Subject> {
 		
 		// tfDateOfDeath
 		tfDateOfDeath = new TextField();
-		tfDateOfDeath.setCaption("Todesdatum");
+		tfDateOfDeath.setCaption("Date of Death");
 		tfDateOfDeath.setImmediate(true);
 		tfDateOfDeath.setWidth("-1px");
 		tfDateOfDeath.setHeight("-1px");
-		tfDateOfDeath.setNullRepresentation("");
 		formLayout.addComponent(tfDateOfDeath);
 		
 		return formLayout;

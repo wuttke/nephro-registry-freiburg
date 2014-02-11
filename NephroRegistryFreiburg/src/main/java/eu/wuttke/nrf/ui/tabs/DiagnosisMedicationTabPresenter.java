@@ -3,15 +3,24 @@ package eu.wuttke.nrf.ui.tabs;
 import com.vaadin.ui.Component;
 
 import eu.wuttke.nrf.domain.subject.Subject;
+import eu.wuttke.nrf.ui.component.TwoPanelsComposite;
+import eu.wuttke.nrf.ui.diagnosis.DiagnosisListPresenter;
 import eu.wuttke.nrf.ui.medication.MedicationListPresenter;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
 
-public class MedicationTabPresenter implements RefreshablePresenter {
+public class DiagnosisMedicationTabPresenter implements RefreshablePresenter {
 
 	private Subject parentSubject;
+	private DiagnosisListPresenter diagnosisListPresenter = new DiagnosisListPresenter();
 	private MedicationListPresenter medicationListPresenter = new MedicationListPresenter();
 	
-	public MedicationTabPresenter() {
+	private Component view;
+
+	public DiagnosisMedicationTabPresenter() {
+		view = new TwoPanelsComposite(
+				"Diagnoses", diagnosisListPresenter.getView(), 
+				"Medication", medicationListPresenter.getView()
+				);
 	}
 
 	public void setParentSubject(Subject parentSubject) {
@@ -21,12 +30,14 @@ public class MedicationTabPresenter implements RefreshablePresenter {
 	@Override
 	public void refreshContent() {
 		medicationListPresenter.setParentSubject(parentSubject);
+		diagnosisListPresenter.setParentSubject(parentSubject);
 		medicationListPresenter.refreshContent();
+		diagnosisListPresenter.refreshContent();
 	}
 
 	@Override
 	public Component getView() {
-		return medicationListPresenter.getView();
+		return view;
 	}
 
 }
