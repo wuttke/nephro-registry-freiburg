@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -19,13 +18,12 @@ import eu.wuttke.nrf.domain.subject.Subject;
 @RooJavaBean
 @RooToString
 @Audited
-@RooJpaActiveRecord(finders = { "findSamplesBySubjectEquals" })
+@RooJpaActiveRecord(finders = { "findSamplesBySubject" })
 public class Sample {
 
-	@Id
 	@Column(length=40)
 	@NotNull
-	private String id;
+	private String sampleId;
 	
 	@ManyToOne
 	private Subject subject;
@@ -37,6 +35,8 @@ public class Sample {
     private PrecisionDate sampleDate;
 	
 	private Integer amount;
+	private Double opticalDensity;
+	private Double concentration;
 	
 	@Column(length=2000)
 	private String comment;

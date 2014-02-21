@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Sample_Roo_Finder {
     
-    public static TypedQuery<Sample> Sample.findSamplesBySubjectEquals(Subject subject) {
+    public static TypedQuery<Sample> Sample.findSamplesBySubject(Subject subject) {
         if (subject == null) throw new IllegalArgumentException("The subject argument is required");
         EntityManager em = Sample.entityManager();
         TypedQuery<Sample> q = em.createQuery("SELECT o FROM Sample AS o WHERE o.subject = :subject", Sample.class);

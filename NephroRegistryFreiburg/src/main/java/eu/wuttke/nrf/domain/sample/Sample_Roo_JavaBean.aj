@@ -10,12 +10,12 @@ import eu.wuttke.nrf.domain.subject.Subject;
 
 privileged aspect Sample_Roo_JavaBean {
     
-    public String Sample.getId() {
-        return this.id;
+    public String Sample.getSampleId() {
+        return this.sampleId;
     }
     
-    public void Sample.setId(String id) {
-        this.id = id;
+    public void Sample.setSampleId(String sampleId) {
+        this.sampleId = sampleId;
     }
     
     public Subject Sample.getSubject() {
@@ -48,6 +48,22 @@ privileged aspect Sample_Roo_JavaBean {
     
     public void Sample.setAmount(Integer amount) {
         this.amount = amount;
+    }
+    
+    public Double Sample.getOpticalDensity() {
+        return this.opticalDensity;
+    }
+    
+    public void Sample.setOpticalDensity(Double opticalDensity) {
+        this.opticalDensity = opticalDensity;
+    }
+    
+    public Double Sample.getConcentration() {
+        return this.concentration;
+    }
+    
+    public void Sample.setConcentration(Double concentration) {
+        this.concentration = concentration;
     }
     
     public String Sample.getComment() {

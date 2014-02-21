@@ -10,7 +10,7 @@ public enum SampleType {
 	BLOOD_HEPARINE,
 	
 	URINE,
-	
+	TISSUE,
 	OTHER
 	 
 }

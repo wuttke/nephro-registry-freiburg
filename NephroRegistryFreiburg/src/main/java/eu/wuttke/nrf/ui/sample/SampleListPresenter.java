@@ -22,7 +22,7 @@ extends ListPresenter<Sample, SampleListView> {
 	
 	@Override
 	public Collection<Sample> loadEntities() {
-		return Sample.findSamplesBySubjectEquals(subject).getResultList();
+		return Sample.findSamplesBySubject(subject).getResultList();
 	}
 	
 	@Override

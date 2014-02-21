@@ -28,8 +28,8 @@ privileged aspect Sample_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM Sample o", Sample.class).getResultList();
     }
     
-    public static Sample Sample.findSample(String id) {
-        if (id == null || id.length() == 0) return null;
+    public static Sample Sample.findSample(Long id) {
+        if (id == null) return null;
         return entityManager().find(Sample.class, id);
     }
     
