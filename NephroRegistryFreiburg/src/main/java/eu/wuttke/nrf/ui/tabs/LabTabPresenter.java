@@ -9,6 +9,7 @@ import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
 public class LabTabPresenter implements RefreshablePresenter {
 
 		private Component view;
+		@SuppressWarnings("unused")
 		private Subject parentSubject;
 
 		public LabTabPresenter() {
@@ -21,7 +22,7 @@ public class LabTabPresenter implements RefreshablePresenter {
 		
 		@Override
 		public void refreshContent() {
-			
+			// TODO implement and use parentSubject
 		}
 
 		@Override

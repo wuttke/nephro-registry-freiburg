@@ -1,7 +1,9 @@
-- DONE rename Visit -> Encounter
 - Patient Associates / KIS source?
 - Events
   - Event Type: Enum or Lookup?`
     Onset of Disease/Dialysis/Transplant/Death
 - Encounter / Categories vs. Subject Categories
 - Relation Paths (at least grand-parents / grand-children)
+
+
+- User Management!

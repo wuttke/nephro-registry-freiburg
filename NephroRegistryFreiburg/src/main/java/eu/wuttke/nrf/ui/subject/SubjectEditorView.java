@@ -131,6 +131,7 @@ implements EditorView<Subject> {
 		tfSubjectId.setWidth("100.0%");
 		tfSubjectId.setHeight("-1px");
 		tfSubjectId.setRequired(true);
+		tfSubjectId.setNullRepresentation("");
 		formLayout.addComponent(tfSubjectId);
 		
 		// tfLastName
@@ -140,6 +141,7 @@ implements EditorView<Subject> {
 		tfLastName.setWidth("100.0%");
 		tfLastName.setHeight("-1px");
 		tfLastName.setRequired(true);
+		tfLastName.setNullRepresentation("");
 		formLayout.addComponent(tfLastName);
 		
 		// tfFirstName
@@ -149,6 +151,7 @@ implements EditorView<Subject> {
 		tfFirstName.setWidth("100.0%");
 		tfFirstName.setHeight("-1px");
 		tfFirstName.setRequired(true);
+		tfFirstName.setNullRepresentation("");
 		formLayout.addComponent(tfFirstName);
 		
 		// tfTitle
@@ -157,6 +160,8 @@ implements EditorView<Subject> {
 		tfTitle.setImmediate(false);
 		tfTitle.setWidth("100.0%");
 		tfTitle.setHeight("-1px");
+		tfTitle.setNullRepresentation("");
+		tfTitle.setNullSettingAllowed(true);
 		formLayout.addComponent(tfTitle);
 		
 		// pdfBirthdate
@@ -184,11 +189,12 @@ implements EditorView<Subject> {
 		tfBirthName.setWidth("100.0%");
 		tfBirthName.setHeight("-1px");
 		tfBirthName.setNullRepresentation("");
+		tfBirthName.setNullSettingAllowed(true);
 		formLayout.addComponent(tfBirthName);
 		
 		// cbDeath
 		cbDeath = new CheckBox();
-		cbDeath.setCaption("Verstorben");
+		cbDeath.setCaption("Deceased");
 		cbDeath.setImmediate(false);
 		cbDeath.setWidth("-1px");
 		cbDeath.setHeight("-1px");
@@ -196,11 +202,11 @@ implements EditorView<Subject> {
 		
 		// tfDateOfDeath
 		tfDateOfDeath = new TextField();
-		tfDateOfDeath.setCaption("Todesdatum");
+		tfDateOfDeath.setCaption("Date of Death");
 		tfDateOfDeath.setImmediate(true);
 		tfDateOfDeath.setWidth("-1px");
 		tfDateOfDeath.setHeight("-1px");
-		tfDateOfDeath.setNullRepresentation("");
+		tfDateOfDeath.setNullSettingAllowed(true);
 		formLayout.addComponent(tfDateOfDeath);
 		
 		return formLayout;

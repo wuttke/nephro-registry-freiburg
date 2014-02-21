@@ -23,7 +23,7 @@ import eu.wuttke.nrf.ui.page.SubjectListPage;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
 import eu.wuttke.nrf.ui.tabs.EncounterAttributesTabPresenter;
 import eu.wuttke.nrf.ui.tabs.LabTabPresenter;
-import eu.wuttke.nrf.ui.tabs.MedicationTabPresenter;
+import eu.wuttke.nrf.ui.tabs.DiagnosisMedicationTabPresenter;
 import eu.wuttke.nrf.ui.tabs.OverviewTabPresenter;
 import eu.wuttke.nrf.ui.tabs.SubjectAttributesTabPresenter;
 
@@ -37,7 +37,7 @@ implements RefreshablePresenter {
 	private List<RefreshablePresenter> presenters = new ArrayList<RefreshablePresenter>();
 	private OverviewTabPresenter subjectOverviewTabPresenter = new OverviewTabPresenter();
 	private LabTabPresenter labTabPresenter = new LabTabPresenter();
-	private MedicationTabPresenter medicationTabPresenter = new MedicationTabPresenter();
+	private DiagnosisMedicationTabPresenter diagnosisMedicationTabPresenter = new DiagnosisMedicationTabPresenter();
 	private SubjectAttributesTabPresenter subjectAttributesTabPresenter = new SubjectAttributesTabPresenter();
 	private EncounterAttributesTabPresenter encounterAttributesTabPresenter = new EncounterAttributesTabPresenter();
 	
@@ -78,7 +78,7 @@ implements RefreshablePresenter {
 
 		addTabPresenter("Overview", subjectOverviewTabPresenter);
 		addTabPresenter("Lab Values", labTabPresenter);
-		addTabPresenter("Medication", medicationTabPresenter);
+		addTabPresenter("Diagnoses & Medication", diagnosisMedicationTabPresenter);
 		addTabPresenter("Subject Attributes", subjectAttributesTabPresenter);
 		addTabPresenter("Encounter Attributes", encounterAttributesTabPresenter);
 	}
@@ -116,7 +116,7 @@ implements RefreshablePresenter {
 	protected void propagateSubject() {
 		subjectOverviewTabPresenter.setParentSubject(subject);
 		labTabPresenter.setParentSubject(subject);
-		medicationTabPresenter.setParentSubject(subject);
+		diagnosisMedicationTabPresenter.setParentSubject(subject);
 		subjectAttributesTabPresenter.setParentSubject(subject);
 		encounterAttributesTabPresenter.setParentSubject(subject);
 	}
@@ -129,9 +129,9 @@ implements RefreshablePresenter {
 		refreshSelectedTab();
 
 		if (StringUtils.isNotEmpty(subject.getBirthName()))
-			view.setTitle(MessageFormat.format("{0}, geb. {2} ({1})", subject.formatFullName(), subject.getBirthdate(), subject.getBirthName()));
+			view.setTitle(MessageFormat.format("{0}, geb. {2} ({1,date,short})", subject.formatFullName(), subject.getBirthdate(), subject.getBirthName()));
 		else
-			view.setTitle(MessageFormat.format("{0} ({1})", subject.formatFullName(), subject.getBirthdate()));	
+			view.setTitle(MessageFormat.format("{0} ({1,date,short})", subject.formatFullName(), subject.getBirthdate()));	
 	}
 
 	private void refreshSelectedTab() {
