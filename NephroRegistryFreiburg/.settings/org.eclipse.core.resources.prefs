@@ -1,5 +1,4 @@
 eclipse.preferences.version=1
 encoding//misc/zystennieren-attributes.csv=ISO-8859-1
 encoding//src/main/resources=UTF-8
-encoding//src/main/resources/db/migration/V3__Static_Data.sql=ISO-8859-1
 encoding/<project>=UTF-8

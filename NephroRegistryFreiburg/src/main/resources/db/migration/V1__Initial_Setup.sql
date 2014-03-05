@@ -27,7 +27,7 @@ CREATE TABLE `AtcCode` (
   `ddd` varchar(200) DEFAULT NULL,
   `name` varchar(200) NOT NULL,
   PRIMARY KEY (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `AttributeCategory` (
   `sequencenumber` int(11) NOT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,7 +82,7 @@ CREATE TABLE `AttributeCategory_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FKF889806BE9152785` (`REV`),
   CONSTRAINT `FKF889806BE9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +121,7 @@ CREATE TABLE `AttributeType` (
   PRIMARY KEY (`id`),
   KEY `FKD9402FD676B5471E` (`category_id`),
   CONSTRAINT `FKD9402FD676B5471E` FOREIGN KEY (`category_id`) REFERENCES `AttributeCategory` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +161,7 @@ CREATE TABLE `AttributeType_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FKDB8482A7E9152785` (`REV`),
   CONSTRAINT `FKDB8482A7E9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `Diagnosis` (
   PRIMARY KEY (`id`),
   KEY `FKBECACAD1B11E28B2` (`subject_id`),
   CONSTRAINT `FKBECACAD1B11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +223,7 @@ CREATE TABLE `DiagnosisCode` (
   `label` varchar(200) NOT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -259,7 +259,7 @@ CREATE TABLE `Diagnosis_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK74032822E9152785` (`REV`),
   CONSTRAINT `FK74032822E9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -289,7 +289,7 @@ CREATE TABLE `Encounter` (
   PRIMARY KEY (`id`),
   KEY `FKD24A8913B11E28B2` (`subject_id`),
   CONSTRAINT `FKD24A8913B11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,7 +319,7 @@ CREATE TABLE `EncounterAttribute` (
   KEY `FK82CC6C99968C219` (`encounter_id`),
   CONSTRAINT `FK82CC6C99968C219` FOREIGN KEY (`encounter_id`) REFERENCES `Encounter` (`id`),
   CONSTRAINT `FK82CC6C987906D82` FOREIGN KEY (`attributetype_id`) REFERENCES `AttributeType` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +346,7 @@ CREATE TABLE `EncounterAttribute_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK396681AE9152785` (`REV`),
   CONSTRAINT `FK396681AE9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -375,7 +375,7 @@ CREATE TABLE `EncounterCategory` (
   KEY `FK8FA2E7319968C219` (`encounter_id`),
   CONSTRAINT `FK8FA2E7319968C219` FOREIGN KEY (`encounter_id`) REFERENCES `Encounter` (`id`),
   CONSTRAINT `FK8FA2E73176B5471E` FOREIGN KEY (`category_id`) REFERENCES `AttributeCategory` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -402,7 +402,7 @@ CREATE TABLE `EncounterCategory_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FKA8B61482E9152785` (`REV`),
   CONSTRAINT `FKA8B61482E9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -433,7 +433,7 @@ CREATE TABLE `Encounter_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK2915F564E9152785` (`REV`),
   CONSTRAINT `FK2915F564E9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -467,7 +467,7 @@ CREATE TABLE `Event` (
   KEY `FK403827A54CC2C1A` (`type_id`),
   CONSTRAINT `FK403827A54CC2C1A` FOREIGN KEY (`type_id`) REFERENCES `EventType` (`id`),
   CONSTRAINT `FK403827AB11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -493,7 +493,7 @@ CREATE TABLE `EventType` (
   `label` varchar(200) NOT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -522,7 +522,7 @@ CREATE TABLE `EventType_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK958D5CA5E9152785` (`REV`),
   CONSTRAINT `FK958D5CA5E9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -555,7 +555,7 @@ CREATE TABLE `Event_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK7955E34BE9152785` (`REV`),
   CONSTRAINT `FK7955E34BE9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -579,7 +579,7 @@ CREATE TABLE `Icd10Code` (
   `name` varchar(200) NOT NULL,
   `trimmedcode` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -605,7 +605,7 @@ CREATE TABLE `Medicament` (
   `pharmaceuticalform` varchar(20) DEFAULT NULL,
   `tradename` varchar(800) DEFAULT NULL,
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -641,7 +641,7 @@ CREATE TABLE `Medication` (
   PRIMARY KEY (`id`),
   KEY `FKEDF7A6EFB11E28B2` (`subject_id`),
   CONSTRAINT `FKEDF7A6EFB11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -678,7 +678,7 @@ CREATE TABLE `Medication_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK4B08C540E9152785` (`REV`),
   CONSTRAINT `FK4B08C540E9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -701,7 +701,7 @@ CREATE TABLE `PharmaceuticalForm` (
   `shortcut` varchar(40) NOT NULL,
   `name` varchar(200) NOT NULL,
   PRIMARY KEY (`shortcut`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -734,7 +734,7 @@ CREATE TABLE `Relation` (
   CONSTRAINT `FKE2CE5E1CF274CA82` FOREIGN KEY (`father_id`) REFERENCES `Subject` (`id`),
   CONSTRAINT `FKE2CE5E1CAEA447BB` FOREIGN KEY (`mother_id`) REFERENCES `Subject` (`id`),
   CONSTRAINT `FKE2CE5E1CB11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -763,7 +763,7 @@ CREATE TABLE `Relation_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FKFA261DEDE9152785` (`REV`),
   CONSTRAINT `FKFA261DEDE9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -794,7 +794,7 @@ CREATE TABLE `Result` (
   PRIMARY KEY (`id`),
   KEY `FK91B2B43DB11E28B2` (`subject_id`),
   CONSTRAINT `FK91B2B43DB11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -829,7 +829,7 @@ CREATE TABLE `ResultItem` (
   KEY `FK54B73CF04673D385` (`result_id`),
   CONSTRAINT `FK54B73CF04673D385` FOREIGN KEY (`result_id`) REFERENCES `Result` (`id`),
   CONSTRAINT `FK54B73CF0B11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -863,7 +863,7 @@ CREATE TABLE `ResultItem_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK7C1B72C1E9152785` (`REV`),
   CONSTRAINT `FK7C1B72C1E9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -895,7 +895,7 @@ CREATE TABLE `Result_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK54C07B8EE9152785` (`REV`),
   CONSTRAINT `FK54C07B8EE9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -919,7 +919,7 @@ CREATE TABLE `RevisionInfo` (
   `timestamp` bigint(20) NOT NULL,
   `username` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -953,7 +953,7 @@ CREATE TABLE `Sample` (
   PRIMARY KEY (`id`),
   KEY `FK932C61CAB11E28B2` (`subject_id`),
   CONSTRAINT `FK932C61CAB11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -988,7 +988,7 @@ CREATE TABLE `Sample_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK7F5E9A9BE9152785` (`REV`),
   CONSTRAINT `FK7F5E9A9BE9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1022,7 +1022,7 @@ CREATE TABLE `Subject` (
   `title` varchar(64) NOT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1052,7 +1052,7 @@ CREATE TABLE `SubjectAttribute` (
   KEY `FK33C2CAF0B11E28B2` (`subject_id`),
   CONSTRAINT `FK33C2CAF0B11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`),
   CONSTRAINT `FK33C2CAF087906D82` FOREIGN KEY (`attributetype_id`) REFERENCES `AttributeType` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1079,7 +1079,7 @@ CREATE TABLE `SubjectAttribute_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FKAEB000C1E9152785` (`REV`),
   CONSTRAINT `FKAEB000C1E9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1108,7 +1108,7 @@ CREATE TABLE `SubjectCategory` (
   KEY `FK46B8422A76B5471E` (`category_id`),
   CONSTRAINT `FK46B8422A76B5471E` FOREIGN KEY (`category_id`) REFERENCES `AttributeCategory` (`id`),
   CONSTRAINT `FK46B8422AB11E28B2` FOREIGN KEY (`subject_id`) REFERENCES `Subject` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1135,7 +1135,7 @@ CREATE TABLE `SubjectCategory_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FKCF434AFBE9152785` (`REV`),
   CONSTRAINT `FKCF434AFBE9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1172,7 +1172,7 @@ CREATE TABLE `Subject_AUD` (
   PRIMARY KEY (`id`,`REV`),
   KEY `FK3F79B4DDE9152785` (`REV`),
   CONSTRAINT `FK3F79B4DDE9152785` FOREIGN KEY (`REV`) REFERENCES `RevisionInfo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1200,7 +1200,7 @@ CREATE TABLE `UserInfo` (
   `title` varchar(40) NOT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1224,7 +1224,7 @@ CREATE TABLE `UserRole` (
   `role` varchar(40) NOT NULL,
   KEY `FKF3F76701BF3A42AC` (`username`),
   CONSTRAINT `FKF3F76701BF3A42AC` FOREIGN KEY (`username`) REFERENCES `UserInfo` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

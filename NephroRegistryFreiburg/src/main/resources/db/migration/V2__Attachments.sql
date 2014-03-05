@@ -4,7 +4,7 @@
         shortcut varchar(128),
         version integer,
         primary key (id)
-    ) ENGINE=InnoDB;
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
     create table AttachmentType_AUD (
         id bigint not null,
@@ -13,7 +13,7 @@
         label varchar(200),
         shortcut varchar(128),
         primary key (id, REV)
-    ) ENGINE=InnoDB;
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
     create table BinaryAttachment (
         id bigint not null auto_increment,
@@ -25,7 +25,7 @@
         attachmenttype_id bigint,
         subject_id bigint,
         primary key (id)
-    ) ENGINE=InnoDB;
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
     
     create table BinaryAttachment_AUD (
@@ -39,7 +39,7 @@
         attachmenttype_id bigint,
         subject_id bigint,
         primary key (id, REV)
-    ) ENGINE=InnoDB;
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
     alter table AttachmentType_AUD 
         add index FKFD3C366EE9152785 (REV), 
