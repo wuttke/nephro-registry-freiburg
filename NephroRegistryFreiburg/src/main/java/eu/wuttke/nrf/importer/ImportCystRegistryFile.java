@@ -47,7 +47,7 @@ public class ImportCystRegistryFile {
 	public static void main(String[] args) 
 	throws IOException {
 		ClassPathXmlApplicationContext app = new ClassPathXmlApplicationContext("META-INF/spring/applicationContext.xml");
-		app.getBean(ImportCystRegistryFile.class).doImport("C:\\Zysten.csv");
+		app.getBean(ImportCystRegistryFile.class).doImport("/home/wuttke/git/nephro-registry-freiburg/NephroRegistryFreiburg/misc/Nabulsi_20140226_MW.csv");
 		app.close();
 	}
 	
