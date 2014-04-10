@@ -64,9 +64,10 @@
 					password="test" />
 			</security:user-service>
 		</security:authentication-provider>
-		<!-- <security:authentication-provider user-service-ref="genericUserDetailsService" 
-			/> -->
+		<security:authentication-provider user-service-ref="genericUserDetailsService" />
 	</security:authentication-manager>
+	
+	<bean id="genericUserDetailsService" class="eu.wuttke.nrf.domain.user.GenericUserDetailsService" autowire="byName"/>
 
 	<bean id="meonaInfrastructureService" class="eu.wuttke.nrf.interf.kis.MeonaHessianProxyFactoryBean">
 		<property name="serviceUrl" value="http://meonap:8080/medication/infrastructure"/>
