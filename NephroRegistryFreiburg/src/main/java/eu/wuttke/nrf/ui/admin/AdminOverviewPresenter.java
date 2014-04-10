@@ -9,6 +9,7 @@ import eu.wuttke.nrf.domain.attribute.AttributeCategory;
 import eu.wuttke.nrf.domain.attribute.AttributeType;
 import eu.wuttke.nrf.domain.diagnosis.DiagnosisCode;
 import eu.wuttke.nrf.domain.event.EventType;
+import eu.wuttke.nrf.domain.user.UserInfo;
 import eu.wuttke.nrf.ui.admin.AdminBeanField.AdminBeanFieldType;
 import eu.wuttke.nrf.ui.presenter.RefreshablePresenter;
 
@@ -24,6 +25,15 @@ implements RefreshablePresenter {
 			new AdminBeanField("sequenceNumber", "Sequence Number", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
 			new AdminBeanField("label", "Label", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
 			new AdminBeanField("parentType", "Parent Type", null, true, "300px"),
+	};
+
+	private AdminBeanField[] userInfoFields = new AdminBeanField[] {
+			new AdminBeanField("userName", "User Name", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
+			new AdminBeanField("password", "Password", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
+			new AdminBeanField("lastName", "Last Name", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
+			new AdminBeanField("firstName", "First Name", AdminBeanFieldType.PLAIN_TEXT, true, "400px"),
+			new AdminBeanField("title", "Title", AdminBeanFieldType.PLAIN_TEXT, true, "200px"),
+			new AdminBeanField("email", "E-Mail", AdminBeanFieldType.PLAIN_TEXT, true, "400px")
 	};
 	
 	private AdminBeanField[] attributeTypeFields = new AdminBeanField[] {
@@ -79,7 +89,13 @@ implements RefreshablePresenter {
 					new String[]{"code", "codingSystem", "label", "description"},
 					new String[]{"Code", "Coding System", "Label", "Description"}, 
 					new float[]{1f,2f,3f,2f},
-					diagnosisCodeFields, this)
+					diagnosisCodeFields, this),
+
+			new AdminBeanListPresenter(UserInfo.class, "Users", 
+					new String[]{"userName", "lastName", "firstName"},
+					new String[]{"User Name", "Last Name", "First Name"}, 
+					new float[]{1f,2f,2f},
+					userInfoFields, this)
 	};
 	
 	public AdminOverviewPresenter() {

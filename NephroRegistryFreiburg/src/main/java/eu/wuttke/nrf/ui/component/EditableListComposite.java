@@ -23,6 +23,7 @@ import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
+import eu.wuttke.nrf.domain.misc.ObjectUtil;
 import eu.wuttke.nrf.ui.view.ListView;
 
 public class EditableListComposite<E>
@@ -116,7 +117,7 @@ implements ListView<E> {
 	
 	public void displayEntities(Collection<E> entities) {
 		container = new BeanContainer<Long, E>(entityClass);
-		container.setBeanIdProperty("id");
+		container.setBeanIdProperty(ObjectUtil.getIdPropertyName(entityClass));
 		container.addAll(entities);
 		table.setContainerDataSource(container);
 		initTable();
