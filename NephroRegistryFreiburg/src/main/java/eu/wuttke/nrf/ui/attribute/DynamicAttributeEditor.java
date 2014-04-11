@@ -135,7 +135,7 @@ extends TabSheet {
 		if (field instanceof AbstractTextField) {
 			AbstractTextField textField = (AbstractTextField)field;
 			textField.setNullRepresentation("");
-			if (type.getMaximumLength() != null)
+			if (type.getMaximumLength() != null && type.getMaximumLength() > 0)
 				textField.setMaxLength(type.getMaximumLength());
 			
 			if (type.getDataType() == AttributeDataType.PRECISION_DATE)
