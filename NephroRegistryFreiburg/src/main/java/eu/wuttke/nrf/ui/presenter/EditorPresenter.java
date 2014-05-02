@@ -1,5 +1,7 @@
 package eu.wuttke.nrf.ui.presenter;
 
+import org.vaadin.dialogs.ConfirmDialog;
+
 import eu.wuttke.nrf.ui.component.OkCancelWindow;
 import eu.wuttke.nrf.ui.view.EditorView;
 
@@ -30,9 +32,21 @@ public abstract class EditorPresenter<E, V extends EditorView<E>> {
 		showEntityWindow(entity);
 	}
 	
-	public void deleteEntity(E entity) {
+	public void deleteEntity(final E entity) {
 		// ask and do it
+		ConfirmDialog.show(getEditorView().getUI(), 
+				"Are you sure you want to delete the selected record?",
+		        new ConfirmDialog.Listener() {
+					private static final long serialVersionUID = 1L;
+					public void onClose(ConfirmDialog dialog) {
+		                if (dialog.isConfirmed()) {
+		                    realDeleteEntity(entity);
+		                }
+		            }
+		        });
 	}
+	
+	public abstract void realDeleteEntity(E entity);
 	
 	protected void refreshParent() {
 		if (parent != null)

@@ -32,5 +32,10 @@ extends EditorPresenter<Encounter, EncounterEditorView> {
 	public void saveEntity(Encounter entity) {
 		entity.merge();
 	}
+	
+	@Override
+	public void realDeleteEntity(Encounter entity) {
+		entity.remove();
+	}
 
 }

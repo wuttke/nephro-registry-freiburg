@@ -49,6 +49,15 @@ extends EditorPresenter<Object, AdminBeanEditorView> {
 	}
 	
 	@Override
+	public void realDeleteEntity(Object entity) {
+		try {
+			entityClass.getMethod("remove").invoke(entity);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
 	public void showEditorWindow(OkCancelWindow w) {
 		int height = 30 * fieldCount + 160;
 		w.show(((AdminOverviewPresenter)getParent()).getView().getUI(),

@@ -32,6 +32,10 @@ extends EditorPresenter<Sample, SampleEditorView> {
 	public void saveEntity(Sample entity) {
 		entity.merge();
 	}
-
+	
+	@Override
+	public void realDeleteEntity(Sample entity) {
+		entity.remove();
+	}
 	
 }

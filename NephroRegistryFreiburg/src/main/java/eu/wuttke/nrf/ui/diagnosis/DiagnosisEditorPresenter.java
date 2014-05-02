@@ -72,5 +72,10 @@ extends EditorPresenter<Diagnosis, DiagnosisEditorView> {
 	public void saveEntity(Diagnosis entity) {
 		entity.merge();
 	}
+	
+	@Override
+	public void realDeleteEntity(Diagnosis entity) {
+		entity.remove();
+	}
 
 }

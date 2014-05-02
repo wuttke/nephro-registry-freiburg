@@ -28,6 +28,11 @@ extends EditorPresenter<Subject, SubjectEditorView> {
 	public void saveEntity(Subject entity) {
 		entity.merge();
 	}
+	
+	@Override
+	public void realDeleteEntity(Subject entity) {
+		entity.remove();
+	}
 
 	
 }

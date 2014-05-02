@@ -99,5 +99,10 @@ extends EditorPresenter<Medication, MedicationEditorView> {
 	public void saveEntity(Medication entity) {
 		entity.merge();
 	}
+	
+	@Override
+	public void realDeleteEntity(Medication entity) {
+		entity.remove();
+	}
 
 }

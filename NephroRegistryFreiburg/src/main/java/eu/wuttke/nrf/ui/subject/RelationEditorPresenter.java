@@ -89,4 +89,9 @@ extends EditorPresenter<Relation, RelationEditorView> {
 		entity.merge();
 	}
 	
+	@Override
+	public void realDeleteEntity(Relation entity) {
+		entity.remove();
+	}
+
 }

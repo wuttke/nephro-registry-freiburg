@@ -34,5 +34,10 @@ extends EditorPresenter<Event, EventEditorView> {
 	public void saveEntity(Event entity) {
 		entity.merge();
 	}
+	
+	@Override
+	public void realDeleteEntity(Event entity) {
+		entity.remove();
+	}
 
 }
