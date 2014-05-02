@@ -34,7 +34,7 @@ public class Sample {
     @Embedded
     private PrecisionDate sampleDate;
 	
-	private Integer amount;
+	private Double amount;
 	private Double opticalDensity;
 	private Double concentration;
 	

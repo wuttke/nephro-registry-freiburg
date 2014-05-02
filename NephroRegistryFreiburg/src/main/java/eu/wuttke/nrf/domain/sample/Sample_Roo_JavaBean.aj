@@ -42,11 +42,11 @@ privileged aspect Sample_Roo_JavaBean {
         this.sampleDate = sampleDate;
     }
     
-    public Integer Sample.getAmount() {
+    public Double Sample.getAmount() {
         return this.amount;
     }
     
-    public void Sample.setAmount(Integer amount) {
+    public void Sample.setAmount(Double amount) {
         this.amount = amount;
     }
     

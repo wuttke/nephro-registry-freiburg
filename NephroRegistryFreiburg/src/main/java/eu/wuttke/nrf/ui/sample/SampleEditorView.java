@@ -149,7 +149,7 @@ implements EditorView<Sample> {
 		
 		// tfAmount
 		tfAmount = new TextField();
-		tfAmount.setCaption("Amount");
+		tfAmount.setCaption("Amount (Pcs)");
 		tfAmount.setImmediate(false);
 		tfAmount.setWidth("100.0%");
 		tfAmount.setHeight("-1px");
