@@ -50,4 +50,12 @@ privileged aspect Event_Roo_JavaBean {
         this.notes = notes;
     }
     
+    public boolean Event.isExclusion() {
+        return this.exclusion;
+    }
+    
+    public void Event.setExclusion(boolean exclusion) {
+        this.exclusion = exclusion;
+    }
+    
 }

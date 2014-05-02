@@ -35,5 +35,8 @@ public class Event {
 	
 	@Column(length=1000)
 	private String notes;
-	
+    
+    // Ausschluss von
+    private boolean exclusion;
+
 }

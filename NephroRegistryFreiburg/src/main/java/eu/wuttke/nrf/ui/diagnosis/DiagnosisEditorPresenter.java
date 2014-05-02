@@ -58,7 +58,7 @@ extends EditorPresenter<Diagnosis, DiagnosisEditorView> {
 
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(findUI(), "Edit Diagnosis", "600", "400");	
+		w.show(findUI(), "Edit Diagnosis", "600", "500");	
 	}
 	
 	@Override

@@ -43,6 +43,7 @@ public abstract class EditorPresenter<E, V extends EditorView<E>> {
 					public void onClose(ConfirmDialog dialog) {
 		                if (dialog.isConfirmed()) {
 		                    realDeleteEntity(entity);
+		                    refreshParent();
 		                }
 		            }
 		        });
@@ -80,8 +81,8 @@ public abstract class EditorPresenter<E, V extends EditorView<E>> {
 		};
 		
 		this.entity = entity;
-		displayEntity();
 		showEditorWindow(w);
+		displayEntity();
 	}
 
 	public E getEntity() {

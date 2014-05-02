@@ -13,8 +13,8 @@ extends EditableListComposite<Event> {
 	
 	@Override
 	protected void initTable() {
-		getTable().setVisibleColumns(new String[] {"type", "eventStartDate", "eventEndDate"});
-		getTable().setColumnHeaders(new String[] {"Event Type", "Date", "End"});
+		getTable().setVisibleColumns(new String[] {"type", "eventStartDate", "eventEndDate", "exclusion"});
+		getTable().setColumnHeaders(new String[] {"Event Type", "Date", "End", "Negative"});
 		getTable().setConverter("eventStartDate", new StringToPrecisionDateConverter());
 		getTable().setConverter("eventEndDate", new StringToPrecisionDateConverter());
 		getTable().setSortContainerPropertyId("eventStartDate");

@@ -1,5 +1,7 @@
 package eu.wuttke.nrf.ui.event;
 
+import java.util.List;
+
 import com.vaadin.ui.UI;
 
 import eu.wuttke.nrf.domain.event.Event;
@@ -21,8 +23,19 @@ extends EditorPresenter<Event, EventEditorView> {
 	
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		getEditorView().setEventTypes(EventType.findAllEventTypes());
+		List<EventType> types = EventType.findAllEventTypes();
+		if (getEntity().getType() != null) {
+			getEntity().setType(findEventType(types, getEntity().getType().getId()));
+		}
+		getEditorView().setEventTypes(types);
 		w.show(findUI(), "Edit Event", "600", "500");	
+	}
+
+	private EventType findEventType(List<EventType> types, long id) {
+		for (EventType type : types)
+			if (type.getId().longValue() == id)
+				return type;
+		return null;
 	}
 
 	@Override
