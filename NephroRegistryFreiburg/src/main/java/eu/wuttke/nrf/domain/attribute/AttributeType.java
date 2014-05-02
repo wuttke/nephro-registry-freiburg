@@ -59,4 +59,7 @@ public class AttributeType {
     @ManyToOne
     @NotNull
     private AttributeCategory category;
+    
+    private boolean visible;
+    
 }

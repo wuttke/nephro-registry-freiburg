@@ -49,6 +49,7 @@ implements RefreshablePresenter {
 			new AdminBeanField("defaultValue", "Default Value", AdminBeanFieldType.PLAIN_TEXT, false, "400px"),
 			new AdminBeanField("enumItems", "Enumeration Items", AdminBeanFieldType.PLAIN_TEXT, false, "400px"),
 			new AdminBeanField("required", "Required", null, true, "200px"),
+			new AdminBeanField("visible", "Visible", null, true, "200px"),
 			new AdminBeanField("attributeUsage", "Attribute Usage", null, true, "300px"),
 			new AdminBeanField("category", "Attribute Category", null, true, "400px")
 	};

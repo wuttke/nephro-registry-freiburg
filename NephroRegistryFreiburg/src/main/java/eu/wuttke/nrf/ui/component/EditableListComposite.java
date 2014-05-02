@@ -127,6 +127,10 @@ implements ListView<E> {
 		return table;
 	}
 	
+	protected BeanContainer<Long, E> getContainer() {
+		return container;
+	}
+	
 	protected void initTable() {
 		//table.setVisibleColumns(visibleColumns);
 		//table.setColumnHeaders(columnHeaders);
@@ -160,7 +164,7 @@ implements ListView<E> {
 	public void addNewButtonClickListener(ClickListener listener) {
 		btnNew.addClickListener(listener);
 	}
-
+	
 	@Override
 	public void addEditButtonClickListener(ClickListener listener) {
 		btnEdit.addClickListener(listener);

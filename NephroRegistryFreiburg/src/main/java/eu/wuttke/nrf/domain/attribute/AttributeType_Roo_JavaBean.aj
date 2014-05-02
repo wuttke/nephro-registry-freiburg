@@ -122,4 +122,12 @@ privileged aspect AttributeType_Roo_JavaBean {
         this.category = category;
     }
     
+    public boolean AttributeType.isVisible() {
+        return this.visible;
+    }
+    
+    public void AttributeType.setVisible(boolean visible) {
+        this.visible = visible;
+    }
+    
 }

@@ -59,7 +59,7 @@ extends TabSheet {
 			addTab(formLayout);
 			
 			for (AttributeType type : types) {
-				if (type.getGroupName().equals(groupName)) {
+				if (type.getGroupName().equals(groupName) && type.isVisible()) {
 					Component component = createComponentForType(type);
 					if (component != null) {
 						if (component instanceof Field<?>)

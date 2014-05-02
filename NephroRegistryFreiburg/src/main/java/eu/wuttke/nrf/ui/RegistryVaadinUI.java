@@ -3,6 +3,7 @@ package eu.wuttke.nrf.ui;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
@@ -11,6 +12,7 @@ import eu.wuttke.nrf.ui.page.AdminPage;
 import eu.wuttke.nrf.ui.page.SubjectDetailPage;
 import eu.wuttke.nrf.ui.page.SubjectListPage;
 
+@Theme("RegistryTheme")
 public class RegistryVaadinUI extends UI {
 
 	@Override
