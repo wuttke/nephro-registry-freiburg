@@ -4,6 +4,7 @@ import com.vaadin.event.Action.Listener;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.UI;
 
 import eu.wuttke.nrf.domain.subject.Gender;
 import eu.wuttke.nrf.domain.subject.Relation;
@@ -74,7 +75,12 @@ extends EditorPresenter<Relation, RelationEditorView> {
 
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(((RelationListPresenter)getParent()).getListView().getUI(), "Edit Relation", "600", "400");	
+		w.show(findUI(), "Edit Relation", "600", "400");	
+	}
+	
+	@Override
+	public UI findUI() {
+		return ((RelationListPresenter)getParent()).getListView().getUI();
 	}
 
 	@Override

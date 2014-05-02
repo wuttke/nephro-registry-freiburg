@@ -3,6 +3,7 @@ package eu.wuttke.nrf.ui.medication;
 import org.apache.commons.lang3.StringUtils;
 
 import com.vaadin.event.Action.Listener;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
@@ -85,7 +86,12 @@ extends EditorPresenter<Medication, MedicationEditorView> {
 
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(((MedicationListPresenter)getParent()).getListView().getUI(), "Edit Medication", "600", "500");	
+		w.show(findUI(), "Edit Medication", "600", "500");	
+	}
+	
+	@Override
+	public UI findUI() {
+		return ((MedicationListPresenter)getParent()).getListView().getUI();
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package eu.wuttke.nrf.ui.sample;
 
+import com.vaadin.ui.UI;
+
 import eu.wuttke.nrf.domain.sample.Sample;
 import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.ui.component.OkCancelWindow;
@@ -18,7 +20,12 @@ extends EditorPresenter<Sample, SampleEditorView> {
 	
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(((SampleListPresenter)getParent()).getListView().getUI(), "Edit Sample", "600", "500");	
+		w.show(findUI(), "Edit Sample", "600", "500");	
+	}
+	
+	@Override
+	public UI findUI() {
+		return ((SampleListPresenter)getParent()).getListView().getUI();
 	}
 
 	@Override

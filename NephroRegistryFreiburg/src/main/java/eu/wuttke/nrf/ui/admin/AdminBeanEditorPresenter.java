@@ -1,5 +1,7 @@
 package eu.wuttke.nrf.ui.admin;
 
+import com.vaadin.ui.UI;
+
 import eu.wuttke.nrf.ui.component.OkCancelWindow;
 import eu.wuttke.nrf.ui.misc.BeanUtil;
 import eu.wuttke.nrf.ui.presenter.EditorPresenter;
@@ -60,9 +62,14 @@ extends EditorPresenter<Object, AdminBeanEditorView> {
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
 		int height = 30 * fieldCount + 160;
-		w.show(((AdminOverviewPresenter)getParent()).getView().getUI(),
+		w.show(findUI(),
 				String.format("Edit %s", getEditorView().getTitle()),
 				"600", Integer.toString(height));
+	}
+	
+	@Override
+	public UI findUI() {
+		return ((AdminOverviewPresenter)getParent()).getView().getUI();
 	}
 	
 }

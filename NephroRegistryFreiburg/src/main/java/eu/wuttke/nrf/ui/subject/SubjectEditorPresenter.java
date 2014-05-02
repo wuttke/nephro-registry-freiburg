@@ -1,5 +1,7 @@
 package eu.wuttke.nrf.ui.subject;
 
+import com.vaadin.ui.UI;
+
 import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.ui.component.OkCancelWindow;
 import eu.wuttke.nrf.ui.presenter.EditorPresenter;
@@ -14,7 +16,12 @@ extends EditorPresenter<Subject, SubjectEditorView> {
 	
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(((SubjectListPresenter)getParent()).getListView().getUI(), "Edit Subject", "600", "500");	
+		w.show(findUI(), "Edit Subject", "600", "500");	
+	}
+	
+	@Override
+	public UI findUI() {
+		return ((SubjectListPresenter)getParent()).getListView().getUI();
 	}
 
 	@Override

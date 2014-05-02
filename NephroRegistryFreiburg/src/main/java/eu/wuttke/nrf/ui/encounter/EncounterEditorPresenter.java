@@ -1,5 +1,7 @@
 package eu.wuttke.nrf.ui.encounter;
 
+import com.vaadin.ui.UI;
+
 import eu.wuttke.nrf.domain.encounter.Encounter;
 import eu.wuttke.nrf.domain.subject.Subject;
 import eu.wuttke.nrf.ui.component.OkCancelWindow;
@@ -18,7 +20,12 @@ extends EditorPresenter<Encounter, EncounterEditorView> {
 	
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(((EncounterListPresenter)getParent()).getListView().getUI(), "Edit Encounter", "500", "400");	
+		w.show(findUI(), "Edit Encounter", "500", "400");	
+	}
+	
+	@Override
+	public UI findUI() {
+		return ((EncounterListPresenter)getParent()).getListView().getUI();
 	}
 
 	@Override

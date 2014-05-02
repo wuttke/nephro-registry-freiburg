@@ -1,6 +1,7 @@
 package eu.wuttke.nrf.ui.diagnosis;
 
 import com.vaadin.event.Action.Listener;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
@@ -57,7 +58,12 @@ extends EditorPresenter<Diagnosis, DiagnosisEditorView> {
 
 	@Override
 	public void showEditorWindow(OkCancelWindow w) {
-		w.show(((DiagnosisListPresenter)getParent()).getListView().getUI(), "Edit Diagnosis", "600", "400");	
+		w.show(findUI(), "Edit Diagnosis", "600", "400");	
+	}
+	
+	@Override
+	public UI findUI() {
+		return ((DiagnosisListPresenter)getParent()).getListView().getUI();
 	}
 
 	@Override
